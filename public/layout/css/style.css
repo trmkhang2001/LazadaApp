@@ -3,9 +3,11 @@ body {
     line-height: 1.5;
     color: #212529;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .main {
     box-shadow: 0 0 .6rem 0 #7d7d7d4d;
     font-family: "PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif" !important;
@@ -149,22 +151,252 @@ video {
     padding-left: 2rem;
     padding-right: 2rem;
 }
-.py-5{
+
+.py-5 {
     padding-bottom: 1.25rem !important;
     padding-top: 1.25rem !important;
 }
+
 .rounded-lg {
     border-radius: .5rem;
 }
+
 .items-center {
     align-items: center;
 }
-.w-16{
+
+.w-16 {
     width: 4rem;
 }
-.h-16{
+
+.h-16 {
     height: 4rem;
 }
-.text-1-2-rem{
+
+/* .text-1-2-rem{
     font-size: 1.2rem;
+} */
+.user-info {
+    background: #272532;
+    border-radius: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    margin: auto;
+    min-height: 15rem;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 8;
 }
+
+.user-info {
+    height: 20rem;
+    margin-top: .5rem;
+}
+
+.background {
+    background-size: 100%;
+    background: url(https://da7979.com/static/media/userinfo_bg.329f4e105d131d63ec68.png) no-repeat;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 269px;
+    z-index: 10;
+}
+
+.w-12 {
+    width: 3rem;
+}
+
+.h-12 {
+    height: 3rem;
+}
+
+@media screen and (max-width: 390px) {
+    .user-info {
+        font-size: 15px;
+        max-height: 10rem;
+    }
+}
+
+.box {
+    margin-top: 20px;
+    padding: .3rem .4rem;
+    width: 100%;
+}
+
+.box .box-title {
+    border-left: 5px solid #2f66f6;
+    color: #373737;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: .3rem;
+    padding-left: 10px;
+}
+
+.el-carousel--horizontal {
+    overflow-x: hidden;
+}
+
+.el-carousel {
+    position: relative;
+}
+
+.el-carousel__container {
+    position: relative;
+    height: 187px;
+}
+
+.el-carousel__arrow:hover {
+    background-color: rgba(31, 45, 61, 0.23);
+}
+
+.el-carousel__arrow--left {
+    left: 16px;
+}
+
+.el-carousel__arrow--right {
+    right: 16px;
+}
+
+.el-carousel__arrow {
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 50%;
+    background-color: rgba(31, 45, 61, 0.11) !important;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 12px;
+}
+
+/* .level-content .level-list .level-item:nth-child(6n + 3) {
+    background-image: url('../../assets/images/vip/vip1.png');
+    background-size: cover;
+}
+.level-content .level-list .level-item:nth-child(6n + 4) {
+    background-image: url('../../assets/images/vip/vip2.png');
+} */
+.level-content .level-list .el-carousel__item--card.is-active {
+    -webkit-transform: translateX(6%) scale(1) !important;
+    transform: translateX(6%) scale(1) !important;
+    width: 88%;
+}
+
+.level-content .level-list .level-item {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 16px;
+}
+
+.el-carousel__item--card.is-active {
+    z-index: 2;
+}
+
+.el-carousel__item--card.is-in-stage {
+    cursor: pointer;
+    z-index: 1;
+}
+
+.el-carousel__item--card {
+    width: 50%;
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+}
+
+.el-carousel__item {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.el-carousel__item,
+.el-carousel__mask {
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.el-carousel__mask {
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.24;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.level-content .level-list .level-item .level-info {
+    color: #fff;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.w-5rem {
+    width: 5rem;
+}
+
+.h-5rem {
+    height: 5rem;
+}
+
+.ml-2rem {
+    margin-left: 2rem;
+}
+
+.bg-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(47 102 246 / var(--tw-bg-opacity));
+}
+
+.w-35-rem {
+    width: 3.5rem;
+}
+
+.h-35-rem {
+    width: 3.5rem;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+.item-menu-profile {}
