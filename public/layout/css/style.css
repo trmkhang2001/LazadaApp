@@ -1,0 +1,170 @@
+body {
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+a{
+    text-decoration: none;
+}
+.main {
+    box-shadow: 0 0 .6rem 0 #7d7d7d4d;
+    font-family: "PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif" !important;
+    font-size: inherit;
+    margin: auto;
+    max-width: 520px;
+    min-height: 100vh;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.nav_wrapper {
+    align-items: flex-end;
+    background: #fff;
+    bottom: 0;
+    box-shadow: 0 -1rem 2rem #d0d0ed80;
+    display: flex;
+    font-size: 1.3rem;
+    left: 50%;
+    max-width: 520px;
+    padding-block: 0 .1rem;
+    position: fixed;
+    transform: translate(-50%);
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-link {
+    width: 20%;
+    padding: 0;
+}
+
+.nav-item {
+    align-items: center;
+    color: #949494;
+    display: flex;
+    padding-top: 5px;
+    flex: 1 1;
+    flex-direction: column;
+    font-size: 12.5px;
+    justify-content: center;
+}
+
+.nav-icon {
+    color: #949494;
+    height: 2.2rem;
+    position: relative;
+    width: 2.2rem;
+    z-index: 3;
+}
+
+.nav-icon-center {
+    color: #fff !important;
+    top: -3.2rem;
+}
+
+.nav-item-center-bg {
+    background: #fff;
+    border-radius: 50%;
+    bottom: 1.5rem;
+    box-shadow: 0 -1rem 2rem #d0d0ed80;
+    height: 6rem;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 6rem;
+    z-index: 2;
+}
+
+.nav-title {
+    white-space: nowrap;
+}
+
+.nav-item-center-bg:after {
+    background: #2f66f6 !important;
+    border-radius: 50%;
+    content: "";
+    height: 5rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+}
+
+.text-\[\#2f66f6\!important\] {
+    color: #2f66f6 !important;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.top-0 {
+    top: 0 !important;
+}
+
+.max-w-520 {
+    max-width: 520px;
+}
+
+.z-50 {
+    z-index: 50;
+}
+
+.w-3-5-rem {
+    width: 3.5rem;
+}
+
+.h-3-rem {
+    height: 3rem;
+}
+
+img,
+video {
+    height: auto;
+    max-width: 100%;
+}
+
+.text-18-rem {
+    font-size: 1.8rem;
+}
+
+.w-3rem {
+    width: 3rem;
+}
+
+.h-2rem {
+    height: 2rem;
+}
+
+.w-2rem {
+    width: 2rem;
+}
+
+.h-2rem {
+    height: 2rem;
+}
+
+.px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.py-5{
+    padding-bottom: 1.25rem !important;
+    padding-top: 1.25rem !important;
+}
+.rounded-lg {
+    border-radius: .5rem;
+}
+.items-center {
+    align-items: center;
+}
+.w-16{
+    width: 4rem;
+}
+.h-16{
+    height: 4rem;
+}
+.text-1-2-rem{
+    font-size: 1.2rem;
+}
