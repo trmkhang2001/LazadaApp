@@ -12,4 +12,10 @@ class ExampleController extends Controller
     public function profile(){
         return view('pages.profile.index');
     }
+    public function login(){
+        return view('auth.login');
+    }
+    public function register(){
+        return view('auth.register');
+    }
 }

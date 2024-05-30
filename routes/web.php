@@ -18,3 +18,5 @@ use App\Http\Controllers\ExampleController;
 // });
 Route::get('/',[ExampleController::class,'index']);
 Route::get('/profile',[ExampleController::class,'profile']);
+Route::get('/login',[ExampleController::class,'login']);
+Route::get('/register',[ExampleController::class,'register']);
