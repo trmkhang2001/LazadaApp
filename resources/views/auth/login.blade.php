@@ -17,7 +17,7 @@
                 <button type="submit" class="btn btn-light w-100">Đăng nhập</button>
             </div>
             <div class="mb-3">
-                <a href="" class="btn btn-primary w-100">Đăng ký</a>
+                <a href="/register" class="btn btn-primary w-100">Đăng ký</a>
             </div>
         </form>
     </div>

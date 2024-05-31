@@ -29,7 +29,7 @@
                 <button type="submit" class="btn btn-light w-100">Gửi</button>
             </div>
             <div class="mb-3">
-                <a href="" class="btn btn-primary w-100">Đăng nhập</a>
+                <a href="/login" class="btn btn-primary w-100">Đăng nhập</a>
             </div>
         </form>
     </div>
