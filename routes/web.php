@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,12 @@ use App\Http\Controllers\ExampleController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',[ExampleController::class,'index']);
-Route::get('/profile',[ExampleController::class,'profile']);
-Route::get('/login',[ExampleController::class,'login']);
-Route::get('/register',[ExampleController::class,'register']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin']);
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'postRegister']);
+Route::get('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [ExampleController::class, 'index'])->name('home');
+    Route::get('/profile', [ExampleController::class, 'profile']);
+});

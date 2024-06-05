@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->tinyInteger('level')->after('password')->default(0);
             $table->tinyInteger('status')->after('level')->default(0);
-       });
+            $table->string('aff_code')->after('status');
+            $table->string('phone')->after('id')->unique();
+            $table->string('pass_rut_tien')->after('phone');
+        });
     }
 
     /**
