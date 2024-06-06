@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
+use function PHPUnit\Framework\isEmpty;
+
 class AuthController extends Controller
 {
     //
@@ -30,6 +32,10 @@ class AuthController extends Controller
             'xnmatkhauruttien' => 'required'
         ]);
         $aff_code = $req->aff_code;
+        $user = ModelsUser::where('aff_code', $aff_code)->first();
+        if (!$user) {
+            return redirect()->back()->withErrors(['msg' => 'Mã mời không tôn tại']);
+        }
         $phone = $req->phone;
         $password = $req->password;
         $cfpassword = $req->cfpassword;

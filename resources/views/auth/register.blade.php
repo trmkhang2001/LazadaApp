@@ -8,6 +8,9 @@
         </div>
         <form action="/register" class="px-5 pt-5" method="POST">
             @csrf
+            @if ($errors->any())
+                <h4 class="alert alert-danger">{{ $errors->first() }}</h4>
+            @endif
             <div class="mb-3">
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="aff_code"
                     placeholder="Mã mời" value="{{ old('aff_code') }}" name="aff_code">
