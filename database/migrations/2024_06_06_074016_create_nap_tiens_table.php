@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('nap_tiens', function (Blueprint $table) {
             $table->id();
+            $table->string('ma_nap');
+            $table->tinyInteger('loai_nap');
+            $table->tinyInteger('phuong_thuc_thanh_toan');
+            $table->float('so_tien_truoc');
+            $table->float('so_tien_nap');
+            $table->float('so_tien_sau');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

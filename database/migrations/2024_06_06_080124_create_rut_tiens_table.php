@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rut_tiens', function (Blueprint $table) {
-            $table->id();
+            $table->id();git
             $table->timestamps();
         });
     }

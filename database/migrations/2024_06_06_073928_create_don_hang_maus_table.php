@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('don_hang_maus', function (Blueprint $table) {
             $table->id();
-            $table->string('tensanpham');
-            $table->string('hinhsanpham');
-            $table->float('tonggia');
+            $table->string('ten_san_pham');
+            $table->string('hinh_san_pham');
+            $table->float('tong_gia');
             $table->$table->timestamps();
         });
     }

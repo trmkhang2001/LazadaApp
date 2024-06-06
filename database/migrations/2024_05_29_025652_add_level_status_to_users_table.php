@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('aff_code')->after('status');
             $table->string('phone')->after('id')->unique();
             $table->string('pass_rut_tien')->after('phone');
+            $table->float('sodu')->after('aff_code');
         });
     }
 
