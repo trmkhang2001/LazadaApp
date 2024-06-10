@@ -32,10 +32,10 @@ class AuthController extends Controller
             'xnmatkhauruttien' => 'required'
         ]);
         $aff_code = $req->aff_code;
-        $user = ModelsUser::where('aff_code', $aff_code)->first();
-        if (!$user) {
-            return redirect()->back()->withErrors(['msg' => 'Mã mời không tôn tại']);
-        }
+        // $user = ModelsUser::where('aff_code', $aff_code)->first();
+        // if (!$user) {
+        //     return redirect()->back()->withErrors(['msg' => 'Mã mời không tôn tại']);
+        // }
         $phone = $req->phone;
         $password = $req->password;
         $cfpassword = $req->cfpassword;
@@ -48,7 +48,8 @@ class AuthController extends Controller
                 'pass_rut_tien' => $req->matkhauruttien,
                 'level' => 1,
                 'status' => 1,
-                'aff_code' => $req->phone
+                'aff_code' => $req->phone,
+                'sodu' => 30000
             ]
         );
         return redirect('login');

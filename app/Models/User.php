@@ -25,7 +25,8 @@ class User extends Authenticatable
         'pass_rut_tien',
         'level',
         'status',
-        'aff_code'
+        'aff_code',
+        'sodu'
     ];
 
     /**

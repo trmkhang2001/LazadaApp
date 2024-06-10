@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rut_tiens', function (Blueprint $table) {
-            $table->id();git
+            $table->id();
+            $table->tinyInteger('user_id');
+            $table->float('tien_truoc_rut');
+            $table->float('tien_sau_rut');
+            $table->float('tien_rut');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
