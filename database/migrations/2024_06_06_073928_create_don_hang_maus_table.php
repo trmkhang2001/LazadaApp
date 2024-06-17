@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('ten_san_pham');
             $table->string('hinh_san_pham');
             $table->float('tong_gia');
-            $table->$table->timestamps();
+            $table->timestamps();
         });
     }
 

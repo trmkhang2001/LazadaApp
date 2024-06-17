@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardrController;
+use App\Http\Controllers\DonHangMauController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +29,19 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [ExampleController::class, 'index'])->name('home');
     Route::get('/profile', [ExampleController::class, 'profile']);
+    //admin
+    // Route::controller(DashboardrController::class)->group(function () {
+    //     Route::get('/dashboard', 'index')->name('dashboard.index');
+    // });
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [DashboardrController::class, 'index'])->name('dashboard.index');
+        Route::controller(UserController::class)->prefix('/thanhvien')->group(function () {
+            Route::get('/', 'index')->name('thanhvien.index');
+            Route::post('/search', 'search')->name('admin.page.user.seach');
+        });
+        Route::controller(DonHangMauController::class)->prefix('/donhangmau')->group(function () {
+            Route::get('/', 'index')->name('donhangmau.index');
+            Route::get('/add', 'create')->name('donhangmau.add');
+        });
+    });
 });

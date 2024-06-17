@@ -48,7 +48,8 @@ class AuthController extends Controller
                 'pass_rut_tien' => $req->matkhauruttien,
                 'level' => 1,
                 'status' => 1,
-                'aff_code' => $req->phone
+                'aff_code' => $req->phone,
+                'sodu' => 30000,
             ]
         );
         return redirect('login');
