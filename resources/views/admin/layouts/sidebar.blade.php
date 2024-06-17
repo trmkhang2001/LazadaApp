@@ -87,14 +87,14 @@
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/product"><span
+                            <!--begin:Menu link--><a class="menu-link" href="/admin/donhang"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Lịch sử đặt hàng</span></a><!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/order"><span
+                            <!--begin:Menu link--><a class="menu-link" href="/admin/naptien"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Lịch sử nạp tiền</span></a><!--end:Menu link-->
                         </div>
@@ -108,16 +108,9 @@
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/promotion"><span
+                            <!--begin:Menu link--><a class="menu-link" href="/admin/thongtinrut"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Thông tin rút tiền</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/promotion"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Danh sách khách hàng</span></a><!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
                     </div><!--end:Menu sub-->

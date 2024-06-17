@@ -4,7 +4,7 @@
         <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
             <!--begin::Title-->
             <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Order</h1>
+                Lịch sử đặt hàng</h1>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -19,7 +19,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Order</li>
+                <li class="breadcrumb-item text-muted">Lịch sử đặt hàng</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -57,31 +57,23 @@
                                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                     <th class="min-w-175px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
                                         rowspan="1" colspan="1"
-                                        aria-label="Customer: activate to sort column ascending" style="width: 169.075px;">
-                                        Khách hàng</th>
-                                    <th class=" min-w-70px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1" style="width: 97.0375px;">
-                                        Số điện thoại</th>
-                                    <th class=" min-w-70px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending"
-                                        style="width: 97.0375px;">
+                                        aria-label="Customer: activate to sort column ascending">
+                                        Tài khoản</th>
+                                    <th class="min" tabindex="0" aria-controls="kt_ecommerce_sales_table"
+                                        rowspan="1" colspan="1">
+                                        Sản phẩm</th>
+                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Status: activate to sort column ascending">
                                         Trạng thái</th>
-                                    <th class=" min-w-70px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending"
-                                        style="width: 97.0375px;">
-                                        Thanh toán</th>
-                                    <th class="min-w-70px sorting" rowspan="1" colspan="1" style="width: 60px">Cập
-                                        nhật</th>
-                                    <th class="min-w-70px sorting" rowspan="1" colspan="1" style="width: 60px">Hủy đơn
-                                    </th>
-                                    <th class=" min-w-100px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1" aria-label="Total: activate to sort column ascending"
-                                        style="width: 132.663px;">
-                                        Tổng tiền</th>
-                                    <th class=" min-w-100px sorting" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1" style="width: 132.663px;">Ngày Đặt Hàng</th>
-                                    <th class=" min-w-100px sorting_disabled" rowspan="1" colspan="1"
-                                        aria-label="Actions" style="width: 132.688px;">Actions</th>
+                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Status: activate to sort column ascending">
+                                        Chi tiết</th>
+                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
+                                        rowspan="1" colspan="1">Ngày Đặt Hàng</th>
+                                    <th class="" rowspan="1" colspan="1" aria-label="Actions"
+                                        style="width: 132.688px;">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody class="fw-semibold text-gray-600">
@@ -92,7 +84,7 @@
                                                 <div class="">
                                                     <!--begin::Title-->
                                                     <a href="#"
-                                                        class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->name }}</a>
+                                                        class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->user->phone }}</a>
                                                     <br>
                                                     <!--end::Title-->
                                                     <span>{{ $order->address }}</span>
@@ -101,105 +93,48 @@
                                         </td>
                                         <td class=" pe-0">
                                             <!--begin::Badges-->
-                                            <span>{{ $order->phone }}</span>
+                                            <span>{{ $order->don_hang_maus->ten_san_pham }}</span>
+                                            <br>
+                                            <span>Giá phù hợp:
+                                                {{ $order->don_hang_maus->tong_gia }}</span>
+                                            <br>
+                                            <span>Tỷ lệ hoa hồng: 20%</span>
                                             <!--end::Badges-->
                                         </td>
                                         <td class=" pe-0" data-order="Expired">
                                             <!--begin::Badges-->
-                                            @if ($order->status == config('app.order_status.ORDER'))
-                                                <div class="badge badge-light-info">Order</div>
+                                            @if ($order->status == 0)
+                                                <div class="badge badge-light-danger">Chưa xác nhận</div>
                                                 <!--end::Badges-->
-                                            @elseif ($order->status == config('app.order_status.SHIPPING'))
-                                                <div class="badge badge-light-primary">Shipping</div>
-                                            @elseif($order->status == config('app.order_status.DONE'))
-                                                <div class="badge badge-light-success">Done</div>
-                                            @elseif ($order->status == config('app.order_status.CANCEL'))
-                                                <div class="badge badge-light-danger">Cancel</div>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($order->isPay)
-                                                <div class="badge badge-success">Đã thanh toán</div>
                                             @else
-                                                <div class="badge badge-light-danger">Chưa thanh toán</div>
+                                                <div class="badge badge-light-success">Xác nhận</div>
                                             @endif
                                         </td>
                                         <td>
-                                            <!--begin::Badges-->
-                                            <form action="" method="POST">
-                                                @csrf
-                                                <input type="id" name="id" value="{{ $order->id }}" hidden>
-                                                @if ($order->status == config('app.order_status.ORDER'))
-                                                    <button class="btn btn-sm fw-bold btn-primary">Ship</button>
-                                                    <!--end::Badges-->
-                                                @elseif ($order->status == config('app.order_status.SHIPPING'))
-                                                    <button class="btn btn-sm fw-bold btn-success">Done</button>
-                                                @elseif($order->status == config('app.order_status.DONE'))
-                                                    <div class="badge badge-light-success">Done</div>
-                                                @endif
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <!--begin::Badges-->
-                                            <form action="" method="POST">
-                                                @csrf
-                                                <input type="id" name="id" value="{{ $order->id }}" hidden>
-                                                <input type="text" name="true_cancel" value="1" hidden>
-                                                @if ($order->status != config('app.order_status.CANCEL') && $order->status == config('app.order_status.ORDER'))
-                                                    <button class="btn btn-sm fw-bold btn-danger">Cancel</button>
-                                                @endif
-                                            </form>
-                                        </td>
-                                        <td class=" pe-0">
-                                            <span class="fw-bold">{{ number_format($order->total) . ' VNĐ' }}</span>
+
+                                            <span>Số dư trước khi đặt đơn:
+                                                {{ number_format($order->user->sodu, 0, ',', '.') . ' VND' }}</span>
+                                            <br>
+                                            <span>Số dư sau khi đặt đơn:
+                                                {{ number_format($order->user->sodu - $order->don_hang_maus->tong_gia, 0, ',', '.') . ' VND' }}</span>
+                                            <br>
+                                            <span>Hoa hồng:
+                                                {{ number_format($order->don_hang_maus->tong_gia * 0.2, 0, ',', '.') . ' VND' }}</span>
                                         </td>
                                         <td class="">
                                             <span class="fw-bold">{{ date('d/m/Y', strtotime($order->updated_at)) }}</span>
                                         </td>
                                         <td class="">
                                             <a href="#"
-                                                class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
+                                                class="mb-3 btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
                                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                Actions
-                                                <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.page.order.detail', $order->id) }}"
-                                                        class="menu-link px-3">
-                                                        View
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-
-                                                <!--begin::Menu item-->
-                                                @if ($order->status == config('app.order_status.ORDER'))
-                                                    <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.page.order.edit', $order->id) }}"
-                                                            class="menu-link px-3">
-                                                            Edit
-                                                        </a>
-                                                    </div>
-                                                @endif
-                                                <!--end::Menu item-->
-
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <form action="{{ route('admin.page.order.delete', $order->id) }}"
-                                                        method="POST" type="button"
-                                                        onsubmit="return confirm('Bạn chắc chắn muốn xóa ?')">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="menu-link px-3 btn">
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
+                                                Xác nhận
+                                            </a>
+                                            <a href="#"
+                                                class="btn btn-sm btn-danger btn-flex btn-center btn-active-light-primary"
+                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                Huỷ Đơn
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('ma_dh');
             $table->tinyInteger('status');
-            $table->tinyInteger('id_sp');
-            $table->tinyInteger('id_user');
+            $table->unsignedBigInteger('don_hang_maus_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
