@@ -119,7 +119,7 @@
                         class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-bucket fs-2"><span
                                     class="path1"></span><span class="path2"></span><span
                                     class="path3"></span><span class="path4"></span></i></span><span
-                            class="menu-title">Giao diện</span><span
+                            class="menu-title">Admin Tổng</span><span
                             class="menu-arrow"></span></span><!--end:Menu link-->
                     <!--begin:Menu sub-->
                     <div class="menu-sub menu-sub-accordion" kt-hidden-height="251"
@@ -133,9 +133,9 @@
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/banner"><span
+                            <!--begin:Menu link--><a class="menu-link" href="/admin/banking"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Quản lý banner</span></a><!--end:Menu link-->
+                                    class="menu-title">Tài khoản nhận tiền</span></a><!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
                     </div><!--end:Menu sub-->

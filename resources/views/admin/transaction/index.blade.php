@@ -104,15 +104,20 @@
                                         </td>
                                         <td>
                                             @if ($naptien->status == 0)
-                                                <div class="badge badge-light-danger">Chưa xác nhận</div>
+                                                <div class="badge badge-light-warning">Chưa xác nhận</div>
                                                 <!--end::Badges-->
+                                            @elseif ($naptien->status == -1)
+                                                <div class="badge badge-light-danger">Đã hủy</div>
                                             @else
                                                 <div class="badge badge-light-success">Xác nhận</div>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-primary">Xác nhận</a>
-                                            <a href="" class="btn btn-danger">Huỷ</a>
+                                            @if ($naptien->status == 0)
+                                                <a href="{{ route('xac_nhan_nap_tien', $naptien->id) }}"
+                                                    class="btn btn-primary">Xác nhận</a>
+                                                <a href="" class="btn btn-danger">Huỷ</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

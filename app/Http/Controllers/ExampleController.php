@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExampleController extends Controller
 {
-    public function index(){
-        return view('pages.home.index');
+    public function index()
+    {
+        $profile = User::find(Auth::user()->id);
+        return view('pages.home.index', compact('profile'));
     }
-    public function profile(){
-        return view('pages.profile.index');
+    public function profile()
+    {
+        $profile = User::find(Auth::user()->id);
+        return view('pages.profile.index', compact('profile'));
     }
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
-    public function register(){
+    public function register()
+    {
         return view('auth.register');
     }
 }

@@ -19,8 +19,8 @@ class DonHang extends Model
     protected $fillable = [
         'ma_dh',
         'status',
-        'id_sp',
-        'id_user',
+        'don_hang_maus_id',
+        'user_id',
     ];
     public function user()
     {

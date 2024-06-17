@@ -100,34 +100,24 @@
                             id="kt_ecommerce_products_table">
                             <thead>
                                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                    <th class="min-w-200px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="Product: activate to sort column ascending" style="width: 259.913px;">
+                                    <th class=" sorting" tabindex="0" aria-controls="kt_ecommerce_products_table"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Product: activate to sort column ascending">
                                         Đơn hàng</th>
-                                    <th class="text-end min-w-100px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="SKU: activate to sort column ascending" style="width: 131.35px;">
-                                        SKU
+                                    <th class="sorting" tabindex="0" aria-controls="kt_ecommerce_products_table"
+                                        rowspan="1" colspan="1" aria-label="SKU: activate to sort column ascending">
+                                        Mã
                                     </th>
-                                    <th class="text-end min-w-70px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="Qty: activate to sort column ascending" style="width: 118.7px;">
-                                        Qty
+                                    <th class="sorting" tabindex="0" aria-controls="kt_ecommerce_products_table"
+                                        rowspan="1" colspan="1" aria-label="Qty: activate to sort column ascending">
+                                        Tên sản phẩm
                                     </th>
-                                    <th class="text-end min-w-100px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="Price: activate to sort column ascending" style="width: 131.35px;">
-                                        Price</th>
-                                    <th class="text-end min-w-100px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="Rating: activate to sort column ascending" style="width: 131.35px;">
-                                        Rating</th>
-                                    <th class="text-end min-w-100px sorting" tabindex="0"
-                                        aria-controls="kt_ecommerce_products_table" rowspan="1" colspan="1"
-                                        aria-label="Status: activate to sort column ascending" style="width: 131.35px;">
-                                        Status</th>
-                                    <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1"
-                                        aria-label="Actions" style="width: 125.438px;">Actions
+                                    <th class=" sorting" tabindex="0" aria-controls="kt_ecommerce_products_table"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Price: activate to sort column ascending">
+                                        Giá</th>
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions"
+                                        style="width: 125.438px;">Actions
                                     </th>
                                 </tr>
                             </thead>
@@ -139,57 +129,27 @@
                                                 <!--begin::Thumbnail-->
                                                 <a href="#" class="symbol symbol-50px">
                                                     <span class="symbol-label"
-                                                        style="background-image:url({{ $product->img }});"></span>
+                                                        style="background-image:url({{ $product->hinh_san_pham }});"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
 
-                                                <div class="ms-5">
+                                                {{-- <div class="ms-5">
                                                     <!--begin::Title-->
                                                     <a href="/metronic8/demo1/../demo1/apps/ecommerce/catalog/edit-product.html"
                                                         class="text-gray-800 text-hover-primary fs-5 fw-bold"
                                                         data-kt-ecommerce-product-filter="product_name">{{ $product->name }}</a>
                                                     <!--end::Title-->
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </td>
-                                        <td class="text-end pe-0">
-                                            <span class="fw-bold">{{ $product->sku }}</span>
+                                        <td class=" pe-0">
+                                            <span class="fw-bold">{{ $product->id }}</span>
                                         </td>
-                                        <td class="text-end pe-0" data-order="34">
-                                            <span class="fw-bold ms-3">{{ $product->quantity }}</span>
+                                        <td class=" pe-0" data-order="34">
+                                            <span class="fw-bold ms-3">{{ $product->ten_san_pham }}</span>
                                         </td>
-                                        <td class="text-end pe-0">{{ number_format($product->price) }}</td>
-                                        <td class="text-end pe-0" data-order="rating-3">
-                                            <div class="rating justify-content-end">
-                                                <div class="rating-label checked">
-                                                    <i class="ki-duotone ki-star fs-6"></i>
-                                                </div>
-                                                <div class="rating-label checked">
-                                                    <i class="ki-duotone ki-star fs-6"></i>
-                                                </div>
-                                                <div class="rating-label checked">
-                                                    <i class="ki-duotone ki-star fs-6"></i>
-                                                </div>
-                                                <div class="rating-label ">
-                                                    <i class="ki-duotone ki-star fs-6"></i>
-                                                </div>
-                                                <div class="rating-label ">
-                                                    <i class="ki-duotone ki-star fs-6"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0" data-order="Inactive">
-                                            @if ($product->status == 0)
-                                                <!--begin::Badges-->
-                                                <div class="badge badge-light-danger">Deactive</div>
-                                                <!--end::Badges-->
-                                            @else
-                                                <!--begin::Badges-->
-                                                <div class="badge badge-light-success">Active</div>
-                                                <!--end::Badges-->
-                                            @endif
-                                        </td>
-                                        <td class="text-end">
+                                        <td class=" pe-0">{{ number_format($product->tong_gia) }}</td>
+                                        <td class="">
                                             <a href="#"
                                                 class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
                                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -200,8 +160,7 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.page.product.edit', $product->id) }}"
-                                                        class="menu-link px-3">
+                                                    <a href="" class="menu-link px-3">
                                                         Edit
                                                     </a>
                                                 </div>
@@ -209,8 +168,7 @@
 
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <form action="{{ route('admin.page.product.delete', $product->id) }}"
-                                                        method="POST" type="button"
+                                                    <form action="" method="POST" type="button"
                                                         onsubmit="return confirm('Bạn chắc chắn muốn xóa ?')">
                                                         @csrf
                                                         @method('DELETE')

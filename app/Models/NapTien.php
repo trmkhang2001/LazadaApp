@@ -11,7 +11,7 @@ class NapTien extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
-        'id_user',
+        'user_id',
         'ma_nap',
         'loai_nap',
         'phuong_thuc_thanh_toan',

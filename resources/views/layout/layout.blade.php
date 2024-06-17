@@ -25,7 +25,7 @@
                         </svg>
                         <div class="nav-tittle">Trang chủ</div>
                     </div>
-                </a><a class="nav-link" href="/">
+                </a><a class="nav-link" href="/dondat">
                     <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                             viewBox="0 0 24 24" class="nav-icon" height="1em" width="1em"
                             xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@
                         </svg>
                         <div class="nav-title">Đơn đặt hàng</div>
                     </div>
-                </a><a class="nav-link" href="/">
+                </a><a class="nav-link" href="/laydon">
                     <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                             viewBox="0 0 24 24" class="nav-icon nav-icon-center" height="1em" width="1em"
                             xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@
                         <div class="nav-item-center-bg"></div>
                         <div class="nav-title"></div>
                     </div>
-                </a><a class="nav-link" href="/">
+                </a><a class="nav-link" href="/nap_tien_view">
                     <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                             viewBox="0 0 640 512" class="nav-icon" height="1em" width="1em"
                             xmlns="http://www.w3.org/2000/svg">
