@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('ma_nap');
             $table->tinyInteger('loai_nap');
             $table->tinyInteger('phuong_thuc_thanh_toan');
-            $table->float('so_tien_truoc');
-            $table->float('so_tien_nap');
-            $table->float('so_tien_sau');
+            $table->decimal('so_tien_truoc', 10, 2);
+            $table->decimal('so_tien_nap', 10, 2);
+            $table->decimal('so_tien_sau', 10, 2);
             $table->tinyInteger('status');
             $table->timestamps();
         });
