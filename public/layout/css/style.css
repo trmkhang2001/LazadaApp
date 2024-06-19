@@ -69,11 +69,11 @@ a {
     border-radius: 50%;
     bottom: 1.5rem;
     box-shadow: 0 -1rem 2rem #d0d0ed80;
-    height: 6rem;
+    height: 52px;
     left: 50%;
     position: absolute;
     transform: translate(-50%);
-    width: 6rem;
+    width: 52px;
     z-index: 2;
 }
 
