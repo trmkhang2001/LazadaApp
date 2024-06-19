@@ -1,8 +1,8 @@
 @extends('layout.layout')
 @section('content')
     <header class="d-flex justify-content-between px-8 py-5 fixed top-0 w-100 max-w-520 z-50 bg-white">
-        <div class="w-3-5-rem h-3-rem "><img src="https://da7979.com/static/media/logo_lzd.45c33342471fc96718b6.png"
-                class="rounded-lg">
+        <div class=""><img src="https://da7979.com/static/media/logo_lzd.45c33342471fc96718b6.png" class="rounded-lg"
+                style="width: 30px">
         </div>
         <div class=" font-bold text-18-rem  text-[#000]">Lazada</div>
         <div class="d-flex items-center"><img
@@ -68,132 +68,27 @@
             </a></div>
         {{-- info user --}}
         <div class="user-info mt-3">
-            <div class="background"></div>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex items-center"><img class="w-12 h-12"
-                        src="data:image/png;base64,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"><span>Số
-                        dư tài khoản</span></div>
-                <div class="d-flex flex-column">
-                    <span>{{ 'TK: ' . $profile->phone }}</span><span>{{ 'Mã mời: ' . $profile->aff_code }}</span>
-                </div>
-            </div><span class="text-3xl ml-2">{{ number_format($profile->sodu) . ' đ' }}</span>
-            <div class="d-flex">
-                <div class="w-50">
-                    <div class="d-flex flex-column"><span>Đơn hàng hôm nay</span><span class="text-slate-500	">0</span>
+            <div class="background">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex items-center"><img class="w-12 h-12"
+                            src="data:image/png;base64,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"><span>Số
+                            dư tài khoản</span></div>
+                    <div class="d-flex flex-column">
+                        <span>{{ 'TK: ' . $profile->phone }}</span><span>{{ 'Mã mời: ' . $profile->aff_code }}</span>
                     </div>
-                    <div class="d-flex flex-column"><span>Hoa hồng hôm nay</span><span>0 đ</span></div>
-                </div>
-                <div class="w-50">
-                    <div class="d-flex flex-column"><span>Tổng đơn hàng</span><span>0</span></div>
-                    <div class="d-flex flex-column"><span>Tổng hoa hồng</span><span>0 đ</span></div>
+                </div><span class="text-3xl ml-2">{{ number_format($profile->sodu) . ' đ' }}</span>
+                <div class="d-flex">
+                    <div class="w-50">
+                        <div class="d-flex flex-column"><span>Đơn hàng hôm nay</span><span class="text-slate-500	">0</span>
+                        </div>
+                        <div class="d-flex flex-column"><span>Hoa hồng hôm nay</span><span>0 đ</span></div>
+                    </div>
+                    <div class="w-50">
+                        <div class="d-flex flex-column"><span>Tổng đơn hàng</span><span>0</span></div>
+                        <div class="d-flex flex-column"><span>Tổng hoa hồng</span><span>0 đ</span></div>
+                    </div>
                 </div>
             </div>
         </div>
-        {{-- box level --}}
-        {{-- <div class="box level-content">
-                            <div class="box-title mb-2 px-5">Vùng mức</div>
-                            <div class="level-list mt-5">
-                                <div class="el-carousel el-carousel--horizontal el-carousel--card">
-                                    <div class="el-carousel__container"><button type="button"
-                                            class="el-carousel__arrow el-carousel__arrow--left flex justify-center items-center"><svg
-                                                stroke="currentColor" fill="currentColor" stroke-width="0"
-                                                viewBox="0 0 512 512" height="20" width="20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z">
-                                                </path>
-                                            </svg></button><button type="button"
-                                            class="el-carousel__arrow el-carousel__arrow--right flex justify-center items-center"><svg
-                                                stroke="currentColor" fill="currentColor" stroke-width="0"
-                                                viewBox="0 0 512 512" height="20" width="20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z">
-                                                </path>
-                                            </svg></button>
-                                        <div class="el-carousel__item level-item is-active el-carousel__item--card "
-                                            style="transform: translateX(97.75px) scale(1); background-image: url(https://da7979.com/static/media/vip1.3c495684069191cac37d.png);">
-                                            <div class="el-carousel__mask hidden"></div>
-                                            <div class="level-info">
-                                                <div class="flex items-center">
-                                                    <div class="text-[30px]">VIP1</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>0 ₫</span></div>
-                                                <div class="flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="el-carousel__item level-item el-carousel__item--card is-in-stage rounded-2xl"
-                                            style="transform: translateX(31.118px) scale(0.83); background-image: url(https://da7979.com/static/media/vip2.4db0ca70227939a0ea96.png">
-                                            <div class="el-carousel__mask"></div>
-                                            <div class="level-info">
-                                                <div class="d-flex">
-                                                    <div class="text-[30px]">VIP2</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>100.000 ₫</span></div>
-                                                <div class="d-flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="el-carousel__item level-item el-carousel__item--card is-in-stage rounded-2xl"
-                                            style="transform: translateX(31.118px) scale(0.83); background-image: url(https://da7979.com/static/media/vip3.203a6b40a30bd55d6c29.png);">
-                                            <div class="el-carousel__mask"></div>
-                                            <div class="level-info">
-                                                <div class="d-flex">
-                                                    <div class="text-[30px]">VIP2</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>500.000 ₫</span></div>
-                                                <div class="d-flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="el-carousel__item level-item el-carousel__item--card is-in-stage rounded-2xl"
-                                            style="transform: translateX(31.118px) scale(0.83); background-image: url(https://da7979.com/static/media/vip4.beb127a27ea65f35ae03.png);">
-                                            <div class="el-carousel__mask"></div>
-                                            <div class="level-info">
-                                                <div class="d-flex">
-                                                    <div class="text-[30px]">VIP2</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>1.000.000 ₫</span></div>
-                                                <div class="d-flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="el-carousel__item level-item el-carousel__item--card is-in-stage rounded-2xl"
-                                            style="transform: translateX(31.118px) scale(0.83); background-image: url(https://da7979.com/static/media/vip5.a48bf0f1a964d6ab7a81.png);">
-                                            <div class="el-carousel__mask"></div>
-                                            <div class="level-info">
-                                                <div class="d-flex">
-                                                    <div class="text-[30px]">VIP2</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>2.000.000 ₫</span></div>
-                                                <div class="d-flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="el-carousel__item level-item el-carousel__item--card is-in-stage rounded-2xl"
-                                            style="transform: translateX(31.118px) scale(0.83); background-image: url(https://da7979.com/static/media/vip6.a2fa01bfe11fb85f4b84.png);">
-                                            <div class="el-carousel__mask"></div>
-                                            <div class="level-info">
-                                                <div class="d-flex">
-                                                    <div class="text-[30px]">VIP2</div>
-                                                </div>
-                                                <div class="text-[40px]"><span>10.000.000 ₫</span></div>
-                                                <div class="d-flex justify-between mt-2">
-                                                    <div>Hoa hồng：20%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-        {{-- .. --}}
-        <div class="" style="margin-top: 50px"></div>
     </div>
 @stop

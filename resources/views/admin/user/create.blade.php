@@ -47,6 +47,11 @@
                         {{ Session::get('error') }}
                     </div>
                 @endif
+                @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
             </div>
         </div>
         <div class="card mb-5 mb-xl-8">
@@ -54,80 +59,85 @@
                 <h3 class="card-title align-items-start flex-column">
                     <span class="card-label fw-bold fs-3 mb-1">Update User</span>
                 </h3>
+                <div class="">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#naptien">Nạp tiền</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trutien">Trừ tiền</button>
+                </div>
+                <!-- Modal nạp tiền -->
+                <div class="modal fade" id="naptien" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{{ route('admin.user.congtien', $user->id) }}" method="POST">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Nạp tiền cho {{ $user->phone }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <span class="fw-bold" style="color: red">Số dư hiện tại là:
+                                        {{ number_format($user->sodu) . ' VNĐ' }}</span>
+                                    <div class="form-group">
+                                        <label for="" class="form-label">Số tiền nạp:</label>
+                                        <input type="number" name="tiennap" id="" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Cộng tiền ngay</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal trừ tiền -->
+                <div class="modal fade" id="trutien" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{{ route('admin.user.trutien', $user->id) }}" method="POST">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Trừ tiền cho {{ $user->phone }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <span class="fw-bold" style="color: red">Số dư hiện tại là:
+                                        {{ number_format($user->sodu) . ' VNĐ' }}</span>
+                                    <div class="form-group">
+                                        <label for="" class="form-label">Số tiền trừ:</label>
+                                        <input type="number" name="tientru" id="" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Trừ tiền ngay</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body py-3">
-                <form class="p-10" action="" method="POST" enctype="multipart/form-data">
+                <div class="">
+                    <h3 style="color: red">Số dư của {{ $user->phone }} : {{ number_format($user->sodu) . ' VNĐ' }}</h3>
+                </div>
+                <form class="p-10" action="{{ route('admin.user.update', $user->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex flex-column">
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="d-block fw-semibold fs-6 mb-5">Avatar</label>
-                            <!--end::Label-->
-                            <!--begin::Image placeholder-->
-                            <style>
-                                .image-input-placeholder {
-                                    background-image: url('assets/media/svg/files/blank-image.svg');
-                                }
-
-                                [data-bs-theme="dark"] .image-input-placeholder {
-                                    background-image: url('assets/media/svg/files/blank-image-dark.svg');
-                                }
-                            </style>
-                            <!--end::Image placeholder-->
-                            <!--begin::Image input-->
-                            <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
-                                <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px"
-                                    style="background-image: url(assets/media/avatars/300-6.jpg);">
-                                </div>
-                                <!--end::Preview existing avatar-->
-                                <!--begin::Label-->
-                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                    <i class="ki-duotone ki-pencil fs-7">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                    <!--begin::Inputs-->
-                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="avatar_remove" />
-                                    <!--end::Inputs-->
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Cancel-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                    <i class="ki-duotone ki-cross fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </span>
-                                <!--end::Cancel-->
-                                <!--begin::Remove-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                    <i class="ki-duotone ki-cross fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </span>
-                                <!--end::Remove-->
-                            </div>
-                            <!--end::Image input-->
-                            <!--begin::Hint-->
-                            <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                            <!--end::Hint-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Full Name</label>
+                            <label class="required fw-semibold fs-6 mb-2">Họ và tên</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
-                                placeholder="Full name"
+                                placeholder="Họ và tên"
                                 value="@if (isset($user)) {{ $user->name }} @endif" />
                             <!--end::Input-->
                         </div>
@@ -135,12 +145,12 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Phone</label>
+                            <label class="required fw-semibold fs-6 mb-2">Số điện thoại</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="phone" name="phone" class="form-control form-control-solid mb-3 mb-lg-0"
                                 placeholder="0123456789"
-                                value="@if (isset($user)) {{ $user->phone }} @endif" />
+                                value="@if (isset($user)) {{ $user->phone }} @endif" readonly />
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->
@@ -159,7 +169,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Password</label>
+                            <label class="required fw-semibold fs-6 mb-2">Mật khẩu</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="password" name="password" class="form-control form-control-solid mb-3 mb-lg-0"
@@ -173,7 +183,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Password Confirmation</label>
+                            <label class="required fw-semibold fs-6 mb-2">Xác nhận mật khẩu</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="password" name="password_confirmation"
@@ -195,12 +205,12 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio"
-                                        value="{{ config('app.role.ADMIN') }}" id="kt_modal_update_role_option_0" />
+                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1024"
+                                        id="kt_modal_update_role_option_0" />
                                     <!--end::Input-->
                                     <!--begin::Label-->
                                     <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                        <div class="fw-bold text-gray-800">Administrator</div>
+                                        <div class="fw-bold text-gray-800">Admin</div>
                                     </label>
                                     <!--end::Label-->
                                 </div>
@@ -213,12 +223,12 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio"
-                                        value="{{ config('app.role.EMPLOYEE') }}" id="kt_modal_update_role_option_2" />
+                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1000"
+                                        id="kt_modal_update_role_option_2" />
                                     <!--end::Input-->
                                     <!--begin::Label-->
                                     <label class="form-check-label" for="kt_modal_update_role_option_2">
-                                        <div class="fw-bold text-gray-800">Employee</div>
+                                        <div class="fw-bold text-gray-800">Nhân Viên</div>
                                     </label>
                                     <!--end::Label-->
                                 </div>
@@ -231,13 +241,12 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio"
-                                        value="{{ config('app.role.USER') }}" id="kt_modal_update_role_option_3"
-                                        checked='checked' />
+                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1"
+                                        id="kt_modal_update_role_option_3" checked='checked' />
                                     <!--end::Input-->
                                     <!--begin::Label-->
                                     <label class="form-check-label" for="kt_modal_update_role_option_3">
-                                        <div class="fw-bold text-gray-800">User</div>
+                                        <div class="fw-bold text-gray-800">Khách hàng</div>
                                     </label>
                                     <!--end::Label-->
                                 </div>
@@ -249,11 +258,11 @@
                         </div>
                         <!--end::Input group-->
                         <div class="d-flex justify-content-end">
-                            <a href="/admin/user" class="btn btn-secondary mx-5"> Cancel</a>
+                            <a href="/admin/thanhvien" class="btn btn-secondary mx-5"> Huỷ</a>
                             @if (isset($user))
-                                <button type="submit" class="btn btn-primary mx-5">Update</button>
+                                <button type="submit" class="btn btn-primary mx-5">Cập nhật</button>
                             @else
-                                <button type="submit" class="btn btn-primary mx-5"> Save</button>
+                                <button type="submit" class="btn btn-primary mx-5"> Lưu</button>
                             @endif
                         </div>
                     </div>

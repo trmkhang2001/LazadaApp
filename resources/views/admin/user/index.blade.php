@@ -45,13 +45,13 @@
                             </i>
                             <input type="text" id="search" name="search"
                                 class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
-                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Search</button>
+                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm </button>
                         </div>
                     </form>
                     <!--end::Search-->
                 </div>
                 <!--begin::Card title-->
-                @if (Auth::user()->role_id == config('app.role.ADMIN'))
+                {{-- @if (Auth::user()->role_id == config('app.role.ADMIN'))
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar">
                         <!--begin::Toolbar-->
@@ -64,7 +64,7 @@
                         <!--end::Toolbar-->
                     </div>
                     <!--end::Card toolbar-->
-                @endif
+                @endif --}}
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
@@ -78,11 +78,13 @@
                 <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                     <thead>
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px">User</th>
-                            <th class="min-w-125px">Role</th>
-                            <th class="min-w-125px">Phone</th>
+                            <th class="min-w-125px">Khách hàng</th>
+                            <th class="min-w-125px">Quyền</th>
+                            <th class="min-w-125px">Số điện thoại</th>
+                            <th>Số dư</th>
+                            <th>Trạng thái</th>
                             @if (Auth::user()->role == config('app.role.ADMIN'))
-                                <th class="text-end min-w-100px">Actions</th>
+                                <th class="text-end min-w-100px">Thay đổi</th>
                             @endif
                         </tr>
                     </thead>
@@ -94,7 +96,8 @@
                                     <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                         <a href="#">
                                             <div class="symbol-label">
-                                                <img src="{{ $user->avatar }}" class="w-100" />
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMRBqTeY-dTImnv-0qS4j32of8dVtWelSEMw&s"
+                                                    class="w-100" />
                                             </div>
                                         </a>
                                     </div>
@@ -102,8 +105,8 @@
                                     <!--begin::User details-->
                                     <div class="d-flex flex-column">
                                         <a href="#"
-                                            class="text-gray-800 text-hover-primary text-uppercase fw-bold mb-1">{{ $user->name }}</a>
-                                        <span>{{ $user->email }}</span>
+                                            class="text-gray-800 text-hover-primary text-uppercase fw-bold mb-1">{{ $user->name !== null ? $user->name : 'Tên khách hàng chưa có' }}</a>
+                                        <span>{{ $user->email !== null ? $user->email : 'Email khách hàng chưa có' }}</span>
                                     </div>
                                     <!--begin::User details-->
                                 </td>
@@ -117,32 +120,42 @@
                                 <td>
                                     <div class="badge badge-light fw-bold">{{ $user->phone }}</div>
                                 </td>
+                                <td>
+                                    <div class="badge badge-danger fw-bold">{{ number_format($user->sodu) . ' VNĐ' }}</div>
+                                </td>
+                                <td>
+                                    @if ($user->status == 1)
+                                        <div class="badge badge-light fw-bold">Bình Thường</div>
+                                    @else
+                                        <div class="badge badge-warning fw-bold">Đống Băng</div>
+                                    @endif
+                                </td>
                                 @if (Auth::user()->role_id == config('app.role.ADMIN'))
                                     <td class="text-end">
                                         <a href="#"
                                             class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                            Actions
+                                            Hành động
                                             <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
                                         <!--begin::Menu-->
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="" class="menu-link px-3">
-                                                    Edit
+                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="menu-link px-3">
+                                                    Sửa
                                                 </a>
                                             </div>
                                             <!--end::Menu item-->
 
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <form action="" method="POST" type="button"
-                                                    onsubmit="return confirm('Bạn chắc chắn muốn xóa ?')">
+                                                <form action="{{ route('admin.user.delete', $user->id) }}" method="POST"
+                                                    type="button" onsubmit="return confirm('Bạn chắc chắn muốn xóa ?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="menu-link px-3 btn">
-                                                        Delete
+                                                        Xoá
                                                     </button>
                                                 </form>
                                             </div>

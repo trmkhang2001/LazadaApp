@@ -13,7 +13,7 @@ a {
     font-family: "PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif" !important;
     font-size: inherit;
     margin: auto;
-    max-width: 520px;
+    max-width: 390px;
     min-height: 100vh;
     -webkit-user-select: none;
     user-select: none;
@@ -21,13 +21,13 @@ a {
 
 .nav_wrapper {
     align-items: flex-end;
-    background: #fff;
+    background: #f5f5f5;
     bottom: 0;
     box-shadow: 0 -1rem 2rem #d0d0ed80;
     display: flex;
     font-size: 1.3rem;
     left: 50%;
-    max-width: 520px;
+    max-width: 390px;
     padding-block: 0 .1rem;
     position: fixed;
     transform: translate(-50%);
@@ -177,31 +177,12 @@ video {
     font-size: 1.2rem;
 } */
 .user-info {
-    background: #272532;
+    /* background: #272532; */
     border-radius: 1.5rem;
-    color: #fff;
+    color: #000000;
     font-size: 1.5rem;
     margin: auto;
-    min-height: 15rem;
-    padding: 1rem 2rem;
     position: relative;
-    z-index: 8;
-}
-
-.user-info {
-    height: 20rem;
-    margin-top: .5rem;
-}
-
-.background {
-    background-size: 100%;
-    background: url(https://da7979.com/static/media/userinfo_bg.329f4e105d131d63ec68.png) no-repeat;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 269px;
-    z-index: 10;
 }
 
 .w-12 {

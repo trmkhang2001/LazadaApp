@@ -101,7 +101,7 @@
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
                         <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/transaction"><span
+                            <!--begin:Menu link--><a class="menu-link" href="/admin/ruttien"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Lịch sử rút tiền </span></a><!--end:Menu link-->
                         </div>

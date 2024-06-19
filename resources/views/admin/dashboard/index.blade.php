@@ -19,7 +19,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Dashboard</li>
+                <li class="breadcrumb-item text-muted">Thống kế</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -40,17 +40,17 @@
             </div>
             <div class="col">
                 <div class="card p-5 mx-0">
-                    <h3>Người dùng: </h3>
+                    <h3>Người dùng: {{ $nguoidung }}</h3>
                 </div>
             </div>
             <div class="col">
                 <div class="card p-5 mx-0">
-                    <h3>Đơn hàng: </h3>
+                    <h3>Đơn hàng: {{ $donhang }}</h3>
                 </div>
             </div>
             <div class="col">
                 <div class="card p-5 mx-0">
-                    <h3>Sản phẩm : </h3>
+                    <h3>Số lần đăng nhập : 103</h3>
                 </div>
             </div>
             <div class="col">

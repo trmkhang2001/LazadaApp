@@ -13,31 +13,49 @@ class DonHangController extends Controller
 {
     public function index()
     {
+        $don_hang_maus = DonHangMau::orderBy('created_at', 'desc')->get();
         $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->paginate(5);
-        return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders', 'don_hang_maus'));
     }
     //
     public function layDon()
     {
         $user = User::find(Auth::user()->id);
-        $don_mau = DonHangMau::orderByRaw('ABS(tong_gia - ?)<=15000', [$user->sodu])->first();
-        $don_hang_new = DonHang::where('user_id', $user->id);
+        $ktra = DonHang::where('user_id', $user->id)->where('status', '0')->count();
+        if ($ktra > 0) {
+            echo 'bạn có đơn chưa hoàn thành';
+        }
         // Tạo mã ngẫu nhiên 10 chữ số không trùng
         do {
             $ma_dh = Str::random(10);
         } while (DonHang::where('ma_dh', $ma_dh)->exists());
-        if ($user->sodu > $don_mau->tong_gia) {
-            $don_hang = DonHang::create([
-                'ma_dh' => $ma_dh,
-                'status' => 0,
-                'don_hang_maus_id' => $don_mau->id,
-                'user_id' => $user->id
-            ]);
-            $user->sodu -= $don_mau->tong_gia;
-            $user->save();
-            return redirect()->route('don_dat')->with('success', 'Nhận đơn thành công');
-        };
-        return redirect()->route('don_dat')->with('error', 'Số dư không đủ để nhận đơn');
+        $don_hang = DonHang::create([
+            'ma_dh' => $ma_dh,
+            'status' => 0,
+            'user_id' => $user->id
+        ]);
+        //return redirect()->route('don_dat')->with('success', 'Nhận đơn thành công');
+    }
+    public function search(Request $request)
+    {
+        // $don_hang_maus = DonHangMau::orderBy('created_at', 'desc')->get();
+        // $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->where(function ($query) use ($request) {
+        //     $query->where('name', 'LIKE', '%' . $request->search . '%')
+        //         ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+        //         ->orWhere('phone', 'LIKE', '%' . $request->search . '%');
+        // })->paginate(5);
+        // return view('admin.orders.index', compact('orders', 'don_hang_maus'));
+    }
+    public function phanPhoiDon(Request $req)
+    {
+        $req->validate([
+            'id' => 'required',
+            'don_mau' => 'required'
+        ]);
+        $order = DonHang::find($req->id);
+        $order->don_hang_maus_id = $req->don_mau;
+        $order->save();
+        return redirect()->back()->with('success', 'Phân phối đơn thành công');
     }
     public function donDat()
     {
@@ -45,7 +63,21 @@ class DonHangController extends Controller
         $don_hangs = DonHang::where('user_id', $user->id)->where('status', 0)->with('don_hang_maus')->get();
         return view('pages.donhang.index', compact('don_hangs'));
     }
-    public function action()
+    public function xacNhan(string $id)
     {
+        $order = DonHang::with(['user', 'don_hang_maus'])->find($id);
+        if ($order->don_hang_maus->tong_gia > $order->user->sodu) {
+            return redirect()->back()->with('error', 'Số dư của người dùng không đủ');
+        }
+        $order->status = 1;
+        $order->save();
+        return redirect()->back()->with('success', 'Xác nhận đơn hàng thành công');
+    }
+    public function huyDon(string $id)
+    {
+        $order = DonHang::find($id);
+        $order->status = -1;
+        $order->save();
+        return redirect()->back()->with('success', 'Huỷ đơn hàng thành công');
     }
 }

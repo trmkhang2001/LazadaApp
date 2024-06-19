@@ -34,11 +34,18 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <div class="d-flex align-items-center position-relative my-1">
-                        <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4"><span class="path1"></span><span
-                                class="path2"></span></i> <input type="text" data-kt-ecommerce-order-filter="search"
-                            class="form-control form-control-solid w-250px ps-12" placeholder="Search Order">
-                    </div>
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="d-flex align-items-center position-relative my-1">
+                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                            <input type="text" id="search" name="search"
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
+                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm</button>
+                        </div>
+                    </form>
                     <!--end::Search-->
                 </div>
                 <!--end::Card title-->
@@ -47,7 +54,16 @@
 
             <!--begin::Card body-->
             <div class="card-body pt-0">
-
+                @if (Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+                @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <!--begin::Table-->
                 <div id="kt_ecommerce_sales_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="table-responsive">
@@ -93,12 +109,16 @@
                                         </td>
                                         <td class=" pe-0">
                                             <!--begin::Badges-->
-                                            <span>{{ $order->don_hang_maus->ten_san_pham }}</span>
-                                            <br>
-                                            <span>Giá phù hợp:
-                                                {{ $order->don_hang_maus->tong_gia }}</span>
-                                            <br>
-                                            <span>Tỷ lệ hoa hồng: 20%</span>
+                                            @if (isset($order->don_hang_maus))
+                                                <span>{{ $order->don_hang_maus->ten_san_pham }}</span>
+                                                <br>
+                                                <span>Giá phù hợp:
+                                                    {{ $order->don_hang_maus->tong_gia }}</span>
+                                                <br>
+                                                <span>Tỷ lệ hoa hồng: 20%</span>
+                                            @else
+                                                <span class="badge badge-light-danger">Chưa có sản phẩm</span>
+                                            @endif
                                             <!--end::Badges-->
                                         </td>
                                         <td class=" pe-0" data-order="Expired">
@@ -112,29 +132,41 @@
                                         </td>
                                         <td>
 
-                                            <span>Số dư trước khi đặt đơn:
-                                                {{ number_format($order->user->sodu, 0, ',', '.') . ' VND' }}</span>
-                                            <br>
-                                            <span>Số dư sau khi đặt đơn:
-                                                {{ number_format($order->user->sodu - $order->don_hang_maus->tong_gia, 0, ',', '.') . ' VND' }}</span>
-                                            <br>
-                                            <span>Hoa hồng:
-                                                {{ number_format($order->don_hang_maus->tong_gia * 0.2, 0, ',', '.') . ' VND' }}</span>
+                                            @if (isset($order->don_hang_maus))
+                                                <span>Số dư trước khi đặt đơn:
+                                                    {{ number_format($order->user->sodu, 0, ',', '.') . ' VND' }}</span>
+                                                <br>
+                                                <span>Số dư sau khi đặt đơn:
+                                                    {{ number_format($order->user->sodu - $order->don_hang_maus->tong_gia, 0, ',', '.') . ' VND' }}</span>
+                                                <br>
+                                                <span>Hoa hồng:
+                                                    {{ number_format($order->don_hang_maus->tong_gia * 0.2, 0, ',', '.') . ' VND' }}</span>
+                                            @else
+                                                <span class="badge badge-light-danger">Chưa có thông tin</span>
+                                            @endif
                                         </td>
                                         <td class="">
                                             <span class="fw-bold">{{ date('d/m/Y', strtotime($order->updated_at)) }}</span>
                                         </td>
                                         <td class="">
-                                            <a href="#"
-                                                class="mb-3 btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                Xác nhận
-                                            </a>
-                                            <a href="#"
-                                                class="btn btn-sm btn-danger btn-flex btn-center btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                Huỷ Đơn
-                                            </a>
+                                            @if (isset($order->don_hang_maus))
+                                                @if ($order->status == 0)
+                                                    <a href="{{ route('donhang.xacnhan', $order->id) }}"
+                                                        class="mb-3 btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
+                                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                        Xác nhận
+                                                    </a>
+                                                    <a href="{{ route('donhang.huydon', $order->id) }}"
+                                                        class="btn btn-sm btn-danger btn-flex btn-center btn-active-light-primary"
+                                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                        Huỷ Đơn
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <button class="btn btn-sm btn-success"
+                                                    onclick="openPhanPhoiDonModal({{ $order->id }})">Phân phối
+                                                    đơn</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -151,4 +183,44 @@
             <!--end::Card body-->
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="phanphoidonmodal" tabindex="-1" aria-labelledby="phanphoidon" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="phanphoidon">Phân phối đơn</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateUserForm" action="{{ route('donhang.phanphoidon') }}" method="POST">
+                        @csrf
+                        <input type="hidden" id="id" name="id">
+                        <!-- Other form fields for updating user details -->
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Chọn đơn</label>
+                            <select class="form-select" aria-label="Default select example" name="don_mau">
+                                <option selected>Chọn đơn phù hợp</option>
+                                @foreach ($don_hang_maus as $don_mau)
+                                    <option value="{{ $don_mau->id }}">
+                                        {{ 'Tên: ' . $don_mau->ten_san_pham . ' - Giá: ' . $don_mau->tong_gia }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Phân phối</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPhanPhoiDonModal(id) {
+            // Set the user ID and name in the modal form fields
+            document.getElementById('id').value = id;
+
+            // Show the modal
+            var phanPhoiDonModal = new bootstrap.Modal(document.getElementById('phanphoidonmodal'));
+            phanPhoiDonModal.show();
+        }
+    </script>
 @endsection

@@ -4,7 +4,7 @@
         <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
             <!--begin::Title-->
             <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Lịch sử nạp tiền</h1>
+                Lịch sử rút tiền</h1>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -19,7 +19,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Lịch sử nạp tiền</li>
+                <li class="breadcrumb-item text-muted">Lịch sử rút tiền</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -37,7 +37,8 @@
                     <div class="d-flex align-items-center position-relative my-1">
                         <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4"><span class="path1"></span><span
                                 class="path2"></span></i> <input type="text" data-kt-ecommerce-order-filter="search"
-                            class="form-control form-control-solid w-250px ps-12" placeholder="Search Transaction">
+                            class="form-control form-control-solid w-250px ps-12"
+                            placeholder="Nhập số điện thoại người dùng hoặc mã hoá đơn">
                     </div>
                     <!--end::Search-->
                 </div>
@@ -72,17 +73,18 @@
                                         rowspan="1" colspan="1"
                                         aria-label="Customer: activate to sort column ascending">
                                         Khách hàng</th>
+                                    <th>Thông tin tài khoản rút</th>
                                     <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
                                         rowspan="1" colspan="1">
                                         Số tiền trước (lúc tạo lệnh)</th>
                                     <th class=" " tabindex="0" aria-controls="kt_ecommerce_sales_table"
                                         rowspan="1" colspan="1"
                                         aria-label="Status: activate to sort column ascending">
-                                        Số tiền nạp </th>
+                                        Số tiền rút </th>
                                     <th class=" " tabindex="0" aria-controls="kt_ecommerce_sales_table"
                                         rowspan="1" colspan="1"
                                         aria-label="Status: activate to sort column ascending">
-                                        Số tiền sau nạp (lúc tạo lệnh)</th>
+                                        Số tiền sau rút (lúc tạo lệnh)</th>
                                     <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
                                         rowspan="1" colspan="1">
                                         Trạng thái</th>
@@ -96,32 +98,41 @@
                                 </tr>
                             </thead>
                             <tbody class="fw-semibold text-gray-600">
-                                @foreach ($items as $naptien)
+                                @foreach ($items as $ruttien)
                                     <tr>
                                         <td>
-                                            <span class="text-danger">{{ $naptien->ma_nap }}</span>
+                                            <span class="text-danger">{{ $ruttien->id }}</span>
                                         </td>
                                         <td>
-                                            <span>{{ $naptien->user->phone }}</span>
+                                            <span>{{ $ruttien->user->phone }}</span>
+                                        </td>
+                                        <td>
+                                            <span>Ngân hàng: {{ $ruttien->taikhoanrut->ten_ngan_hang }}</span>
+                                            <br>
+                                            <span>Tài khoản: {{ $ruttien->taikhoanrut->tai_khoan }}</span>
+                                            <br>
+                                            <span>Chủ tài khoản: {{ $ruttien->taikhoanrut->chu_tai_khoan }}</span>
+                                            <br>
+                                            <span>SDT: {{ $ruttien->taikhoanrut->so_dien_thoai }}</span>
                                         </td>
                                         <td>
                                             <span
-                                                class="text-success">{{ number_format($naptien->so_tien_truoc, 0, ',', '.') . ' VND' }}</span>
+                                                class="text-success">{{ number_format($ruttien->so_tien_truoc, 0, ',', '.') . ' VND' }}</span>
                                         </td>
 
                                         <td>
                                             <span
-                                                class="text">{{ number_format($naptien->so_tien_nap, 0, ',', '.') . ' VND' }}</span>
+                                                class="text">{{ number_format($ruttien->so_tien_rut, 0, ',', '.') . ' VND' }}</span>
                                         </td>
                                         <td>
                                             <span
-                                                class="text-primary">{{ number_format($naptien->so_tien_sau, 0, ',', '.') . ' VND' }}</span>
+                                                class="text-primary">{{ number_format($ruttien->so_tien_sau, 0, ',', '.') . ' VND' }}</span>
                                         </td>
                                         <td>
-                                            @if ($naptien->status == 0)
+                                            @if ($ruttien->status == 0)
                                                 <div class="badge badge-light-warning">Chưa xác nhận</div>
                                                 <!--end::Badges-->
-                                            @elseif ($naptien->status == -1)
+                                            @elseif ($ruttien->status == -1)
                                                 <div class="badge badge-light-danger">Đã hủy</div>
                                             @else
                                                 <div class="badge badge-light-success">Xác nhận</div>
@@ -129,16 +140,17 @@
                                         </td>
                                         <td>
                                             <span
-                                                class="badge badge-light-danger">{{ number_format($naptien->user->sodu) . ' VNĐ' }}</span>
+                                                class="badge badge-light-danger">{{ number_format($ruttien->user->sodu) . ' VNĐ' }}</span>
                                         </td>
                                         <td>
-                                            <span class="text">{{ $naptien->created_at }}</span>
+                                            <span class="text">{{ $ruttien->created_at }}</span>
                                         </td>
                                         <td>
-                                            @if ($naptien->status == 0)
-                                                <a href="{{ route('xac_nhan_nap_tien', $naptien->id) }}"
-                                                    class="btn btn-primary">Xác nhận</a>
-                                                <a href="" class="btn btn-danger">Huỷ</a>
+                                            @if ($ruttien->status == 0)
+                                                <a href="{{ route('ruttien.xacnhan', $ruttien->id) }}"
+                                                    class="btn btn-sm btn-primary">Xác nhận</a>
+                                                <a href="{{ route('ruttien.huy', $ruttien->id) }}"
+                                                    class="btn btn-sm btn-danger">Huỷ</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -147,7 +159,7 @@
                         </table>
                     </div>
                     <div class="">
-                        {{ $items->links() }}
+                        {{-- {{ $items->links() }} --}}
                     </div>
                 </div>
                 <!--end::Table-->

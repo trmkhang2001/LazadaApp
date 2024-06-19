@@ -13,7 +13,7 @@ class NapTienController extends Controller
 {
     public function index()
     {
-        $items = NapTien::orderBy('created_at', 'desc')->paginate(5);
+        $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(5);
         return view('admin.transaction.index', ['items' => $items]);
     }
     //
@@ -53,7 +53,7 @@ class NapTienController extends Controller
         $nap_tien->status = 1;
         $user->save();
         $nap_tien->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Xác nhận nạp tiền thành công');
     }
     public function huy(string $id)
     {
