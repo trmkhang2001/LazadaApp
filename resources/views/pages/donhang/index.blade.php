@@ -12,43 +12,6 @@
         </div>
     </header>
     <div class="px-2">
-        <div class="home">
-            <div class="" style="padding-top: 5rem"></div>
-            <div id="carouselExampleIndicators" class="carousel slide py-5" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://img.lazcdn.com/us/domino/fe623ca4bad4a9fd560e20cecd024cd0.jpg_2200x2200q80.jpg_.webp"
-                            class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://img.lazcdn.com/us/domino/b86b602fef0f9a28940a283a4609db97.jpg_2200x2200q80.jpg_.webp"
-                            class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://img.lazcdn.com/us/domino/758abdd8e91b24756e773b13bdc458cd.jpg_2200x2200q80.jpg_.webp"
-                            class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
         <div class="">
             <div class="mb-3">
                 @if (Session::has('success'))
@@ -67,29 +30,31 @@
             </div>
             <div class="p-2">
                 @foreach ($don_hangs as $don)
-                    <div class="mb-2 border p-2 rounded" style="background: rgb(245, 245, 245)">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{ $don->don_hang_maus->hinh_san_pham }}" alt="" class="rounded">
-                            </div>
-                            <div class="col-5">
-                                <div class="mb-1">Mã đơn hàng: {{ $don->ma_dh }}</div>
-                                <div class="mb-1">Tên sản phẩm:
-                                    {{ $don->don_hang_maus->ten_san_pham }}
+                    @if (isset($don->don_hang_maus))
+                        <div class="mb-2 border p-2 rounded" style="background: rgb(245, 245, 245)">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="{{ $don->don_hang_maus->hinh_san_pham }}" alt="" class="rounded">
                                 </div>
-                                <div class="mb-1">Giá:
-                                    {{ number_format($don->don_hang_maus->tong_gia) . ' VNĐ' }}
+                                <div class="col-5">
+                                    <div class="mb-1">Mã đơn hàng: {{ $don->ma_dh }}</div>
+                                    <div class="mb-1">Tên sản phẩm:
+                                        {{ $don->don_hang_maus->ten_san_pham }}
+                                    </div>
+                                    <div class="mb-1">Giá:
+                                        {{ number_format($don->don_hang_maus->tong_gia) . ' VNĐ' }}
+                                    </div>
+                                    <div class="mb-1">Hoa hồng:
+                                        {{ number_format($don->don_hang_maus->tong_gia * 0.2) . ' VNĐ' }}
+                                    </div>
                                 </div>
-                                <div class="mb-1">Hoa hồng:
-                                    {{ number_format($don->don_hang_maus->tong_gia * 0.2) . ' VNĐ' }}
+                                <div class="col-3">
+                                    <div class="mb-2"> <span class="text-danger">Chờ gửi</span></div>
+                                    <div> <a href="" class="btn btn-primary">Gửi đơn</a></div>
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="mb-2"> <span class="text-danger">Chờ gửi</span></div>
-                                <div> <a href="" class="btn btn-primary">Gửi đơn</a></div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
