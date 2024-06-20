@@ -26,4 +26,8 @@ class ExampleController extends Controller
     {
         return view('auth.register');
     }
+    public function chamsoc()
+    {
+        return view('pages.chamsoc.index');
+    }
 }

@@ -1,14 +1,233 @@
 @extends('layout.layout')
-@section('content')
-    <header class="d-flex justify-content-between px-8 pt-2">
-        <div class=""><img src="https://da7979.com/static/media/logo_lzd.45c33342471fc96718b6.png" class="rounded-lg"
-                style="width: 30px">
-        </div>
+@section('noidung')
+    <div class="mx-2">
+        {{-- Menu home --}}
         <div class="">
-            <img src="data:image/png;base64,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"
-                style="width: 30px">
-            <a href="#"><img src="https://da7979.com/static/media/cskh_login.3fc99be87347a72979c0.png"
-                    style="width: 30px"></a>
+            <div class="d-flex mt-4">
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="https://da8975.com/static/mobile/home/ic_recharge.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="color: rgb(131, 137, 251);">Nạp tiền ngay bây giờ
+                        </div>
+                    </div>
+                </div>
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="https://da8975.com/static/mobile/home/ic_withdraw.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="color: rgb(251, 152, 51);">Rút tiền nhanh chóng
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="https://da8975.com/static/mobile/home/ic_invite.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="color: rgb(58, 192, 127);">Mời bạn bè
+                        </div>
+                    </div>
+                </div>
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="https://da8975.com/static/mobile/home/telegram.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="color: rgb(46, 143, 255);">Chăm sóc khách hàng
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+        {{-- Card info --}}
+        <div class="earning">
+            <div class="d-flex justify-content-between pt-2 px-4">
+                <div class="">
+                    {{ $profile->phone }}
+                </div>
+                <div class="text-center">
+                    {{ $profile->aff_code }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-between pt-2 px-4">
+                <div class="">
+                    Số dư tài khoản
+                </div>
+                <div class="text-center">
+                    Kinh phí nhiệm vụ
+                </div>
+            </div>
+            <div class="d-flex justify-content-between pt-2 px-4 fs-2 fw-bold">
+                <div class="">
+                    {{ number_format($profile->sodu) }} ₫ </div>
+                <div class="text-center">
+                    0 ₫
+                </div>
+            </div>
+            <div class="d-flex  pt-2 px-4">
+                <div class="flex-full">
+                    Thu thập hôm nay
+                    <br>
+                    0 ₫
+                </div>
+                <div class="flex-full">
+                    Thu thập hôm qua
+                    <br>
+                    0 ₫
+                </div>
+            </div>
+            <div class="d-flex pt-2 pb-2 px-4">
+                <div class="flex-full">
+                    Thu thập tích luỹ
+                    <br>
+                    0 ₫
+                </div>
+                <div class="flex-full">
+                    Lợi ích nhóm
+                    <br>
+                    0 ₫
+                </div>
+            </div>
+        </div>
+        {{-- Vip --}}
+        <div class="mt-2 bg-white" style="width: 195px;    border-radius: 10px;">
+            <div class="py-2">
+                <div class="d-flex mt-2 align-items-center fw-bold mx-2">
+                    <div class=" me-3"
+                        style="background: red;padding:.08rem .266666667rem;color:#FFFFFF;border-radius: .266666667rem; ">
+                        VIP1
+                    </div>
+                    <div class="" style="padding:.08rem .266666667rem; color: red">Cấp độ hiện tại</div>
+                </div>
+                <div class="">
+                    <img class="border-rad8" src="https://da8975.com/static/theme2/level/1.png"
+                        style="width: 100%; padding: 5px;">
+                </div>
+                <div class="d-flex align-items-center justify-content-between mx-2" style="font-size: 10px">
+                    <div class="">
+                        Số dư tối thiểu 30.000 ₫
+                    </div>
+                    <div class="">
+                        <div class="">Hoa hồng</div>
+                        <div class="text-center" style="font-size: 17px;background: #11a23a !important;">20%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Hoa hồng người dùng --}}
+        <div class="mt-3 mx-1">
+            <div class="fw-bold mb-4">
+                Động thái hoa hồng người dùng
+            </div>
+            <div class="mt-2">
+                <div class="van-swipe-item mb-3">
+                    <div class="bg-white border-rem  border-0 mb-2">
+                        <div class="p-2">
+                            <div class="row align-items-center">
+                                <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                <div class="col-auto d-flex flex-column align-start border-left">
+                                    <div class="font-weight-normal mb-2">Hoa hồng thu nhập 500 ₫</div>
+                                    <div class="text-mute small text-secondary">556****07178</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="van-swipe-item mb-3">
+                    <div class="bg-white border-rem  border-0 mb-2">
+                        <div class="p-2">
+                            <div class="row align-items-center">
+                                <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                <div class="col-auto d-flex flex-column align-start border-left">
+                                    <div class="font-weight-normal mb-2">Hoa hồng thu nhập 500 ₫</div>
+                                    <div class="text-mute small text-secondary">556****07178</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="van-swipe-item mb-3">
+                    <div class="bg-white border-rem  border-0 mb-2">
+                        <div class="p-2">
+                            <div class="row align-items-center">
+                                <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                <div class="col-auto d-flex flex-column align-start border-left">
+                                    <div class="font-weight-normal mb-2">Hoa hồng thu nhập 500 ₫</div>
+                                    <div class="text-mute small text-secondary">556****07178</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Giới thiệu --}}
+        <div class="">
+            <div class="d-flex">
+                <div class="box-flex-50 border-rad8  bg-white m-2">
+                    <div class="d-flex align-items-center py-3 ps-3">
+                        <img src="https://da8975.com/static/mobile/home/poster_1.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="font-size: 13px">Giới thiệu công ty
+                        </div>
+                    </div>
+                </div>
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center py-3 ps-3">
+                        <img src="https://da8975.com/static/mobile/home/poster_2.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="font-size: 13px">Mô tả quy tắc
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center py-3 ps-3">
+                        <img src="https://da8975.com/static/mobile/home/poster_3.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="font-size: 13px">Hợp tác đại lý
+                        </div>
+                    </div>
+                </div>
+                <div class="box-flex-50 border-rad8 bg-white m-2">
+                    <div class="d-flex align-items-center py-3 ps-3">
+                        <img src="https://da8975.com/static/mobile/home/poster_4.png" style="width: 40px; height: 40px">
+                        <div class="ms-2 fs-bold" style="font-size: 13px">Bản chất công ty
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Đối tác --}}
+        <div class="mt-3 mx-1">
+            <div class="fw-bold mb-3">Đối tác</div>
+            <div class="d-flex flex-wrap">
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/1.png" width="100%">
+                    </div>
+                </div>
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/2.png" width="100%">
+                    </div>
+                </div>
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/3.png" width="100%">
+                    </div>
+                </div>
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/4.png" width="100%">
+                    </div>
+                </div>
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/5.png" width="100%">
+                    </div>
+                </div>
+                <div class="" style="flex-basis: 33.333%">
+                    <div class="p-2">
+                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/6.png" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop

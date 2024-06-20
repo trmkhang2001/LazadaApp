@@ -34,6 +34,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [ExampleController::class, 'index'])->name('home');
     Route::get('/profile', [ExampleController::class, 'profile']);
+    Route::get('/chamsoc', [ExampleController::class, 'chamsoc']);
     Route::get('/nap_tien_view', [NapTienController::class, 'nap_tien_view']);
     Route::get('/laydon', [DonHangController::class, 'layDon'])->name('lay_don');
     Route::get('/dondat', [DonHangController::class, 'donDat'])->name('don_dat');
