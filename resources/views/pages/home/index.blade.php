@@ -5,34 +5,45 @@
         <div class="">
             <div class="d-flex mt-4">
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center p-3">
-                        <img src="https://da8975.com/static/mobile/home/ic_recharge.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="color: rgb(131, 137, 251);">Nạp tiền ngay bây giờ
+                    <a href="/nap_tien_view">
+                        <div class="d-flex align-items-center p-3">
+                            <img src="https://da8975.com/static/mobile/home/ic_recharge.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="color: rgb(131, 137, 251);">Nạp tiền ngay bây giờ
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center p-3">
-                        <img src="https://da8975.com/static/mobile/home/ic_withdraw.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="color: rgb(251, 152, 51);">Rút tiền nhanh chóng
+                    <a href="">
+                        <div class="d-flex align-items-center p-3">
+                            <img src="https://da8975.com/static/mobile/home/ic_withdraw.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="color: rgb(251, 152, 51);">Rút tiền nhanh chóng
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="d-flex">
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center p-3">
-                        <img src="https://da8975.com/static/mobile/home/ic_invite.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="color: rgb(58, 192, 127);">Mời bạn bè
+                    <a href="">
+                        <div class="d-flex align-items-center p-3">
+                            <img src="https://da8975.com/static/mobile/home/ic_invite.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="color: rgb(58, 192, 127);">Mời bạn bè
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center p-3">
-                        <img src="https://da8975.com/static/mobile/home/telegram.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="color: rgb(46, 143, 255);">Chăm sóc khách hàng
+                    <a href="">
+                        <div class="d-flex align-items-center p-3">
+                            <img src="https://da8975.com/static/mobile/home/telegram.png" style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="color: rgb(46, 143, 255);">Chăm sóc khách hàng
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
