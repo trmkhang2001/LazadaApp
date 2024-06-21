@@ -2,6 +2,31 @@
 @section('noidung')
     <div class="mx-2">
         <div class="mt-4 mb-2 mx-3">
+            <div class="mb-2">
+                @if (Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+                @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+            </div>
+            @foreach ($taikhoans as $taikhoan)
+                <div class="bg-white shadow border-rad10 p-2 mb-3"><!---->
+                    <div class="">
+                        <div>Loại thẻ: BANK</div>
+                        <div>Tên tài khoản: {{ $taikhoan->chu_tai_khoan }}</div>
+                        <div>Tên ngân hàng: {{ $taikhoan->ten_ngan_hang }}</div>
+                        <div>Tài khoản ngân hàng: {{ $taikhoan->tai_khoan }}</div>
+                        <div>Số điện thoại dự bị: {{ $taikhoan->so_dien_thoai }}</div>
+                        <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                        <div style="margin-top: 5px;"><!----><!----></div>
+                    </div>
+                </div>
+            @endforeach
             <button class="btn btn-primary w-100 border-rad10" data-bs-toggle="modal"
                 data-bs-target="#taikhoanrut">Thêm</button>
         </div>
@@ -13,7 +38,8 @@
                         style="width: 90%; height: 550px; overflow-y: scroll; z-index: 2008;">
                         <div class="van-dialog__header">Thông tin rút tiền</div>
                         <div class="van-dialog__content">
-                            <form class="van-form">
+                            <form class="van-form" action="{{ route('add.taikhoanrut') }}" method="POST">
+                                @csrf
                                 <div class="van-cell van-field">
                                     <div class="van-cell__title van-field__label"><span>Loại thẻ</span></div>
                                     <div class="van-cell__value van-field__value">
@@ -82,22 +108,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
-                                <div class="van-cell van-field">
-                                    <div class="van-cell__title van-field__label"><span>Mật khẩu rút tiền</span></div>
-                                    <div class="van-cell__value van-field__value">
-                                        <div class="van-field__body"><input type="password"
-                                                placeholder="Vui lòng nhập Mật khẩu rút tiền" class="van-field__control"
-                                                name="mat_khau_rut">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin: 16px;"><button type="submit" small=""
+                                <div style="margin: 16px;">
+                                    <button type="submit"
                                         class="van-button van-button--primary van-button--normal van-button--block van-button--round">
-                                        <div class="van-button__content"><span class="van-button__text">
+                                        <div class="van-button__content">
+                                            <span class="van-button__text">
                                                 Gửi
-                                            </span></div>
-                                    </button></div>
+                                            </span>
+                                        </div>
+                                    </button>
+                                </div>
                             </form>
                             <div class="text-red" style="padding: 10px;"></div>
                         </div>

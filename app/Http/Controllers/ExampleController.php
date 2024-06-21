@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TaiKhoanRut;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,8 @@ class ExampleController extends Controller
     }
     public function taikhoanrut()
     {
-        return view('pages.profile.taikhoanrut');
+        $taikhoans = TaiKhoanRut::where('user_id', Auth::user()->id)->get();
+        return view('pages.profile.taikhoanrut', compact('taikhoans'));
     }
     public function post_taikhoanrut(Request $req)
     {
@@ -41,11 +43,16 @@ class ExampleController extends Controller
             'so_dien_thoai' => 'required',
             'ten_ngan_hang' => 'required',
             'tai_khoan' => 'required',
-            'mat_khau_rut' => 'required'
         ]);
         $user = User::find(Auth::user()->id);
-        if($req->mat_khau_rut!=$user->pass_rut_tien){
-            return redirect()
-        }
+        $taikhoan = TaiKhoanRut::create([
+            'user_id' => $user->id,
+            'kieu_tai_khoan' => 'BANK',
+            'ten_ngan_hang' => $req->ten_ngan_hang,
+            'tai_khoan' => $req->tai_khoan,
+            'chu_tai_khoan' => $req->chu_tai_khoan,
+            'so_dien_thoai' => $req->so_dien_thoai
+        ]);
+        return redirect()->back()->with('success', 'Thên thông tin rút tiền thành công');
     }
 }

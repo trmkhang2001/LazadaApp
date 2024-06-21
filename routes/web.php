@@ -36,11 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ExampleController::class, 'profile']);
     Route::get('/chamsoc', [ExampleController::class, 'chamsoc']);
     Route::get('/taikhoanrut', [ExampleController::class, 'taikhoanrut']);
+    Route::post('/taikhoanrut', [ExampleController::class, 'post_taikhoanrut'])->name('add.taikhoanrut');
     Route::get('/nap_tien_view', [NapTienController::class, 'nap_tien_view']);
     Route::get('/laydon', [DonHangController::class, 'layDon'])->name('lay_don');
     Route::get('/dondat', [DonHangController::class, 'donDat'])->name('don_dat');
     Route::get('/guidon/{id}', [DonHangController::class, 'guiDon'])->name('gui_don');
     Route::get('/tao_lenh_rut', [RutTienController::class, 'rutTien'])->name('rut_tien');
+    Route::get('/lich_su_rut', [RutTienController::class, 'lichSuRut'])->name('lich_su_rut');
     Route::post('/ruttien', [RutTienController::class, 'taoLenhRut'])->name('tao_lenh_rut_tien');
     //admin
     // Route::controller(DashboardrController::class)->group(function () {
