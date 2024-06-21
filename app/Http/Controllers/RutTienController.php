@@ -45,7 +45,8 @@ class RutTienController extends Controller
     }
     public function lichSuRut()
     {
-        return view('pages.ruttien.lichsu');
+        $lich_sus = RutTien::where('user_id', Auth::user()->id)->with('taikhoanrut')->get();
+        return view('pages.ruttien.lichsu', compact('lich_sus'));
     }
     //admin
     public function index()
