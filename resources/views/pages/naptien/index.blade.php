@@ -6,7 +6,7 @@
                 <form action="{{ route('nap_tien') }}" method="POST">
                     @csrf
                     <div class="recharge-content pa-3 mt-4">
-                        <div class="title">Vui lòng chọn kênh thanh toán</div>
+                        <div class="title fw-bold">Vui lòng chọn kênh thanh toán</div>
                         <div class="type-list d-flex mt-2 flex-wrap">
                             <div class="item d-flex flex-column align-center mr-1 pa-2">
                                 <span class="mb-2">BANK</span><i class="van-icon van-icon-checked"
@@ -35,8 +35,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-1 mb-2 ml-4 text-red ft-14">Thanh toán thực tế: <span
-                                id="thanh_toan_thuc_te">0</span>
+                        <div class="mt-1 mb-2 ml-4 text-red ft-14" style="font-size: medium; color: red;">Thanh toán thực
+                            tế: <span id="thanh_toan_thuc_te">0</span>
                             ₫</div><!---->
                         <div class="ma-3">
                             <div class="tips text-red2 mb-2"></div><!---->
@@ -50,17 +50,70 @@
                     </div>
                 </form>
             </div>
-            <div class="card-body" style="padding: 0px 30px;">
-                <div class="row align-items-center">
-                    <div class="col pr-0">
-                        <p class=".text-red small" style="font-size: medium; color: red;">
-
-                        </p>
+        </div>
+    </div>
+    @if (session('success'))
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {{-- <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Thông tin nạp tiền:</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{ session('success') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+                    </div> --}}
+                    <div class="px-5 py-3">
+                        <div class="mb-2 d-flex align-items-center fs-3">Thông tin chuyển khoản:</div>
+                        <div class="mb-2 d-flex align-items-center">Chủ tài khoản:
+                            <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span> <i
+                                class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->ho_ten }}"></i>
+                        </div>
+                        <div class="mb-2 d-flex align-items-center">Số tài khoản: <span
+                                class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
+                            <i class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->tai_khoan }}"></i>
+                        </div>
+                        <div class="mb-2 d-flex align-items-center">Ngân hàng: <span
+                                class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span> <i
+                                class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->ngan_hang }}"></i>
+                        </div>
+                        <div class="mb-2 d-flex align-items-center">Nội dung: <span
+                                class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span> <i
+                                class="fs-2 van-icon van-icon-notes copy-icon"
+                                data-copy="{{ 'NT' . Auth::user()->phone }}"></i>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <script>
+            document.getElementById('tien_nap').addEventListener('input', function() {
+                let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
+                document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
+            });
+
+            document.querySelectorAll('.copy-icon').forEach(item => {
+                item.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        alert('Đã sao chép: ' + textToCopy);
+                    }).catch(err => {
+                        console.error('Không thể sao chép văn bản: ', err);
+                    });
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            });
+        </script>
+    @endif
     <script>
         document.getElementById('tien_nap').addEventListener('input', function() {
             let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;

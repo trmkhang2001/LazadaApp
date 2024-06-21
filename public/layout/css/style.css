@@ -291,3 +291,46 @@ video {
 .menu-list {
     font-size: .42666667rem;
 }
+
+.item {
+    background: #3f57e8;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+/* Custom CSS to center the modal */
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+.modal-content {
+    margin: auto;
+}
+
+.copy-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #007bff;
+}
+
+.copy-icon:hover {
+    color: #0056b3;
+}
+
+.bluetheme .van-tabs__nav--card .van-tab.van-tab--active {
+    color: #fff !important;
+    background-color: #44a8ff !important;
+}
+
+.bluetheme .van-tabs__nav--card .van-tab {
+    color: #44a8ff !important;
+    border-color: #44a8ff !important;
+}
+
+.bluetheme .van-tabs__nav--card {
+    border-color: #44a8ff !important;
+}

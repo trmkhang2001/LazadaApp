@@ -13,7 +13,7 @@ class NapTienController extends Controller
 {
     public function index()
     {
-        $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(5);
+        $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(10);
         return view('admin.transaction.index', ['items' => $items]);
     }
     //
@@ -24,6 +24,9 @@ class NapTienController extends Controller
     }
     public function napTien(Request $req)
     {
+        $req->validate([
+            'tien_nap' => 'required',
+        ]);
         $tien_nap = $req->tien_nap;
         $loai_nap = 1;
         $id = Auth::user()->id;
@@ -41,9 +44,7 @@ class NapTienController extends Controller
             'so_tien_sau' => ($user->sodu + $tien_nap),
             'status' => 0
         ]);
-        $user->sodu -= $tien_nap;
-        $user->save();
-        return redirect()->back()->with('success', 'Đã phiếu nạp tiền thành công!');
+        return redirect()->back()->with('success', 'Xác nhận nạp tiền thành công');
     }
     public function xac_nhan(string $id)
     {

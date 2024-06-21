@@ -34,7 +34,7 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <form action="" method="POST">
+                    <form action="{{ route('donhang.search') }}" method="POST">
                         @csrf
                         <div class="d-flex align-items-center position-relative my-1">
                             <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
@@ -42,7 +42,7 @@
                                 <span class="path2"></span>
                             </i>
                             <input type="text" id="search" name="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Nhập thông tin" />
                             <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm</button>
                         </div>
                     </form>
@@ -123,10 +123,14 @@
                                         </td>
                                         <td class=" pe-0" data-order="Expired">
                                             <!--begin::Badges-->
-                                            @if ($order->status == 0)
+                                            @if ($order->status == 0 && !isset($order->don_hang_maus))
+                                                <div class="badge badge-light-warning">Chờ phân phối</div>
+                                            @elseif($order->status == 0)
+                                                <div class="badge badge-light-danger">Chờ gửi</div>
+                                            @elseif($order->status == 2)
                                                 <div class="badge badge-light-danger">Chưa xác nhận</div>
                                                 <!--end::Badges-->
-                                            @else
+                                            @elseif($order->status == 1)
                                                 <div class="badge badge-light-success">Xác nhận</div>
                                             @endif
                                         </td>
@@ -150,12 +154,13 @@
                                         </td>
                                         <td class="">
                                             @if (isset($order->don_hang_maus))
-                                                @if ($order->status == 0)
+                                                @if ($order->status == 2)
                                                     <a href="{{ route('donhang.xacnhan', $order->id) }}"
                                                         class="mb-3 btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
                                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                                         Xác nhận
                                                     </a>
+                                                @elseif ($order->status == 0)
                                                     <a href="{{ route('donhang.huydon', $order->id) }}"
                                                         class="btn btn-sm btn-danger btn-flex btn-center btn-active-light-primary"
                                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">

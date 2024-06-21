@@ -26,7 +26,7 @@
                     <div class="">Số dư tài khoản</div>
                 </div>
                 <div class="">
-                    <a href="" class="btn btn-primary fs-1 border-rad8">+</a>
+                    <a href="/nap_tien_view" class="btn btn-primary fs-1 border-rad8">+</a>
                 </div>
             </div>
             <div class="d-flex align-items-center justify-content-between py-3">
@@ -96,7 +96,7 @@
                 </div>
             </a>
             <!---->
-            <a href="">
+            <a href="/taikhoanrut">
                 <div role="button" tabindex="0" class="text-template van-cell van-cell--clickable van-cell--center">
                     <div class="avatar avatar-50 rounded me-2 d-flex justify-center">
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i

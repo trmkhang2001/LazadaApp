@@ -35,9 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [ExampleController::class, 'index'])->name('home');
     Route::get('/profile', [ExampleController::class, 'profile']);
     Route::get('/chamsoc', [ExampleController::class, 'chamsoc']);
+    Route::get('/taikhoanrut', [ExampleController::class, 'taikhoanrut']);
     Route::get('/nap_tien_view', [NapTienController::class, 'nap_tien_view']);
     Route::get('/laydon', [DonHangController::class, 'layDon'])->name('lay_don');
     Route::get('/dondat', [DonHangController::class, 'donDat'])->name('don_dat');
+    Route::get('/guidon/{id}', [DonHangController::class, 'guiDon'])->name('gui_don');
     Route::get('/tao_lenh_rut', [RutTienController::class, 'rutTien'])->name('rut_tien');
     Route::post('/ruttien', [RutTienController::class, 'taoLenhRut'])->name('tao_lenh_rut_tien');
     //admin
@@ -63,6 +65,7 @@ Route::middleware('auth')->group(function () {
             });
             Route::controller(DonHangController::class)->prefix('/donhang')->group(function () {
                 Route::get('/', 'index')->name('donhang.index');
+                Route::post('/', 'search')->name('donhang.search');
                 Route::post('/phanphoidon', 'phanPhoiDon')->name('donhang.phanphoidon');
                 Route::get('/xacnhan/{id}', 'xacNhan')->name('donhang.xacnhan');
                 Route::get('/huydon/{id}', 'huyDon')->name('donhang.huydon');

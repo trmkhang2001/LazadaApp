@@ -44,7 +44,7 @@
                                 <span class="path2"></span>
                             </i>
                             <input type="text" id="search" name="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Nhập thông tin" />
                             <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm </button>
                         </div>
                     </form>

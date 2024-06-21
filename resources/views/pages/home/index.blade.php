@@ -37,7 +37,7 @@
                     </a>
                 </div>
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <a href="">
+                    <a href="/chamsoc">
                         <div class="d-flex align-items-center p-3">
                             <img src="https://da8975.com/static/mobile/home/telegram.png" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="color: rgb(46, 143, 255);">Chăm sóc khách hàng

@@ -30,4 +30,22 @@ class ExampleController extends Controller
     {
         return view('pages.chamsoc.index');
     }
+    public function taikhoanrut()
+    {
+        return view('pages.profile.taikhoanrut');
+    }
+    public function post_taikhoanrut(Request $req)
+    {
+        $req->validate([
+            'chu_tai_khoan' => 'required',
+            'so_dien_thoai' => 'required',
+            'ten_ngan_hang' => 'required',
+            'tai_khoan' => 'required',
+            'mat_khau_rut' => 'required'
+        ]);
+        $user = User::find(Auth::user()->id);
+        if($req->mat_khau_rut!=$user->pass_rut_tien){
+            return redirect()
+        }
+    }
 }
