@@ -63,4 +63,9 @@ class NapTienController extends Controller
         $nap_tien->save();
         return redirect()->back();
     }
+    public function lich_su_nap()
+    {
+        $lich_sus = NapTien::where('user_id', Auth::user()->id)->get();
+        return view('pages.naptien.lichsu', compact('lich_sus'));
+    }
 }

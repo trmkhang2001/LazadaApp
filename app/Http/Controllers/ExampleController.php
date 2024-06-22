@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DonHang;
 use App\Models\TaiKhoanRut;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -114,5 +115,10 @@ class ExampleController extends Controller
         $user->save();
 
         return back()->with('success', 'Mật khẩu rút tiền đã được thay đổi thành công');
+    }
+    public function congbo()
+    {
+        $congbos = DonHang::where('user_id', Auth::user()->id)->get();
+        return view('pages.congbo.index', compact('congbos'));
     }
 }

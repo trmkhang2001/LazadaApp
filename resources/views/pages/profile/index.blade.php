@@ -75,13 +75,13 @@
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
-            <a href="">
+            <a href="/lich_su_nap">
                 <div role="button" tabindex="0" class="text-template van-cell van-cell--clickable van-cell--center">
                     <div class="avatar avatar-50 rounded me-2 d-flex justify-center">
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-goods-collect"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Xác nhận</span></div><i
+                    <div class="van-cell__title"><span>Lịch sử nạp</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -106,7 +106,7 @@
                     </div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a><!---->
-            <a href="">
+            <a href="/congbo">
                 <div role="button" tabindex="0" class="text-template van-cell van-cell--clickable van-cell--center">
                     <div class="avatar avatar-50 rounded me-2 d-flex justify-center">
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i

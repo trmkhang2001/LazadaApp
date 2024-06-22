@@ -41,12 +41,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/doimatkhaudangnhap', [ExampleController::class, 'doimatkhaudangnhap'])->name('doimatkhaudangnhap');
     Route::post('/doimatkhauruttien', [ExampleController::class, 'doimatkhauruttien'])->name('doimatkhauruttien');
     Route::get('/nap_tien_view', [NapTienController::class, 'nap_tien_view']);
+    Route::post('/nap', [NapTienController::class, 'napTien'])->name('nap_tien');
+    Route::get('/lich_su_nap', [NapTienController::class, 'lich_su_nap'])->name('lich_su_nap');
     Route::get('/laydon', [DonHangController::class, 'layDon'])->name('lay_don');
     Route::get('/dondat', [DonHangController::class, 'donDat'])->name('don_dat');
     Route::get('/guidon/{id}', [DonHangController::class, 'guiDon'])->name('gui_don');
+    Route::geT('/giutdon', [DonHangController::class, 'giutdon'])->name('giut_don');
     Route::get('/tao_lenh_rut', [RutTienController::class, 'rutTien'])->name('rut_tien');
     Route::get('/lich_su_rut', [RutTienController::class, 'lichSuRut'])->name('lich_su_rut');
     Route::post('/ruttien', [RutTienController::class, 'taoLenhRut'])->name('tao_lenh_rut_tien');
+    Route::get('/congbo', [ExampleController::class, 'congbo'])->name('congbo');
     //admin
     // Route::controller(DashboardrController::class)->group(function () {
     //     Route::get('/dashboard', 'index')->name('dashboard.index');
@@ -77,7 +81,6 @@ Route::middleware('auth')->group(function () {
             });
             Route::controller(NapTienController::class)->prefix('/naptien')->group(function () {
                 Route::get('/', 'index')->name('naptien.index');
-                Route::post('/nap', 'napTien')->name('nap_tien');
                 Route::get('/xacnhan/{id}', 'xac_nhan')->name('xac_nhan_nap_tien');
                 Route::get('/huy/{id}', 'huy')->name('huy_nap_tien');
             });

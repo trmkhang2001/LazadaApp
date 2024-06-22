@@ -14,7 +14,7 @@
                     </div>
                 @endif
             </div>
-            @foreach ($taikhoans as $taikhoan)
+            @forelse ($taikhoans as $taikhoan)
                 <div class="bg-white shadow border-rad10 p-2 mb-3"><!---->
                     <div class="">
                         <div>Loại thẻ: BANK</div>
@@ -26,7 +26,25 @@
                         <div style="margin-top: 5px;"><!----><!----></div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div data-v-4c427a83="" class="van-empty">
+                    <div class="van-empty__image"><img src="https://img01.yzcdn.cn/vant/empty-image-default.png"></div>
+                    <p class="van-empty__description">Không có thêm dữ liệu</p>
+                </div>
+            @endforelse
+            {{-- @foreach ($taikhoans as $taikhoan)
+                <div class="bg-white shadow border-rad10 p-2 mb-3"><!---->
+                    <div class="">
+                        <div>Loại thẻ: BANK</div>
+                        <div>Tên tài khoản: {{ $taikhoan->chu_tai_khoan }}</div>
+                        <div>Tên ngân hàng: {{ $taikhoan->ten_ngan_hang }}</div>
+                        <div>Tài khoản ngân hàng: {{ $taikhoan->tai_khoan }}</div>
+                        <div>Số điện thoại dự bị: {{ $taikhoan->so_dien_thoai }}</div>
+                        <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                        <div style="margin-top: 5px;"><!----><!----></div>
+                    </div>
+                </div>
+            @endforeach --}}
             <button class="btn btn-primary w-100 border-rad10" data-bs-toggle="modal"
                 data-bs-target="#taikhoanrut">Thêm</button>
         </div>

@@ -40,7 +40,7 @@
                                 Vui lòng chọn tài khoản ngân hàng rút:
                             </div>
                             <div class="" style="color: rgb(0, 0, 0)">
-                                @foreach ($tai_khoan_ruts as $tai_khoan)
+                                {{-- @foreach ($tai_khoan_ruts as $tai_khoan)
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="taikhoan"
                                             id="flexRadioDefault1" checked value="{{ $tai_khoan->id }}">
@@ -48,7 +48,18 @@
                                             Loại thẻ: BANK - {{ $tai_khoan->tai_khoan }} - {{ $tai_khoan->ten_ngan_hang }}
                                         </label>
                                     </div>
-                                @endforeach
+                                @endforeach --}}
+                                @forelse ($tai_khoan_ruts as $tai_khoan)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="taikhoan"
+                                            id="flexRadioDefault1" value="{{ $tai_khoan->id }}">
+                                        <label class="form-check-label" for="flexRadioDefault1" style="font-size: 14px">
+                                            Loại thẻ: BANK - {{ $tai_khoan->tai_khoan }} - {{ $tai_khoan->ten_ngan_hang }}
+                                        </label>
+                                    </div>
+                                @empty
+                                    <div class="text-danger">Chưa có tài khoản rút.</div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -83,6 +94,29 @@
     </div><!---->
     </div>
     </div>
+    <div class="modal fade" id="chuacotaikhoanrut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div role="dialog" tabindex="0" class="van-dialog" style="z-index: 2021;"
+                    aria-labelledby="Vui lòng thêm thông tin rút tiền trước">
+                    <div class="van-dialog__content van-dialog__content--isolated">
+                        <div class="van-dialog__message">Vui lòng thêm thông tin rút tiền trước</div>
+                    </div>
+                    <div class="van-hairline--top van-dialog__footer">
+                        <a href="/profile" type="button"
+                            class="van-button van-button--default van-button--large van-dialog__cancel">
+                            <div class="van-button__content"><span class="van-button__text">Hủy bỏ</span></div>
+                        </a>
+                        <a href="/taikhoanrut" type="button"
+                            class="van-button van-button--default van-button--large van-dialog__confirm van-hairline--left">
+                            <div class="van-button__content"><span class="van-button__text" style="color: blue">Xác
+                                    nhận</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.getElementById('tienrut').addEventListener('input', function() {
             let soTienRut = parseFloat(this.value.replace(/,/g, '')) || 0;
@@ -92,5 +126,13 @@
             document.getElementById('phi_thu_tuc').innerText = phiThuTuc.toLocaleString('vi-VN');
             document.getElementById('thuc_nhan').innerText = thucNhan.toLocaleString('vi-VN');
         });
+        @if ($tai_khoan_ruts->isEmpty())
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('chuacotaikhoanrut'), {
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        @endif
     </script>
 @endsection

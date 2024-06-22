@@ -17,6 +17,12 @@ class DonHangController extends Controller
         $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->paginate(10);
         return view('admin.orders.index', compact('orders', 'don_hang_maus'));
     }
+    public function giutdon()
+    {
+        $profile = User::find(Auth::user()->id);
+        $order_count = DonHang::where('user_id', $profile->id)->count();
+        return view('pages.donhang.giutdon', compact('profile', 'order_count'));
+    }
     //
     public function layDon()
     {
@@ -73,12 +79,13 @@ class DonHangController extends Controller
     public function donDat()
     {
         $user = Auth::user();
+        $don_gui = DonHang::where('user_id', $user->id)
+            ->where('status', 0)->whereNotNull('don_hang_maus_id')->first();
         $hasNull  = DonHang::where('user_id', $user->id)
             ->where('status', 0)
             ->whereNull('don_hang_maus_id')
             ->exists();
-        $don_gui = DonHang::where('user_id', $user->id)
-            ->where('status', 0)->whereNotNull('don_hang_maus_id')->first();
+
         $don_hangs = DonHang::orderBy('created_at', 'desc')->where('user_id', $user->id)->with('don_hang_maus')->get();
         return view('pages.donhang.index', compact('don_hangs', 'hasNull', 'don_gui'));
     }
@@ -87,7 +94,10 @@ class DonHangController extends Controller
         $don_gui = DonHang::with(['user', 'don_hang_maus'])->find($id);
         if ($don_gui->don_hang_maus->tong_gia > $don_gui->user->sodu) {
             $thieu = $don_gui->don_hang_maus->tong_gia - $don_gui->user->sodu;
-            return redirect()->back()->with('error', 'Số dư của bạn không đủ, thiếu tối thiểu ' . number_format($thieu) . ' đ');
+            return redirect()->back()->with([
+                'msg' => number_format($thieu) . ' đ',
+                'failed' => true
+            ]);
         }
         $user = User::find($don_gui->user_id);
         $user->sodu -= $don_gui->don_hang_maus->tong_gia;

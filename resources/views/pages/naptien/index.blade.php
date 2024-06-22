@@ -66,24 +66,49 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
                     </div> --}}
-                    <div class="px-5 py-3">
-                        <div class="mb-2 d-flex align-items-center fs-3">Thông tin chuyển khoản:</div>
-                        <div class="mb-2 d-flex align-items-center">Chủ tài khoản:
-                            <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span> <i
-                                class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->ho_ten }}"></i>
+                    <div class="px-3 py-3">
+                        <div class="mb-2 text-center fs-3">Thông tin chuyển khoản:</div>
+                        <div class="mb-2 d-flex align-items-center justify-content-between">
+                            <div class="">
+                                Chủ tài khoản:
+                                <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span>
+                            </div>
+                            <div class="">
+                                <i class="fs-2 van-icon van-icon-notes copy-icon"
+                                    data-copy="{{ $tai_khoan->ho_ten }}"></i><span>Sao
+                                    chép</span>
+                            </div>
                         </div>
-                        <div class="mb-2 d-flex align-items-center">Số tài khoản: <span
-                                class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
-                            <i class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->tai_khoan }}"></i>
+                        <div class="mb-2 d-flex align-items-center justify-content-between">
+                            <div class="">
+                                Số tài khoản: <span class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
+                            </div>
+                            <div class="">
+                                <i class="fs-2 van-icon van-icon-notes copy-icon"
+                                    data-copy="{{ $tai_khoan->tai_khoan }}"></i>
+                                <span>Sao
+                                    chép</span>
+                            </div>
                         </div>
-                        <div class="mb-2 d-flex align-items-center">Ngân hàng: <span
-                                class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span> <i
-                                class="fs-2 van-icon van-icon-notes copy-icon" data-copy="{{ $tai_khoan->ngan_hang }}"></i>
+                        <div class="mb-2 d-flex align-items-center justify-content-between">
+                            <div class="">
+                                Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
+                            <div class="">
+                                <i class="fs-2 van-icon van-icon-notes copy-icon"
+                                    data-copy="{{ $tai_khoan->ngan_hang }}"></i>
+                                <span>Sao
+                                    chép</span>
+                            </div>
                         </div>
-                        <div class="mb-2 d-flex align-items-center">Nội dung: <span
-                                class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span> <i
-                                class="fs-2 van-icon van-icon-notes copy-icon"
-                                data-copy="{{ 'NT' . Auth::user()->phone }}"></i>
+                        <div class="mb-2 d-flex align-items-center justify-content-between">
+                            <div class="">
+                                Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div>
+                            <div class="">
+                                <i class="fs-2 van-icon van-icon-notes copy-icon"
+                                    data-copy="{{ 'NT' . Auth::user()->phone }}"></i>
+                                <span>Sao
+                                    chép</span>
+                            </div>
                         </div>
                         <div class="text-center">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>

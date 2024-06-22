@@ -29,32 +29,9 @@
         <div class="noidung">
             @yield('noidung')
         </div>
-        <div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed">
-            <div class="van-tabbar-item van-tabbar-item--active" style="color: rgb(67, 168, 255);">
-                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-wap-home"><!----></i><!----></div>
-                <div class="van-tabbar-item__text">Trang chủ</div>
-            </div>
-            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
-                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-todo-list"><!----></i><!----></div>
-                <div class="van-tabbar-item__text">Đơn đặt hàng</div>
-            </div>
-            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
-                <div class="van-tabbar-item__icon"><i class="van-icon iconfont icon-tedianshandianfahuo"></i><!---->
-                </div>
-                <div class="van-tabbar-item__text"></div>
-            </div><!---->
-            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
-                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-chat"><!----></i><!----></div>
-                <div class="van-tabbar-item__text">Chăm sóc khách hàng</div>
-            </div>
-            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
-                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-lock"><!----></i><!----></div>
-                <div class="van-tabbar-item__text">Đăng nhập</div>
-            </div>
-        </div>
         {{-- meundu duoi --}}
-        <div class="nav_wrapper mt-5 px-3"><a class="nav-link" href="/">
-
+        <div class="nav_wrapper mt-5 px-3">
+            <a class="nav-link" href="/">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 512 512" class="nav-icon nav-active" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +40,8 @@
                     </svg>
                     <div class="nav-tittle">Trang chủ</div>
                 </div>
-            </a><a class="nav-link" href="/dondat">
+            </a>
+            <a class="nav-link" href="/dondat">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 24 24" class="nav-icon" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +52,8 @@
                     </svg>
                     <div class="nav-title">Đơn hàng</div>
                 </div>
-            </a><a class="nav-link" href="/laydon">
+            </a>
+            <a class="nav-link" href="/giutdon">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 24 24" class="nav-icon nav-icon-center" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +63,8 @@
                     <div class="nav-item-center-bg"></div>
                     <div class="nav-title"></div>
                 </div>
-            </a><a class="nav-link" href="/chamsoc">
+            </a>
+            <a class="nav-link" href="/chamsoc">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 640 512" class="nav-icon" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +74,8 @@
                     </svg>
                     <div class="nav-title">Chăm sóc</div>
                 </div>
-            </a><a class="nav-link" href="/profile">
+            </a>
+            <a class="nav-link" href="/profile">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 512 512" class="nav-icon" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +85,8 @@
                     </svg>
                     <div class="nav-title">Cá nhân</div>
                 </div>
-            </a></div>
+            </a>
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
