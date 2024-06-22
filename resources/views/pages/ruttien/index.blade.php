@@ -56,11 +56,11 @@
                 <div class="container">
                     <div class="shadow mt-4 border-rad10 mb-3">
                         <div class="card-body">
-                            <div class="van-cell input-group mb-3 border-rad10">
+                            <div class="van-cell  mb-3 border-rad10">
                                 <input class="" type="text" name="tienrut" placeholder="Số tiền rut"
                                     id="tienrut">
                             </div>
-                            <div class="van-cell input-group mb-3 border-rad10">
+                            <div class="van-cell  mb-3 border-rad10">
                                 <input class="" type="text" name="pass_rut_tien" placeholder="Mật khẩu rút">
                             </div>
                         </div>

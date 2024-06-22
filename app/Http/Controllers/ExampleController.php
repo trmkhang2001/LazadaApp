@@ -63,20 +63,56 @@ class ExampleController extends Controller
 
     public function doimatkhaudangnhap(Request $request)
     {
-        $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
-        ]);
-
+        $request->validate(
+            [
+                'old_password' => 'required',
+                'new_password' => 'required|min:8',
+                'cf_password' => 'required|min:8',
+            ],
+            [
+                'required' => 'Vui lòng nhập thông tin.',
+                'min' => 'Độ dài phải từ 8 ký tự.',
+            ]
+        );
+        if ($request->new_password != $request->cf_password) {
+            return back()->with('error', 'Mật khẩu xác thực không đúng ');
+        }
         $user = User::find(Auth::user()->id);
 
         if (!Hash::check($request->old_password, $user->password)) {
-            return back()->withErrors(['old_password' => 'Mật khẩu cũ không đúng']);
+            return back()->with('error', 'Mật khẩu cũ không đúng');
         }
 
         $user->password = Hash::make($request->new_password);
         $user->save();
 
         return back()->with('success', 'Mật khẩu đã được thay đổi thành công');
+    }
+    public function doimatkhauruttien(Request $request)
+    {
+        $request->validate(
+            [
+                'old_password' => 'required',
+                'new_password' => 'required|min:6',
+                'cf_password' => 'required|min:6',
+            ],
+            [
+                'required' => 'Vui lòng nhập thông tin.',
+                'min' => 'Độ dài phải từ 6 ký tự.',
+            ]
+        );
+        if ($request->new_password != $request->cf_password) {
+            return back()->with('error', 'Mật khẩu xác thực không đúng ');
+        }
+        $user = User::find(Auth::user()->id);
+
+        if ($request->old_password != $user->pass_rut_tien) {
+            return back()->with('error', 'Mật khẩu cũ không đúng');
+        }
+
+        $user->pass_rut_tien = $request->new_password;
+        $user->save();
+
+        return back()->with('success', 'Mật khẩu rút tiền đã được thay đổi thành công');
     }
 }

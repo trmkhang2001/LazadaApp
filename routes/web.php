@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/taikhoanrut', [ExampleController::class, 'taikhoanrut']);
     Route::post('/taikhoanrut', [ExampleController::class, 'post_taikhoanrut'])->name('add.taikhoanrut');
     Route::get('/quanlymatkhau', [ExampleController::class, 'quanlymatkhau'])->name('quanlymatkhau');
+    Route::post('/doimatkhaudangnhap', [ExampleController::class, 'doimatkhaudangnhap'])->name('doimatkhaudangnhap');
+    Route::post('/doimatkhauruttien', [ExampleController::class, 'doimatkhauruttien'])->name('doimatkhauruttien');
     Route::get('/nap_tien_view', [NapTienController::class, 'nap_tien_view']);
     Route::get('/laydon', [DonHangController::class, 'layDon'])->name('lay_don');
     Route::get('/dondat', [DonHangController::class, 'donDat'])->name('don_dat');

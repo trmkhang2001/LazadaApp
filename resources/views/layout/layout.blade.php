@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -28,8 +29,32 @@
         <div class="noidung">
             @yield('noidung')
         </div>
+        <div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed">
+            <div class="van-tabbar-item van-tabbar-item--active" style="color: rgb(67, 168, 255);">
+                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-wap-home"><!----></i><!----></div>
+                <div class="van-tabbar-item__text">Trang chủ</div>
+            </div>
+            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
+                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-todo-list"><!----></i><!----></div>
+                <div class="van-tabbar-item__text">Đơn đặt hàng</div>
+            </div>
+            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
+                <div class="van-tabbar-item__icon"><i class="van-icon iconfont icon-tedianshandianfahuo"></i><!---->
+                </div>
+                <div class="van-tabbar-item__text"></div>
+            </div><!---->
+            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
+                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-chat"><!----></i><!----></div>
+                <div class="van-tabbar-item__text">Chăm sóc khách hàng</div>
+            </div>
+            <div class="van-tabbar-item" style="color: rgb(161, 159, 168);">
+                <div class="van-tabbar-item__icon"><i class="van-icon van-icon-lock"><!----></i><!----></div>
+                <div class="van-tabbar-item__text">Đăng nhập</div>
+            </div>
+        </div>
         {{-- meundu duoi --}}
         <div class="nav_wrapper mt-5 px-3"><a class="nav-link" href="/">
+
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 512 512" class="nav-icon nav-active" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +72,7 @@
                             d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z">
                         </path>
                     </svg>
-                    <div class="nav-title">Đơn đặt hàng</div>
+                    <div class="nav-title">Đơn hàng</div>
                 </div>
             </a><a class="nav-link" href="/laydon">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
@@ -77,7 +102,7 @@
                             d="M256 256a112 112 0 1 0-112-112 112 112 0 0 0 112 112zm0 32c-69.42 0-208 42.88-208 128v64h416v-64c0-85.12-138.58-128-208-128z">
                         </path>
                     </svg>
-                    <div class="nav-title">Của tôi</div>
+                    <div class="nav-title">Cá nhân</div>
                 </div>
             </a></div>
     </div>

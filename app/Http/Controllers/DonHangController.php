@@ -22,7 +22,8 @@ class DonHangController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $ktra = DonHang::where('user_id', $user->id)->where('status', '0')->count();
-        if ($ktra > 0) {
+        $ktra2 = DonHang::where('user_id', $user->id)->where('status', '2')->count();
+        if ($ktra > 0 || $ktra2 > 0) {
             return redirect()->route('don_dat')->with('error', 'Bạn đang có đơn chưa hoàn thành');
         }
         // Tạo mã ngẫu nhiên 10 chữ số không trùng
@@ -88,6 +89,9 @@ class DonHangController extends Controller
             $thieu = $don_gui->don_hang_maus->tong_gia - $don_gui->user->sodu;
             return redirect()->back()->with('error', 'Số dư của bạn không đủ, thiếu tối thiểu ' . number_format($thieu) . ' đ');
         }
+        $user = User::find($don_gui->user_id);
+        $user->sodu -= $don_gui->don_hang_maus->tong_gia;
+        $user->save();
         $don_gui->status = 2;
         $don_gui->save();
         return redirect()->back()->with('success', 'Gửi đơn hàng thành công');
@@ -100,6 +104,7 @@ class DonHangController extends Controller
         // }
         $user = User::find($order->user_id);
         $user->sodu = $user->sodu + $order->don_hang_maus->tong_gia + $order->don_hang_maus->tong_gia * 0.2;
+        $user->save();
         $order->status = 1;
         $order->save();
         return redirect()->back()->with('success', 'Xác nhận đơn hàng thành công');
