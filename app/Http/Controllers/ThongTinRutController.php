@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TaiKhoanRut;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ThongTinRutController extends Controller
@@ -11,6 +12,15 @@ class ThongTinRutController extends Controller
     public function index()
     {
         $items = TaiKhoanRut::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.thongtinrut.index', compact('items'));
+    }
+    public function search(Request $req)
+    {
+        $req->validate([
+            'search' => 'required',
+        ]);
+        $id = User::where('phone', $req->search)->first();
+        $items = TaiKhoanRut::orderBy('created_at', 'desc')->where('user_id', $id->id)->paginate(5);
         return view('admin.thongtinrut.index', compact('items'));
     }
     public function update(Request $request)

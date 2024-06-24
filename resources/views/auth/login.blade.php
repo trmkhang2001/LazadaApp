@@ -2,13 +2,12 @@
 @section('content')
     <div class="pt-5">
         <div class="text-center">
-            <img src="https://da7979.com/static/media/logo_lzd.45c33342471fc96718b6.png" alt=""
-                style="width: 80px;    height: 67px;" class="rounded">
-            <h3 class="text-center text-white">Larada</h3>
+            <img src="https://da8975.com/api//file/front/1c233457962c411fb234ad445f08787b_.jpg" alt=""
+                style="width: 80px;    height: 80px;">
         </div>
         <form action="/login" class="px-5 pt-5" method="POST">
             @csrf
-            
+
             <div class="mb-3">
                 <input type="text" class="form-control" id="phone" placeholder="Mời bạn nhập số điện thoại"
                     name="phone" value="{{ old('phone') }}">
@@ -24,10 +23,10 @@
                 @enderror
             </div>
             <div class="mt-5 mb-3">
-                <button type="submit" class="btn btn-light w-100">Đăng nhập</button>
+                <button type="submit" class="btn btn-light w-100 border-rad15">Đăng nhập</button>
             </div>
             <div class="mb-3">
-                <a href="/register" class="btn btn-primary w-100">Đăng ký</a>
+                <a href="/register" class="btn btn-primary w-100 border-rad15">Đăng ký</a>
             </div>
         </form>
     </div>

@@ -43,106 +43,63 @@
             <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu"
                 data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="/admin" class="menu-link active">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-element-11 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Dashboards</span>
-                    </a>
-                    <!--end:Menu link-->
-                </div>
-                <div class="menu-item pt-5"><!--begin:Menu content-->
-                    <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Ecommerce</span>
-                    </div>
-                    <!--end:Menu content-->
-                </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion"><!--begin:Menu link--><span
-                        class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-basket fs-2"><span
-                                    class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                                    class="path4"></span></i></span><span class="menu-title">Cửa hàng</span><span
-                            class="menu-arrow"></span></span><!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion" kt-hidden-height="251"
-                        style="display: none; overflow: hidden;">
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/thanhvien"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Quản lý thành viên</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/category"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Lịch sử tài khoản</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/donhang"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Lịch sử đặt hàng</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/naptien"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Lịch sử nạp tiền</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/ruttien"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Lịch sử rút tiền </span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/thongtinrut"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Thông tin rút tiền</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                    </div><!--end:Menu sub-->
-                </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion"><!--begin:Menu link--><span
-                        class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-bucket fs-2"><span
-                                    class="path1"></span><span class="path2"></span><span
-                                    class="path3"></span><span class="path4"></span></i></span><span
-                            class="menu-title">Admin Tổng</span><span
-                            class="menu-arrow"></span></span><!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion" kt-hidden-height="251"
-                        style="display: none; overflow: hidden;">
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/donhangmau"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Quản lý sản phẩm mẫu</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link--><a class="menu-link" href="/admin/banking"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Tài khoản nhận tiền</span></a><!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                    </div><!--end:Menu sub-->
+                <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/thanhvien"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Quản lý thành
+                            viên</span></a><!--end:Menu link-->
                 </div>
                 <!--end:Menu item-->
-            </div>
-            <!--end::Menu-->
+                <!--begin:Menu item-->
+                {{-- <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/category"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Lịch sử tài
+                            khoản</span></a><!--end:Menu link-->
+                </div> --}}
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/donhang"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Lịch sử đặt
+                            hàng</span></a><!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/naptien"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Lịch sử nạp
+                            tiền</span></a><!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/ruttien"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Lịch sử rút tiền
+                        </span></a><!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link--><a class="menu-link" href="/admin/thongtinrut"><span class="menu-bullet"><span
+                                class="bullet bullet-dot"></span></span><span class="menu-title">Thông tin rút
+                            tiền</span></a><!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+                @if (Auth::user()->level == 1024)
+                    <div class="menu-item">
+                        <!--begin:Menu link--><a class="menu-link" href="/admin/donhangmau"><span
+                                class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                class="menu-title">Quản lý sản phẩm
+                                mẫu</span></a><!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link--><a class="menu-link" href="/admin/banking"><span class="menu-bullet"><span
+                                    class="bullet bullet-dot"></span></span><span class="menu-title">Tài khoản nhận
+                                tiền</span></a><!--end:Menu link-->
+                    </div>
+                @endif
+            </div><!--end:Menu sub-->
         </div>
         <!--end::Menu wrapper-->
     </div>
@@ -151,8 +108,7 @@
     <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
         <a href="/"
             class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100"
-            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click"
-            title="Bài Dự Án Tốt Nghiệp Của Khang">
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click">
             <span class="btn-label">Quay Lại Store</span>
             <i class="ki-duotone ki-document btn-icon fs-2 m-0">
                 <span class="path1"></span>

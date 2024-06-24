@@ -34,16 +34,22 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <div class="d-flex align-items-center position-relative my-1">
-                        <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4"><span class="path1"></span><span
-                                class="path2"></span></i> <input type="text" data-kt-ecommerce-order-filter="search"
-                            class="form-control form-control-solid w-250px ps-12" placeholder="Search Transaction">
-                    </div>
+                    <form action="{{ route('naptien.search') }}" method="POST">
+                        @csrf
+                        <div class="d-flex align-items-center position-relative my-1">
+                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                            <input type="text" id="search" name="search"
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Nhập thông tin" />
+                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm</button>
+                        </div>
+                    </form>
                     <!--end::Search-->
                 </div>
                 <!--end::Card title-->
             </div>
-            <!--end::Card header-->
 
             <!--begin::Card body-->
             <div class="card-body pt-0">

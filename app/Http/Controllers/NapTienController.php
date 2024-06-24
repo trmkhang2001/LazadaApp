@@ -16,6 +16,15 @@ class NapTienController extends Controller
         $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(10);
         return view('admin.transaction.index', ['items' => $items]);
     }
+    public function search(Request $req)
+    {
+        $req->validate([
+            'search' => 'required',
+        ]);
+        $id = User::where('phone', $req->search)->first();
+        $items = NapTien::orderBy('created_at', 'desc')->where('user_id', $id->id)->with('user')->paginate(10);
+        return view('admin.transaction.index', ['items' => $items]);
+    }
     //
     public function nap_tien_view()
     {
@@ -65,7 +74,7 @@ class NapTienController extends Controller
     }
     public function lich_su_nap()
     {
-        $lich_sus = NapTien::where('user_id', Auth::user()->id)->get();
+        $lich_sus = NapTien::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
         return view('pages.naptien.lichsu', compact('lich_sus'));
     }
 }

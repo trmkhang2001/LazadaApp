@@ -205,7 +205,7 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1024"
+                                    <input class="form-check-input me-3" name="level" type="radio" value="1024"
                                         id="kt_modal_update_role_option_0" />
                                     <!--end::Input-->
                                     <!--begin::Label-->
@@ -223,7 +223,7 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1000"
+                                    <input class="form-check-input me-3" name="level" type="radio" value="1000"
                                         id="kt_modal_update_role_option_2" />
                                     <!--end::Input-->
                                     <!--begin::Label-->
@@ -241,7 +241,7 @@
                                 <!--begin::Radio-->
                                 <div class="form-check form-check-custom form-check-solid">
                                     <!--begin::Input-->
-                                    <input class="form-check-input me-3" name="role_id" type="radio" value="1"
+                                    <input class="form-check-input me-3" name="level" type="radio" value="1"
                                         id="kt_modal_update_role_option_3" checked='checked' />
                                     <!--end::Input-->
                                     <!--begin::Label-->

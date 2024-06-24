@@ -1,5 +1,5 @@
 .main {
-    box-shadow: 0 0 .6rem 0 #7d7d7d4d;
+    box-shadow: 0 0 0.6rem 0 #7d7d7d4d;
     font-family: "PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif" !important;
     font-size: inherit;
     margin: auto;
@@ -7,5 +7,9 @@
     min-height: 100vh;
     -webkit-user-select: none;
     user-select: none;
-    background-color: #5999f9;
+    /* background-color: #5999f9; */
+    background: linear-gradient(180deg, #0a3cff, #0bd3ff);
+}
+.border-rad15 {
+    border-radius: 15px;
 }

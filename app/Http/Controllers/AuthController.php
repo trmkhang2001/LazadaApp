@@ -65,6 +65,9 @@ class AuthController extends Controller
                 'email' => trans('auth.failed')
             ]);
         }
+        if (Auth::user()->level == 1024 || Auth::user()->level == 1000) {
+            return redirect('/admin/donhang');
+        }
         return redirect('/');
     }
     public function logout(Request $request)

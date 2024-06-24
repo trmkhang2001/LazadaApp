@@ -83,10 +83,12 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('naptien.index');
                 Route::get('/xacnhan/{id}', 'xac_nhan')->name('xac_nhan_nap_tien');
                 Route::get('/huy/{id}', 'huy')->name('huy_nap_tien');
+                Route::post('/', 'search')->name('naptien.search');
             });
             Route::controller(ThongTinRutController::class)->prefix('/thongtinrut')->group(function () {
                 Route::get('/', 'index')->name('thongtinrut.index');
                 Route::put('/taikhoan/update', [ThongTinRutController::class, 'update'])->name('taikhoan.update');
+                Route::post('/', 'search')->name('thongtinrut.search');
             });
             Route::controller(BankrController::class)->prefix('/banking')->group(function () {
                 Route::get('/', 'index')->name('banking.index');
@@ -96,6 +98,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('ruttien.index');
                 Route::get('/xacnhan/{id}', 'xacnhan')->name('ruttien.xacnhan');
                 Route::get('/huy/{id}', 'huy')->name('ruttien.huy');
+                Route::post('/', 'search')->name('ruttien.search');
             });
         });
     });

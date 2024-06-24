@@ -56,6 +56,17 @@ class RutTienController extends Controller
             ->paginate(8);
         return view('admin.ruttien.index', compact('items'));
     }
+    public function search(Request $req)
+    {
+        $req->validate([
+            'search' => 'required',
+        ]);
+        $id = User::where('phone', $req->search)->first();
+        $items = RutTien::orderBy('created_at', 'desc')->where('user_id', $id->id)
+            ->with(['user', 'taikhoanrut'])
+            ->paginate(8);
+        return view('admin.ruttien.index', compact('items'));
+    }
     public function xacnhan(string $id)
     {
         $item = RutTien::find($id);

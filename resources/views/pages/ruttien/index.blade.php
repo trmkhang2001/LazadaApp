@@ -84,7 +84,7 @@
 
             <div class="container mt-4">
                 <div class="mb-1">
-                    Phí thủ tục: <span id="phi_thu_tuc"></span>đ ( <span style="color: red">2%</span>)
+                    Phí thủ tục: <span id="phi_thu_tuc"></span>đ ( <span style="color: red">0%</span>)
                 </div>
                 <div class="">
                     Thực nhận: <span id="thuc_nhan"></span>₫
@@ -120,7 +120,7 @@
     <script>
         document.getElementById('tienrut').addEventListener('input', function() {
             let soTienRut = parseFloat(this.value.replace(/,/g, '')) || 0;
-            let phiThuTuc = soTienRut * 0.2;
+            let phiThuTuc = soTienRut * 0;
             let thucNhan = soTienRut - phiThuTuc;
 
             document.getElementById('phi_thu_tuc').innerText = phiThuTuc.toLocaleString('vi-VN');

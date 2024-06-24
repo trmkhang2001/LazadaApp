@@ -16,7 +16,7 @@ class CheckPermisionAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->level == 1024) {
+        if (Auth::check() && (Auth::user()->level == 1024 || Auth::user()->level == 1000)) {
             return $next($request);
         }
         abort(404);
