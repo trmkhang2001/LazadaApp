@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('nap_tiens', function (Blueprint $table) {
             $table->id();
             $table->string('ma_nap');
-            $table->tinyInteger('loai_nap');
-            $table->tinyInteger('phuong_thuc_thanh_toan');
-            $table->decimal('so_tien_truoc', 10, 2);
-            $table->decimal('so_tien_nap', 10, 2);
-            $table->decimal('so_tien_sau', 10, 2);
-            $table->tinyInteger('status');
+            $table->integer('loai_nap');
+            $table->integer('phuong_thuc_thanh_toan');
+            $table->decimal('so_tien_truoc', 18, 2);
+            $table->decimal('so_tien_nap', 18, 2);
+            $table->decimal('so_tien_sau', 18, 2);
+            $table->integer('status');
             $table->timestamps();
         });
     }

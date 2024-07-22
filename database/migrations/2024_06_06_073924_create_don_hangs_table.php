@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('don_hangs', function (Blueprint $table) {
             $table->id();
             $table->string('ma_dh');
-            $table->tinyInteger('status');
+            $table->integer('status');
             $table->unsignedBigInteger('don_hang_maus_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
