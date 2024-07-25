@@ -71,6 +71,10 @@ Route::middleware('auth')->group(function () {
             Route::controller(DonHangMauController::class)->prefix('/donhangmau')->group(function () {
                 Route::get('/', 'index')->name('donhangmau.index');
                 Route::get('/add', 'create')->name('donhangmau.add');
+                Route::post('/store', 'store')->name('donhangmau.store');
+                Route::get('/edit/{id}', 'edit')->name('donhangmau.edit');
+                Route::post('/edit/{id}', 'editPost')->name('donhangmau.editpost');
+                Route::delete('/delete/{id}', 'delete')->name('donhangmau.delete');
             });
             Route::controller(DonHangController::class)->prefix('/donhang')->group(function () {
                 Route::get('/', 'index')->name('donhang.index');

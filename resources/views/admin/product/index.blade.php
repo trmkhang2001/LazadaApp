@@ -160,7 +160,8 @@
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a href="" class="menu-link px-3">
+                                                    <a href="{{ route('donhangmau.edit', $product->id) }}"
+                                                        class="menu-link px-3">
                                                         Edit
                                                     </a>
                                                 </div>
@@ -168,7 +169,8 @@
 
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <form action="" method="POST" type="button"
+                                                    <form action="{{ route('donhangmau.delete', $product->id) }}"
+                                                        method="POST" type="button"
                                                         onsubmit="return confirm('Bạn chắc chắn muốn xóa ?')">
                                                         @csrf
                                                         @method('DELETE')

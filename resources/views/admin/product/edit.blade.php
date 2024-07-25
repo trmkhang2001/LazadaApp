@@ -4,7 +4,7 @@
         <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
             <!--begin::Title-->
             <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Product</h1>
+                Chỉnh sửa đơn hàng mẫu</h1>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -19,7 +19,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Product</li>
+                <li class="breadcrumb-item text-muted">Chỉnh sửa đơn hàng mẫu</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -81,8 +81,8 @@
                 <!--begin::Content container-->
                 <div id="kt_app_content_container" class="app-container container-xxl">
                     <!--begin::Form-->
-                    <form action="{{ route('donhangmau.store') }}" class="d-flex flex-column flex-lg-row" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('donhangmau.editpost', $item->id) }}" class="d-flex flex-column flex-lg-row"
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Main column-->
                         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -122,7 +122,7 @@
                                                     <!--begin::Input-->
                                                     <input type="text" name="ten_san_pham" class="form-control mb-2"
                                                         placeholder="Tên sản phẩm mẫu"
-                                                        value = "@if (isset($product)) {{ $product->name }} @endif {{ old('name') }}" />
+                                                        value = "@if (isset($item)) {{ $item->ten_san_pham }} @endif {{ old('ten_san_pham') }}" />
                                                     <!--end::Input-->
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">Tên sản phẩm hiển thị .</div>
@@ -137,7 +137,7 @@
                                                     <!--begin::Editor-->
                                                     <input type="text" name="hinh_san_pham" class="form-control mb-2"
                                                         placeholder="Link hình sản phẩm mẫu"
-                                                        value = "@if (isset($product)) {{ $product->name }} @endif {{ old('name') }}" />
+                                                        value = "@if (isset($item)) {{ $item->hinh_san_pham }} @endif {{ old('hinh_san_pham') }}" />
                                                     <!--end::Editor-->
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">Linh hình ảnh của sản phẩm.</div>
@@ -152,7 +152,7 @@
                                                     <!--begin::Editor-->
                                                     <input type="text" name="tong_gia" class="form-control mb-2"
                                                         placeholder="Tổng giá đơn hàng"
-                                                        value = "@if (isset($product)) {{ $product->name }} @endif {{ old('name') }}" />
+                                                        value = "@if (isset($item)) {{ $item->tong_gia }} @endif {{ old('tong_gia') }}" />
                                                     <!--end::Editor-->
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">Linh hình ảnh của sản phẩm.</div>
