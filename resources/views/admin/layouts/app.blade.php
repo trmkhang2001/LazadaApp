@@ -45,6 +45,9 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{ asset('admin_assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin_assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('admin_as_new/css/app.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('admin_as_new/css/chunk-76d486d4.e2246661.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('admin_as_new/css/chunk-b790bce6.6a37b9cf.css') }}" type="text/css">
     <!--end::Global Stylesheets Bundle-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -69,6 +72,25 @@ License: For each use you must have a valid license purchased only from above li
         }
     </script>
     <!--end::Theme mode setup on page load-->
+    <style>
+        .active {
+            color: #409EFF
+        }
+
+        .main-content {
+            font-size: 14px;
+            line-height: 24px;
+            color: #323233;
+        }
+
+        .card {
+            border-radius: 0% !important;
+        }
+
+        .color-red {
+            color: red !important;
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -77,29 +99,32 @@ License: For each use you must have a valid license purchased only from above li
     data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true"
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
     data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
-
+    @include('admin.layouts.header')
+    <div class="p-5 main-content">
+        @yield('contents')
+    </div>
     <!--begin::App-->
-    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+    {{-- <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <!--begin::Header-->
-            @include('admin.layouts.header')
-            <!--end::Header-->
-            <!--begin::Wrapper-->
-            <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-                <!--begin::Sidebar-->
-                @include('admin.layouts.sidebar')
-                <!--end::Sidebar-->
-                <!--begin::Main-->
-                <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            {{-- @include('admin.layouts.header') --}}
+    <!--end::Header-->
+    <!--begin::Wrapper-->
+    {{-- <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper"> --}}
+    <!--begin::Sidebar-->
+    {{-- @include('admin.layouts.sidebar') --}}
+    <!--end::Sidebar-->
+    <!--begin::Main-->
+    {{-- <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                     @yield('contents')
-                </div>
-                <!--end:::Main-->
-            </div>
-            <!--end::Wrapper-->
-        </div>
-        <!--end::Page-->
-    </div>
+                </div> --}}
+    <!--end:::Main-->
+    {{-- </div> --}}
+    <!--end::Wrapper-->
+    {{-- </div> --}}
+    <!--end::Page-->
+    {{-- </div>  --}}
     <!--end::App-->
     <!--begin::Javascript-->
     <script>

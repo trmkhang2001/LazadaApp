@@ -1,122 +1,168 @@
 @extends('admin.layouts.app')
-@section('title_page')
-    <div class="app-navbar-item ms-1 ms-md-3">
-        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <!--begin::Title-->
-            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Dashboard</h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
-            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    <a href="/admin" class="text-muted text-hover-primary">Admin</a>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Thống kế</li>
-                <!--end::Item-->
-            </ul>
-            <!--end::Breadcrumb-->
-        </div>
-    </div>
-@endsection
 @section('contents')
-    <style>
-        h3 {
-            text-transform: uppercase;
-        }
-    </style>
-    <div class="d-flex flex-column flex-column-fluid">
-        <!--begin::Row-->
-        <div class="row mx-5 p-5 mt-4">
-            <div class="text-center">
-                <h1 class="mb-5">Thông kê số lượng</h1>
-            </div>
-            <div class="col">
-                <div class="card p-5 mx-0">
-                    <h3>Người dùng: {{ $nguoidung }}</h3>
+    <div class="">
+        <div class="mb-4">
+            <span class="me-2">Link đại lý:</span><span style="color: red">https://fb.com</span>
+        </div>
+        <div class="d-flex mb-4">
+            <div class="card me-4 shadow">
+                <div class="card-body">
+                    Số lượng người dùng: {{ $nguoidung }} người
                 </div>
             </div>
-            <div class="col">
-                <div class="card p-5 mx-0">
-                    <h3>Đơn hàng: {{ $donhang }}</h3>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card p-5 mx-0">
-                    <h3>Số lần đăng nhập : 103</h3>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card p-5 mx-0">
-                    <h3>Danh mục: </h3>
+            <div class="card ms-4 shadow">
+                <div class="card-body">
+                    Mã mời: 123123
                 </div>
             </div>
         </div>
-        <!--end::Row-->
-        <!--begin::Row-->
-        <div class="row g-5 g-xl-10 mt-3 mb-5 mb-xl-10 mx-5">
-            <!--begin::Col-->
-            <div class="text-center">
-                <h1>Biểu đồ bán hàng</h1>
+        <div class="d-flex mb-4">
+            <div class="d-flex align-items-center me-4">
+                <input class="me-3" type="checkbox">
+                <div style="color: red">Tât cả dữ liệu khuyến mãi ngoại tuyến</div>
             </div>
-            <div class="col-xxl-8">
-                <!--begin::Chart widget 38-->
-                <div class="card card-flush h-md-100">
-                    <!--begin::Header-->
-                    <div class="card-header">
-                        <!--begin::Title-->
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bold text-gray-800">Lượng mua hàng</span>
-                            <span class="text-gray-400 mt-1 fw-bold fs-6">Số lượng mua hàng của user</span>
-                        </h3>
-                        <!--end::Title-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body d-flex align-items-end px-0 pt-3 pb-5">
-                        <!--begin::Chart-->
-                        <div class="w-100 min-h-auto pe-6">
-                            <div class="card-body">
-                                <canvas id="chBar"></canvas>
-                            </div>
+            <div class="d-flex">
+                <span>Thời gian: </span>
+                <div class="ms-3">
+                    <input type="date" placeholder="Ngày bắt đầu" name="date-start">
+                    <span> - </span>
+                    <input type="date" placeholder="Ngày bắt đầu" name="date-end">
+                    <a class="my-2 me-5 p-2" style="background-color: #F56C6C;color:white ">
+                        <span>Tìm kiếm</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <span>Phạm vi truy vấn: </span>
+        </div>
+        <div class="mb-4">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Tổng số thành viên
                         </div>
-                        <!--end::Chart-->
+                        <div class="card-footer color-red">
+                            {{ $nguoidung }} người
+                        </div>
                     </div>
-                    <!--end: Card Body-->
                 </div>
-                <!--end::Chart widget 38-->
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xxl-4">
-                <!--begin::Engage widget 1-->
-                <div class="card h-md-100" dir="ltr">
-                    <!--begin::Header-->
-                    <div class="card-header">
-                        <!--begin::Title-->
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bold text-gray-800">Tỉ lệ đơn hàng</span>
-                        </h3>
-                        <!--end::Title-->
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Người đăng ký mới
+                        </div>
+                        <div class="card-footer color-red">
+                            402 người
+                        </div>
                     </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body">
-                        <canvas id="doughnutChart"></canvas>
-                    </div>
-                    <!--end::Body-->
                 </div>
-                <!--end::Engage widget 1-->
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Tổng lần đăng nhập
+                        </div>
+                        <div class="card-footer color-red">
+                            402 người
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Người dùng trực tuyến
+                        </div>
+                        <div class="card-footer color-red">
+                            402 người
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--end::Col-->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Nạp tiền trực tuyến
+                        </div>
+                        <div class="card-footer">
+                            <span class="color-red me-3">₫70,000 / 1Lần / 1Người</span><span>Phí xử lý:₫0 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Tổng tiền thanh toán
+                        </div>
+                        <div class="card-footer">
+                            <span class="color-red me-3">₫100,000 / 1Lần / 1Người</span><span>Phí xử lý:₫0 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Thống kê lần nạp đầu
+                        </div>
+                        <div class="card-footer color-red">
+                            ₫70,000 / 1Người
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Tổng số tiền rút
+                        </div>
+                        <div class="card-footer color-red">
+                            ₫100,000 / 1Lần / 1Người
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Nạp tiền nền
+                        </div>
+                        <div class="card-footer">
+                            <span class="color-red me-3">₫0 / 0Lần / 0Người</span><span>Ghi nợ thủ công:₫0 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Hoa hồng đơn hàng
+                        </div>
+                        <div class="card-footer color-red">
+                            ₫20,854 / 2Lần / 1Người
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Hoa hồng khuyến mãi
+                        </div>
+                        <div class="card-footer color-red">
+                            ₫0 / 0Lần / 0Người
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            Doanh thu nạp
+                        </div>
+                        <div class="card-footer color-red">
+                            ₫-30,000
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!--end::Row-->
     </div>
 @endsection
