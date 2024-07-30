@@ -1,115 +1,74 @@
 @extends('admin.layouts.app')
-@section('title_page')
-    <div class="app-navbar-item ms-1 ms-md-3">
-        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <!--begin::Title-->
-            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Thông tin rút</h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
-            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    <a href="/admin/dashboard" class="text-muted text-hover-primary">Admin</a>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Thông tin rút</li>
-                <!--end::Item-->
-            </ul>
-            <!--end::Breadcrumb-->
-        </div>
-    </div>
-@endsection
 @section('contents')
-    <div class="d-flex flex-column flex-column-fluid">
-        <div class="card mb-5 mb-xl-8">
-            <!--begin::Header-->
-            <div class="card-header border-0 pt-5">
-                <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bold fs-3 mb-1">Dánh sách tài khoản rút của khách</span>
-                </h3>
-            </div>
-            <!--end::Header-->
-            <!--begin::Card header-->
-            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                <!--begin::Card title-->
-                <div class="card-title">
-                    <!--begin::Search-->
+    <div class="bg-white p-4">
+        <div class="">
+            <div class="mb-5 d-flex">
+                <div class="d-flex align-items-center me-4">
+                    <input class="me-3" type="checkbox">
+                    <div style="color: red">Tât cả dữ liệu khuyến mãi ngoại tuyến</div>
+                </div>
+                <div class="">
                     <form action="{{ route('thongtinrut.search') }}" method="POST">
                         @csrf
                         <div class="d-flex align-items-center position-relative my-1">
-                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <input type="text" id="search" name="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Nhập thông tin" />
-                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm</button>
+                            <input type="text" id="search" name="search" class="me-3"
+                                placeholder="Nhập thông tin" />
+                            <button type="submit" class="btn-blue border-0"> Tìm kiếm</button>
                         </div>
                     </form>
-                    <!--end::Search-->
                 </div>
-                <!--end::Card title-->
             </div>
-            <!--end::Card header-->
-            <!--begin::Body-->
-            <div class="card-body py-3">
-                <!--begin::Table container-->
-                @if (Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-                <div class="table-responsive">
-                    <!--begin::Table-->
-                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                        <!--begin::Table head-->
-                        <thead>
-                            <tr class="fw-bold text-muted">
-                                <th class="min-w-100px">Tên ngân hàng</th>
-                                <th class="min-w-100px">Tài khoản</th>
-                                <th class="min-w-100px">Chủ tài khoản</th>
-                                <th class="min-w-100px">Số điện thoại</th>
-                                <th>Thay đổi</th>
-                            </tr>
-                        </thead>
-                        <!--end::Table head-->
+            <div class="mb-5">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tên tài khoản</th>
+                            <th scope="col">Kiểu tài khoản</th>
+                            <th scope="col">Tên thật</th>
+                            <th scope="col">Ngân hàng tiền gửi</th>
+                            <th scope="col">Tài khoản ngân hàng</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Khác</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($items as $taikhoan)
+                            <tr>
+                                <th>
+                                    {{ $taikhoan->so_dien_thoai }}
+                                </th>
+                                <td>
+                                    BANK
+                                </td>
+                                <td>
+                                    {{ $taikhoan->chu_tai_khoan }}
+                                </td>
+                                <td>
+                                    {{ $taikhoan->ten_ngan_hang }}
+                                </td>
+                                <td>
+                                    {{ $taikhoan->tai_khoan }}
+                                </td>
+                                <td>
+                                    {{ $taikhoan->so_dien_thoai }}
+                                </td>
+                                <td>
 
-                        <!--begin::Table body-->
-                        <tbody>
-                            @foreach ($items as $taikhoan)
-                                <tr>
-                                    <td>{{ $taikhoan->ten_ngan_hang }}</td>
-                                    <td>{{ $taikhoan->tai_khoan }}</td>
-                                    <td>{{ $taikhoan->chu_tai_khoan }}</td>
-                                    <td>{{ $taikhoan->so_dien_thoai }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal" data-bs-id="{{ $taikhoan->id }}"
-                                            data-bs-tennganhang="{{ $taikhoan->ten_ngan_hang }}"
-                                            data-bs-taikhoan="{{ $taikhoan->tai_khoan }}"
-                                            data-bs-chutaikhoan="{{ $taikhoan->chu_tai_khoan }}"
-                                            data-bs-sodienthoai="{{ $taikhoan->so_dien_thoai }}">Sửa</button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <!--end::Table body-->
-                    </table>
-                    <div class="">
-                        {{ $items->links() }}
-                    </div>
-                    <!--end::Table-->
-                </div>
-                <!--end::Table container-->
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-blue border-0 p-2" data-bs-toggle="modal"
+                                        data-bs-target="#editModal" data-bs-id="{{ $taikhoan->id }}"
+                                        data-bs-tennganhang="{{ $taikhoan->ten_ngan_hang }}"
+                                        data-bs-taikhoan="{{ $taikhoan->tai_khoan }}"
+                                        data-bs-chutaikhoan="{{ $taikhoan->chu_tai_khoan }}"
+                                        data-bs-sodienthoai="{{ $taikhoan->so_dien_thoai }}">Biên tập</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <!--begin::Body-->
         </div>
     </div>
     <!-- Edit Modal -->

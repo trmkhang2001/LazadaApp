@@ -77,6 +77,9 @@ class RutTienController extends Controller
     public function huy(string $id)
     {
         $item = RutTien::find($id);
+        $user = User::find($item->user_id);
+        $user->sodu += $item->so_tien_rut;
+        $user->save();
         $item->status = -1;
         $item->save();
         return redirect()->back()->with('success', 'Huỷ rút tiền');

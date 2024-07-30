@@ -114,6 +114,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="">
+                    {{ $items->links() }}
+                </div>
             </div>
         </div>
     </div>

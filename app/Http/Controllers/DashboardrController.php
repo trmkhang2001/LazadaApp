@@ -15,4 +15,8 @@ class DashboardrController extends Controller
         $donhang = DonHang::count();
         return view('admin.dashboard.index', compact('donhang', 'nguoidung'));
     }
+    public function doipass()
+    {
+        return view('admin.profile.doipass');
+    }
 }

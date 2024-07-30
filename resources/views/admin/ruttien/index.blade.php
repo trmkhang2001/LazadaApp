@@ -47,6 +47,7 @@
                             <th scope="col">Thời gian rút tiền</th>
                             <th scope="col">Thời gian cập nhật</th>
                             <th scope="col">Thao tác</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach ($items as $ruttien)
@@ -136,6 +137,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="">
+                    {{ $items->links() }}
+                </div>
             </div>
         </div>
     </div>

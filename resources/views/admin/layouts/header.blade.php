@@ -32,6 +32,6 @@
         <a class="menu-link" href="/admin/thanhvien">Danh sách khách hàng</a>
     </div>
     <div class="my-2 mx-5 p-2">
-        <a class="menu-link" href="">Đổi mật khẩu</a>
+        <a class="menu-link" href="/admin/doipass">Đổi mật khẩu</a>
     </div>
 </div>

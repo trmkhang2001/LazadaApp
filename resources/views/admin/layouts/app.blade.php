@@ -114,6 +114,10 @@ License: For each use you must have a valid license purchased only from above li
             color: white;
             padding: 2px;
         }
+
+        .field_input {
+            border: 0;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

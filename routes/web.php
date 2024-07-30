@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', [DashboardrController::class, 'index'])->name('dashboard.index');
+            Route::get('/doipass', [DashboardrController::class, 'doipass'])->name('admin.doipass');
             Route::controller(UserController::class)->prefix('/thanhvien')->group(function () {
                 Route::get('/', 'index')->name('thanhvien.index');
                 Route::post('/search', 'search')->name('admin.page.user.seach');
