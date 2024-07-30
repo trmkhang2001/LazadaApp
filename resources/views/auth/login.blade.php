@@ -9,14 +9,14 @@
             @csrf
 
             <div class="mb-3">
-                <input type="text" class="form-control" id="phone" placeholder="Mời bạn nhập số điện thoại"
-                    name="phone" value="{{ old('phone') }}">
+                <input type="text" class="form-control field_input input_log" id="phone"
+                    placeholder="Mời bạn nhập số điện thoại" name="phone" value="{{ old('phone') }}">
                 @error('phone')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="password" placeholder="Mời bạn nhập mật khẩu"
+                <input type="password" class="form-control input_log" id="password" placeholder="Mời bạn nhập mật khẩu"
                     name="password" value="{{ old('password') }}">
                 @error('password')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>

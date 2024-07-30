@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-end" style="background-color:rgb(48, 65, 86);">
-    <a class="my-2 me-5 p-2" style="background-color: #ff976a;color:white ">
+    <a href="/logout" class="my-2 me-5 p-2" style="background-color: #ff976a;color:white ">
         <span>Đăng xuất</span>
     </a>
 </div>

@@ -9,6 +9,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ asset('/layout/auth/style.css') }}" rel="stylesheet">
+    <style>
+        .input_log {
+            border: 0;
+            background-color: transparent;
+            border-radius: 0;
+            border-bottom: 1px solid #dddada;
+            color: #ffffff;
+        }
+
+        .input_log:focus {
+            border: 0;
+            background-color: transparent;
+            border-radius: 0;
+            border-bottom: 1px solid #dddada;
+            color: #ffffff;
+        }
+
+        .field_input::placeholder {
+            color: #ffffff;
+        }
+    </style>
 </head>
 
 <body>
