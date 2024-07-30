@@ -1,59 +1,24 @@
 @extends('admin.layouts.app')
-@section('title_page')
-    <div class="app-navbar-item ms-1 ms-md-3">
-        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <!--begin::Title-->
-            <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                Lịch sử rút tiền</h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
-            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    <a href="/admin/dashboard" class="text-muted text-hover-primary">Admin</a>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">Lịch sử rút tiền</li>
-                <!--end::Item-->
-            </ul>
-            <!--end::Breadcrumb-->
-        </div>
-    </div>
-@endsection
 @section('contents')
-    <div class="d-flex flex-column flex-column-fluid">
-        <div class="card card-flush">
-            <!--begin::Card header-->
-            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                <!--begin::Card title-->
-                <div class="card-title">
-                    <!--begin::Search-->
+    <div class="bg-white p-4">
+        <div class="">
+            <div class="d-flex mb-4">
+                <div class="d-flex align-items-center me-4">
+                    <input class="me-3" type="checkbox">
+                    <div style="color: red">Tât cả dữ liệu khuyến mãi ngoại tuyến</div>
+                </div>
+                <div class="">
                     <form action="{{ route('ruttien.search') }}" method="POST">
                         @csrf
-                        <div class="d-flex align-items-center position-relative my-1">
-                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <input type="text" id="search" name="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Nhập thông tin" />
-                            <button type="submit" class="btn btn-primary pd-2 ms-2"> Tìm kiếm</button>
+                        <div class="d-flex">
+                            <input type="text" id="search" name="search" class="me-3"
+                                placeholder="Nhập thông tin" />
+                            <button type="submit" class="btn-blue border-0"> Tìm kiếm</button>
                         </div>
                     </form>
-                    <!--end::Search-->
                 </div>
-                <!--end::Card title-->
             </div>
-            <!--end::Card header-->
-
-            <!--begin::Card body-->
-            <div class="card-body pt-0">
+            <div class="mb-4">
                 @if (Session::has('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('error') }}
@@ -64,113 +29,114 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                <!--begin::Table-->
-                <div id="kt_ecommerce_sales_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer"
-                            id="kt_ecommerce_sales_table">
-                            <thead>
-                                <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Customer: activate to sort column ascending">
-                                        Mã hóa đơn</th>
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Customer: activate to sort column ascending">
-                                        Khách hàng</th>
-                                    <th>Thông tin tài khoản rút</th>
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1">
-                                        Số tiền trước (lúc tạo lệnh)</th>
-                                    <th class=" " tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Status: activate to sort column ascending">
-                                        Số tiền rút </th>
-                                    <th class=" " tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Status: activate to sort column ascending">
-                                        Số tiền sau rút (lúc tạo lệnh)</th>
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1">
-                                        Trạng thái</th>
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1">
-                                        Số dư hiện tại:</th>
-                                    <th class="" tabindex="0" aria-controls="kt_ecommerce_sales_table"
-                                        rowspan="1" colspan="1">
-                                        Thời gian</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody class="fw-semibold text-gray-600">
-                                @foreach ($items as $ruttien)
-                                    <tr>
-                                        <td>
-                                            <span class="text-danger">{{ $ruttien->id }}</span>
-                                        </td>
-                                        <td>
-                                            <span>{{ $ruttien->user->phone }}</span>
-                                        </td>
-                                        <td>
-                                            <span>Ngân hàng: {{ $ruttien->taikhoanrut->ten_ngan_hang }}</span>
-                                            <br>
-                                            <span>Tài khoản: {{ $ruttien->taikhoanrut->tai_khoan }}</span>
-                                            <br>
-                                            <span>Chủ tài khoản: {{ $ruttien->taikhoanrut->chu_tai_khoan }}</span>
-                                            <br>
-                                            <span>SDT: {{ $ruttien->taikhoanrut->so_dien_thoai }}</span>
-                                        </td>
-                                        <td>
-                                            <span
-                                                class="text-success">{{ number_format($ruttien->so_tien_truoc, 0, ',', '.') . ' VND' }}</span>
-                                        </td>
-
-                                        <td>
-                                            <span
-                                                class="text">{{ number_format($ruttien->so_tien_rut, 0, ',', '.') . ' VND' }}</span>
-                                        </td>
-                                        <td>
-                                            <span
-                                                class="text-primary">{{ number_format($ruttien->so_tien_sau, 0, ',', '.') . ' VND' }}</span>
-                                        </td>
-                                        <td>
-                                            @if ($ruttien->status == 0)
-                                                <div class="badge badge-light-warning">Chưa xác nhận</div>
-                                                <!--end::Badges-->
-                                            @elseif ($ruttien->status == -1)
-                                                <div class="badge badge-light-danger">Đã hủy</div>
-                                            @else
-                                                <div class="badge badge-light-success">Xác nhận</div>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <span
-                                                class="badge badge-light-danger">{{ number_format($ruttien->user->sodu) . ' VNĐ' }}</span>
-                                        </td>
-                                        <td>
-                                            <span class="text">{{ $ruttien->created_at }}</span>
-                                        </td>
-                                        <td>
-                                            @if ($ruttien->status == 0)
-                                                <a href="{{ route('ruttien.xacnhan', $ruttien->id) }}"
-                                                    class="btn btn-sm btn-primary">Xác nhận</a>
-                                                <a href="{{ route('ruttien.huy', $ruttien->id) }}"
-                                                    class="btn btn-sm btn-danger">Huỷ</a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="">
-                        {{-- {{ $items->links() }} --}}
-                    </div>
-                </div>
-                <!--end::Table-->
             </div>
-            <!--end::Card body-->
+            <div class="mb-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã đơn</th>
+                            <th scope="col">Tên tài khoản</th>
+                            <th scope="col">Thông tin tài khoản rút</th>
+                            <th scope="col">Số tiền yêu cầu</th>
+                            <th scope="col">Số tiền thanh toán</th>
+                            <th scope="col">Phí xử lý</th>
+                            <th scope="col">Số tiền sau rút</th>
+                            <th scope="col">Trang thái</th>
+                            <th scope="col">Trạng thái xem xét proxy</th>
+                            <th scope="col">Phương thức thanh toán</th>
+                            <th scope="col">Thời gian rút tiền</th>
+                            <th scope="col">Thời gian cập nhật</th>
+                            <th scope="col">Thao tác</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($items as $ruttien)
+                            <tr>
+                                <th>
+                                    <div class="cell">
+                                        <div>{{ $ruttien->id }}</div>
+                                    </div>
+                                </th>
+                                <td>
+                                    <div class="cell">
+                                        <div>
+                                            <span class="me-2">{{ $ruttien->user->phone }}</span>
+                                            <span class="text-success">Bên ngoài</span>
+                                        </div>
+                                        <div class="text-blue font-bold"
+                                            style="color: rgb(32, 160, 255) !important; font-weight: 700;">Giá trị rủi ro: 0
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        <div>Kiểu tài khoản: BANK</div>
+                                        <div>Tên ngân hàng: {{ $ruttien->taikhoanrut->ten_ngan_hang }}</div>
+                                        <div>Tài khoản ngân hàng: {{ $ruttien->taikhoanrut->tai_khoan }}</div>
+                                        <div>Chủ tài khoản: {{ $ruttien->taikhoanrut->chu_tai_khoan }}</div>
+                                        <div>Số điện thoại: {{ $ruttien->taikhoanrut->so_dien_thoai }}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        <span
+                                            class="text-success">{{ number_format($ruttien->so_tien_rut, 0, ',', '.') . ' VND' }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        <span
+                                            class="text-danger">{{ number_format($ruttien->so_tien_rut, 0, ',', '.') . ' VND' }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">0</div>
+                                </td>
+                                <td>
+                                    <div class="cell"><span
+                                            class="text-primary">{{ number_format($ruttien->so_tien_sau, 0, ',', '.') . ' VND' }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        @if ($ruttien->status == 0)
+                                            <div class="text-warning">Chưa xác nhận</div>
+                                            <!--end::Badges-->
+                                        @elseif ($ruttien->status == -1)
+                                            <div class="text-danger">Đã hủy</div>
+                                        @else
+                                            <div class="text-success">Xác nhận</div>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        <span class="text-danger">Để được xem xét</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>Online</div>
+                                </td>
+                                <td>
+                                    <div class="cell">{{ $ruttien->created_at }}</div>
+                                </td>
+                                <td>
+                                    <div class="cell">{{ $ruttien->updated_at }}</div>
+                                </td>
+                                <td>
+                                    <div class="cell">
+                                        @if ($ruttien->status == 0)
+                                            <a href="{{ route('ruttien.xacnhan', $ruttien->id) }}"
+                                                class="btn-blue border-0">Xác nhận</a>
+                                            <a href="{{ route('ruttien.huy', $ruttien->id) }}"
+                                                class="btn-red border-0">Huỷ</a>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

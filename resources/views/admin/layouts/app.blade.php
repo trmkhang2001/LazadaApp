@@ -90,7 +90,43 @@ License: For each use you must have a valid license purchased only from above li
         .color-red {
             color: red !important;
         }
+
+        .btn-yellow {
+            background-color: #ff976a;
+            color: white;
+            padding: 2px;
+        }
+
+        .btn-blue {
+            background-color: #409EFF;
+            color: white;
+            padding: 2px;
+        }
+
+        .btn-red {
+            background-color: red;
+            color: white;
+            padding: 2px;
+        }
+
+        .btn-green {
+            background-color: green;
+            color: white;
+            padding: 2px;
+        }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPath = window.location.pathname;
+            const links = document.querySelectorAll('a.menu-link');
+
+            links.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+    </script>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
