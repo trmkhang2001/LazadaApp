@@ -62,7 +62,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div>Nạp tiền trực tuyến</div>
+                                    @if ($naptien->loai_nap == 1)
+                                        <div>Nạp tiền trực tuyến</div>
+                                    @elseif ($naptien->loai_nap == 0)
+                                        <div>Đăng ký nhận quà</div>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="cell">

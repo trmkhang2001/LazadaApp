@@ -10,6 +10,40 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ asset('/layout/css/style.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/vant/2.13.2/index.min.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            color: #000;
+            /* Màu mặc định */
+        }
+
+        .nav-link.active {
+            color: #409EFF;
+            /* Màu khi đang ở trang */
+        }
+
+        .nav-link.active .nav-icon {
+            fill: #409EFF;
+            /* Màu của SVG khi đang ở trang */
+        }
+
+        .nav-link.active .nav-title {
+            color: #409EFF;
+            /* Màu tiêu đề khi đang ở trang */
+        }
+
+        .swiper-container {
+            height: 300px;
+            /* Chiều cao của khu vực hiển thị */
+            overflow: hidden;
+            /* Ẩn phần tử bị tràn */
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            flex-direction: column;
+            /* Cuộn dọc */
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +72,7 @@
                         <path d="M416 174.74V48h-80v58.45L256 32 0 272h64v208h144V320h96v160h144V272h64l-96-97.26z">
                         </path>
                     </svg>
-                    <div class="nav-tittle">Trang chủ</div>
+                    <div class="nav-title">Trang chủ</div>
                 </div>
             </a>
             <a class="nav-link" href="/dondat">
@@ -64,7 +98,7 @@
                     <div class="nav-title"></div>
                 </div>
             </a>
-            <a class="nav-link" href="/chamsoc">
+            <a class="nav-link" href="/nap_tien_view">
                 <div class="nav-item"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
                         viewBox="0 0 640 512" class="nav-icon" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +106,7 @@
                             d="M608 32H32C14.33 32 0 46.33 0 64v384c0 17.67 14.33 32 32 32h576c17.67 0 32-14.33 32-32V64c0-17.67-14.33-32-32-32zM176 327.88V344c0 4.42-3.58 8-8 8h-16c-4.42 0-8-3.58-8-8v-16.29c-11.29-.58-22.27-4.52-31.37-11.35-3.9-2.93-4.1-8.77-.57-12.14l11.75-11.21c2.77-2.64 6.89-2.76 10.13-.73 3.87 2.42 8.26 3.72 12.82 3.72h28.11c6.5 0 11.8-5.92 11.8-13.19 0-5.95-3.61-11.19-8.77-12.73l-45-13.5c-18.59-5.58-31.58-23.42-31.58-43.39 0-24.52 19.05-44.44 42.67-45.07V152c0-4.42 3.58-8 8-8h16c4.42 0 8 3.58 8 8v16.29c11.29.58 22.27 4.51 31.37 11.35 3.9 2.93 4.1 8.77.57 12.14l-11.75 11.21c-2.77 2.64-6.89 2.76-10.13.73-3.87-2.43-8.26-3.72-12.82-3.72h-28.11c-6.5 0-11.8 5.92-11.8 13.19 0 5.95 3.61 11.19 8.77 12.73l45 13.5c18.59 5.58 31.58 23.42 31.58 43.39 0 24.53-19.05 44.44-42.67 45.07zM416 312c0 4.42-3.58 8-8 8H296c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h112c4.42 0 8 3.58 8 8v16zm160 0c0 4.42-3.58 8-8 8h-80c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h80c4.42 0 8 3.58 8 8v16zm0-96c0 4.42-3.58 8-8 8H296c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h272c4.42 0 8 3.58 8 8v16z">
                         </path>
                     </svg>
-                    <div class="nav-title">Chăm sóc</div>
+                    <div class="nav-title">Nạp tiền</div>
                 </div>
             </a>
             <a class="nav-link" href="/profile">
@@ -93,5 +127,40 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vant/2.13.2/vant.min.js"></script>
+<script>
+    // Function to set active link
+    function setActiveLink() {
+        const links = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname;
+
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (currentPath === href) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Run the function on page load
+    document.addEventListener('DOMContentLoaded', setActiveLink);
+</script>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 10,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+</script>
 
 </html>

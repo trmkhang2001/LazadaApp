@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\NapTien;
 use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -32,10 +34,10 @@ class AuthController extends Controller
             'xnmatkhauruttien' => 'required'
         ]);
         $aff_code = $req->aff_code;
-        // $user = ModelsUser::where('aff_code', $aff_code)->first();
-        // if (!$user) {
-        //     return redirect()->back()->withErrors(['msg' => 'Mã mời không tôn tại']);
-        // }
+        $user = ModelsUser::where('phone', $aff_code)->first();
+        if (!$user) {
+            return redirect()->back()->withErrors(['msg' => 'Mã mời không tôn tại']);
+        }
         $phone = $req->phone;
         $password = $req->password;
         $cfpassword = $req->cfpassword;
@@ -52,6 +54,20 @@ class AuthController extends Controller
                 'sodu' => 30000
             ]
         );
+        $id = $user->id;
+        do {
+            $ma_nap = Str::random(10);
+        } while (NapTien::where('ma_nap', $ma_nap)->exists());
+        NapTien::create([
+            'user_id' => $id,
+            'ma_nap' => $ma_nap,
+            'loai_nap' => 0,
+            'phuong_thuc_thanh_toan' => 0,
+            'so_tien_truoc' => 0,
+            'so_tien_nap' => 30000,
+            'so_tien_sau' => 30000,
+            'status' => 1
+        ]);
         return redirect('login');
     }
     public function postLogin(Request $req)

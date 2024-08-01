@@ -127,6 +127,76 @@
             <div class="fw-bold mb-4">
                 Động thái hoa hồng người dùng
             </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white border-rem border-0 mb-2">
+                            <div class="p-2">
+                                <div class="row align-items-center">
+                                    <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                    <div class="col-auto d-flex flex-column align-start border-left">
+                                        <div class="font-weight-normal mb-2">Hoa hồng thu nhập 1.550.000 ₫</div>
+                                        <div class="text-mute small text-secondary">556****07178</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white border-rem border-0 mb-2">
+                            <div class="p-2">
+                                <div class="row align-items-center">
+                                    <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                    <div class="col-auto d-flex flex-column align-start border-left">
+                                        <div class="font-weight-normal mb-2">Hoa hồng thu nhập 23.000 ₫</div>
+                                        <div class="text-mute small text-secondary">556****07178</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white border-rem border-0 mb-2">
+                            <div class="p-2">
+                                <div class="row align-items-center">
+                                    <div class="col-3 d-flex justify-content-center"> 06-20</div>
+                                    <div class="col-auto d-flex flex-column align-start border-left">
+                                        <div class="font-weight-normal mb-2">Hoa hồng thu nhập 790.000 ₫</div>
+                                        <div class="text-mute small text-secondary">556****07178</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Các slide khác (thay đổi số lượng thành 10 slide) -->
+                    <!-- Slide 4 đến Slide 10 -->
+                    <!-- Ví dụ: Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white border-rem border-0 mb-2">
+                            <div class="p-2">
+                                <div class="row align-items-center">
+                                    <div class="col-3 d-flex justify-content-center"> 06-21</div>
+                                    <div class="col-auto d-flex flex-column align-start border-left">
+                                        <div class="font-weight-normal mb-2">Hoa hồng thu nhập 26.600 ₫</div>
+                                        <div class="text-mute small text-secondary">556****07179</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thêm các slide tiếp theo -->
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        {{-- <div class="mt-3 mx-1">
+            <div class="fw-bold mb-4">
+                Động thái hoa hồng người dùng
+            </div>
             <div class="mt-2">
                 <div class="van-swipe-item mb-3">
                     <div class="bg-white border-rem  border-0 mb-2">
@@ -168,7 +238,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- Giới thiệu --}}
         <div class="">
             <div class="d-flex">
