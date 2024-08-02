@@ -82,7 +82,7 @@ class AuthController extends Controller
             ]);
         }
         if (Auth::user()->level == 1024 || Auth::user()->level == 1000) {
-            return redirect('/admin/donhang');
+            return redirect('/admin');
         }
         return redirect('/');
     }

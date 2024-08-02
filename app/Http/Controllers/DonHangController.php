@@ -16,7 +16,13 @@ class DonHangController extends Controller
         $don_hang_maus = DonHangMau::orderBy('created_at', 'desc')->get();
         if (Auth::user()->level == 1000) {
             $aff_code = Auth::user()->phone;
-            $orders = DonHang::orderBy('created_at', 'desc')->where('aff_code', $aff_code)->with('user')->with('don_hang_maus')->paginate(10);
+            $orders = DonHang::orderBy('created_at', 'desc')
+                ->whereHas('user', function ($query) use ($aff_code) {
+                    $query->where('aff_code', $aff_code);
+                })
+                ->with('user')
+                ->with('don_hang_maus')
+                ->paginate(10);
         } elseif (Auth::user()->level == 1024) {
             $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->paginate(10);
         }
