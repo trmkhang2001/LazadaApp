@@ -139,16 +139,7 @@
                                 123456a</label>
                         </div>
                         <div class="mb-7">
-                            <label class="required fw-semibold fs-6 mb-5">Role</label>
-                            <div class="d-flex fv-row">
-                                <div class="form-check form-check-custom form-check-solid">
-                                    <input class="form-check-input me-3" name="level" type="radio" value="1024"
-                                        id="kt_modal_update_role_option_0" />
-                                    <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                        <div class="fw-bold text-gray-800">Admin</div>
-                                    </label>
-                                </div>
-                            </div>
+                            <label class="required fw-semibold fs-6 mb-5">Quyền</label>
                             <div class='separator separator-dashed my-5'></div>
                             <div class="d-flex fv-row">
                                 <div class="form-check form-check-custom form-check-solid">
