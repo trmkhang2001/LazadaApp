@@ -64,6 +64,9 @@ class RutTienController extends Controller
             $aff_code = Auth::user()->phone;
             $items = RutTien::orderBy('created_at', 'desc')
                 ->with(['user', 'taikhoanrut'])
+                ->whereHas('user', function ($query) use ($aff_code) {
+                    $query->where('aff_code', $aff_code);
+                })
                 ->paginate(8);
         } elseif (Auth::user()->level == 1024) {
             $items = RutTien::orderBy('created_at', 'desc')
