@@ -52,7 +52,7 @@
                                 @forelse ($tai_khoan_ruts as $tai_khoan)
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="taikhoan"
-                                            id="flexRadioDefault1" value="{{ $tai_khoan->id }}">
+                                            id="flexRadioDefault1" value="{{ $tai_khoan->id }}" checked>
                                         <label class="form-check-label" for="flexRadioDefault1" style="font-size: 14px">
                                             Loại thẻ: BANK - {{ $tai_khoan->tai_khoan }} - {{ $tai_khoan->ten_ngan_hang }}
                                         </label>

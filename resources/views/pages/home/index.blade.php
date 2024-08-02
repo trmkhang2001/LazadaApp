@@ -312,3 +312,21 @@
         </div>
     </div>
 @stop
+@section('javascript')
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+@stop

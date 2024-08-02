@@ -43,6 +43,23 @@
             flex-direction: column;
             /* Cuộn dọc */
         }
+
+        .custom-swiper-container {
+            height: 50px;
+            /* Đặt chiều cao phù hợp */
+            overflow: hidden;
+        }
+
+        .custom-swiper-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .custom-swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
     </style>
 </head>
 
@@ -146,21 +163,7 @@
 </script>
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        direction: 'vertical',
-        loop: true,
-        slidesPerView: 3,
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-    });
-</script>
+@yield('javascript')
+
 
 </html>

@@ -7,45 +7,46 @@
         </div>
         <form action="/register" class="px-5 pt-5" method="POST">
             @csrf
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <h4 class="alert alert-danger">{{ $errors->first() }}</h4>
-            @endif
+            @endif --}}
             <div class="mb-3">
-                <input type="text" class="form-control input_log @error('title') is-invalid @enderror" id="aff_code"
-                    placeholder="Mã mời" value="{{ old('aff_code') }}" name="aff_code">
+                <input type="text" class="form-control field_input input_log @error('title') is-invalid @enderror"
+                    id="aff_code" placeholder="Mã mời" value="{{ old('aff_code') }}" name="aff_code">
                 @error('aff_code')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền mã mời</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control input_log" id="phone" placeholder="Số điện thoại"
+                <input type="text" class="form-control field_input input_log" id="phone" placeholder="Số điện thoại"
                     value="{{ old('phone') }}" name="phone">
                 @error('phone')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control input_log" id="password" placeholder="Mật khẩu" name="password">
+                <input type="password" class="form-control field_input input_log" id="password" placeholder="Mật khẩu"
+                    name="password">
                 @error('password')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền mật khẩu hợp lệ</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control input_log" id="cfpassword" placeholder="Xác nhận mật khẩu"
-                    name="cfpassword">
+                <input type="password" class="form-control field_input input_log" id="cfpassword"
+                    placeholder="Xác nhận mật khẩu" name="cfpassword">
                 @error('cfpassword')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền mật khẩu hợp lệ</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control input_log" id="matkhauruttien" placeholder="Mật khẩu rút tiền"
-                    name="matkhauruttien">
+                <input type="password" class="form-control field_input input_log" id="matkhauruttien"
+                    placeholder="Mật khẩu rút tiền" name="matkhauruttien">
                 @error('matkhauruttien')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền mật khẩu rút tiền</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control input_log" id="xnmatkhauruttien"
+                <input type="password" class="form-control field_input input_log" id="xnmatkhauruttien"
                     placeholder="Xác nhật mật khẩu rút tiền" name="xnmatkhauruttien">
                 @error('xnmatkhauruttien')
                     <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng xác nhận mật khẩu rút tiền</span>
