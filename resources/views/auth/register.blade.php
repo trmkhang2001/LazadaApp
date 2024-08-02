@@ -21,7 +21,7 @@
                 <input type="text" class="form-control field_input input_log" id="phone" placeholder="Số điện thoại"
                     value="{{ old('phone') }}" name="phone">
                 @error('phone')
-                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>
+                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Số điện thoại đã tồn tại</span>
                 @enderror
             </div>
             <div class="mb-3">

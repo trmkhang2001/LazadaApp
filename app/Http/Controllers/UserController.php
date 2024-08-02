@@ -15,8 +15,10 @@ class UserController extends Controller
         if (Auth::user()->level == 1024) {
             $items = User::paginate(5);
         } else {
+            $aff_code = Auth::user()->phone;
             $items = User::where('level', '!=', 1024)
                 ->where('level', '!=', 1000)
+                ->where('aff_code', $aff_code)
                 ->paginate(5);
         }
         return view('admin.user.index', compact('items'));

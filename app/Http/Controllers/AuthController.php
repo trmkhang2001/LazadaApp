@@ -27,7 +27,7 @@ class AuthController extends Controller
     {
         $validated = $req->validate([
             'aff_code' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:users,phone',
             'password' => 'required',
             'cfpassword' => 'required',
             'matkhauruttien' => 'required',
@@ -50,7 +50,7 @@ class AuthController extends Controller
                 'pass_rut_tien' => $req->matkhauruttien,
                 'level' => 1,
                 'status' => 1,
-                'aff_code' => $req->phone,
+                'aff_code' => $req->aff_code,
                 'sodu' => 30000
             ]
         );
