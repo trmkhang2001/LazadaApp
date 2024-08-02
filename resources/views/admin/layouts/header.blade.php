@@ -33,6 +33,9 @@
     </div>
     @if (Auth::user()->level == 1024)
         <div class="my-2 mx-5 p-2">
+            <a class="menu-link" href="/admin/donhangmau">Đơn hàng mẫu</a>
+        </div>
+        <div class="my-2 mx-5 p-2">
             <a class="menu-link" href="/admin/banking">Tài khoản khách nạp</a>
         </div>
     @endif
