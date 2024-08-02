@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
     public function index()
     {
-        $items = User::paginate(5);
+        if (Auth::user()->level == 1024) {
+            $items = User::paginate(5);
+        } else {
+            $items = User::where('level', '!=', 1024)
+                ->where('level', '!=', 1000)
+                ->paginate(5);
+        }
         return view('admin.user.index', compact('items'));
     }
     public function search(Request $request)
