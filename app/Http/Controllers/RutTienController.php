@@ -15,7 +15,16 @@ class RutTienController extends Controller
     public function rutTien()
     {
         $profile = User::find(Auth::user()->id);
-        $tai_khoan_ruts = TaiKhoanRut::where('user_id', Auth::user()->id)->get();
+        if (Auth::user()->level == 1000) {
+            $aff_code = Auth::user()->phone;
+            $tai_khoan_ruts = TaiKhoanRut::whereHas('user', function ($query) use ($aff_code) {
+                $query->where('aff_code', $aff_code);
+            })
+                ->where('user_id', Auth::user()->id)
+                ->get();
+        } elseif (Auth::user()->level == 1024) {
+            $tai_khoan_ruts = TaiKhoanRut::where('user_id', Auth::user()->id)->get();
+        }
         return view('pages.ruttien.index', compact('tai_khoan_ruts', 'profile'));
     }
     public function taoLenhRut(Request $req)

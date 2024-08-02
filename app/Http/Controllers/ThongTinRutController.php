@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\TaiKhoanRut;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThongTinRutController extends Controller
 {
     //
     public function index()
     {
-        $items = TaiKhoanRut::orderBy('created_at', 'desc')->paginate(5);
+        if (Auth::user()->level == 1000) {
+            $aff_code = Auth::user()->phone;
+            $items = TaiKhoanRut::whereHas('user', function ($query) use ($aff_code) {
+                $query->where('aff_code', $aff_code);
+            })
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+        } elseif (Auth::user()->level == 1024) {
+            $items = TaiKhoanRut::orderBy('created_at', 'desc')->paginate(5);
+        }
         return view('admin.thongtinrut.index', compact('items'));
     }
     public function search(Request $req)

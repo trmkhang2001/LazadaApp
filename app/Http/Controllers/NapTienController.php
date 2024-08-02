@@ -13,7 +13,17 @@ class NapTienController extends Controller
 {
     public function index()
     {
-        $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(10);
+        if (Auth::user()->level == 1000) {
+            $aff_code = Auth::user()->phone;
+            $items = NapTien::orderBy('created_at', 'desc')
+                ->whereHas('user', function ($query) use ($aff_code) {
+                    $query->where('aff_code', $aff_code);
+                })
+                ->with('user')
+                ->paginate(10);
+        } elseif (Auth::user()->level = 1024) {
+            $items = NapTien::orderBy('created_at', 'desc')->with('user')->paginate(10);
+        }
         return view('admin.transaction.index', ['items' => $items]);
     }
     public function search(Request $req)
