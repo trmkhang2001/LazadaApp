@@ -14,11 +14,12 @@ class ThongTinRutController extends Controller
     {
         if (Auth::user()->level == 1000) {
             $aff_code = Auth::user()->phone;
-            $items = TaiKhoanRut::whereHas('user', function ($query) use ($aff_code) {
-                $query->where('aff_code', $aff_code);
-            })
-                ->orderBy('created_at', 'desc')
-                ->paginate(5);
+            $items = RutTien::orderBy('created_at', 'desc')
+                ->with(['user', 'taikhoanrut'])
+                ->whereHas('user', function ($query) use ($aff_code) {
+                    $query->where('aff_code', $aff_code);
+                })
+                ->paginate(8);
         } elseif (Auth::user()->level == 1024) {
             $items = TaiKhoanRut::orderBy('created_at', 'desc')->paginate(5);
         }

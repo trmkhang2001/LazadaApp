@@ -15,16 +15,7 @@ class RutTienController extends Controller
     public function rutTien()
     {
         $profile = User::find(Auth::user()->id);
-        if (Auth::user()->level == 1000) {
-            $aff_code = Auth::user()->phone;
-            $tai_khoan_ruts = TaiKhoanRut::whereHas('user', function ($query) use ($aff_code) {
-                $query->where('aff_code', $aff_code);
-            })
-                ->where('user_id', Auth::user()->id)
-                ->get();
-        } elseif (Auth::user()->level == 1024) {
-            $tai_khoan_ruts = TaiKhoanRut::where('user_id', Auth::user()->id)->get();
-        }
+        $tai_khoan_ruts = TaiKhoanRut::where('user_id', Auth::user()->id)->get();
         return view('pages.ruttien.index', compact('tai_khoan_ruts', 'profile'));
     }
     public function taoLenhRut(Request $req)
@@ -47,7 +38,7 @@ class RutTienController extends Controller
         $ktra = DonHang::where('user_id', $user->id)->where('status', '0')->count();
         $ktra2 = DonHang::where('user_id', $user->id)->where('status', '2')->count();
         if ($ktra > 0 || $ktra2 > 0) {
-            return redirect()->back()->with('error', 'Bạn đang có đơn hàng chưa hoàn thành!');
+            return redirect()->back()->with('error', 'Bạn đang có đơn hàng chưa hoàn thành');
         }
         $rutien = RutTien::create([
             'user_id' => $user->id,
@@ -69,9 +60,16 @@ class RutTienController extends Controller
     //admin
     public function index()
     {
-        $items = RutTien::orderBy('created_at', 'desc')
-            ->with(['user', 'taikhoanrut'])
-            ->paginate(8);
+        if (Auth::user()->level == 1000) {
+            $aff_code = Auth::user()->phone;
+            $items = RutTien::orderBy('created_at', 'desc')
+                ->with(['user', 'taikhoanrut'])
+                ->paginate(8);
+        } elseif (Auth::user()->level == 1024) {
+            $items = RutTien::orderBy('created_at', 'desc')
+                ->with(['user', 'taikhoanrut'])
+                ->paginate(8);
+        }
         return view('admin.ruttien.index', compact('items'));
     }
     public function search(Request $req)
