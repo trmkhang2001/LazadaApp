@@ -132,8 +132,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endif
-                        @if (Auth::user()->level == 1000 && $user->level != 1024 && $user->level != 1000)
+                        @elseif (Auth::user()->level == 1000 && $user->level != 1024 && $user->level != 1000)
                             <tr>
                                 <th scope="row">{{ $user->aff_code }}</th>
                                 <td>
