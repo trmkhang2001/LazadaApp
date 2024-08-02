@@ -16,7 +16,6 @@
     <div class="bg-white p-4">
         <form action="{{ route('donhangmau.store') }}" class="" method="POST" enctype="multipart/form-data">
             @csrf
-
             <div class="">
                 <div class="">
                     <div class="">

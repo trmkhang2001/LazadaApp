@@ -15,6 +15,8 @@
                     <div>Số tiền sau khi rút: {{ number_format($ls->so_tien_sau) . ' ₫' }}</div>
                     <div>Trạng thái rút: @if ($ls->status == 1)
                             <span class="p-1 alert-success border-rad10">Thành công</span>
+                        @elseif($ls->status == -1)
+                            <span class="p-1 alert-danger border-rad10">Đẫ huỷ</span>
                         @else
                             <span class="p-1 alert-warning border-rad10">Đang gửi</span>
                         @endif

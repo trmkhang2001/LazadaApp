@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DonHang;
 use App\Models\RutTien;
 use App\Models\TaiKhoanRut;
 use App\Models\User;
@@ -30,6 +31,14 @@ class RutTienController extends Controller
         }
         if ($req->tienrut > $user->sodu) {
             return redirect()->back()->with('error', 'Số dư không đủ');
+        }
+        if ($req->tienrut < 50000) {
+            return redirect()->back()->with('error', 'Số tiền rút phải lơn hơn 50.000 VNĐ');
+        }
+        $ktra = DonHang::where('user_id', $user->id)->where('status', '0')->count();
+        $ktra2 = DonHang::where('user_id', $user->id)->where('status', '2')->count();
+        if ($ktra > 0 || $ktra2 > 0) {
+            return redirect()->back()->with('error', 'Bạn đang có đơn hàng chưa hoàn thành!');
         }
         $rutien = RutTien::create([
             'user_id' => $user->id,
