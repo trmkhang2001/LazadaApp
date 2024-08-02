@@ -31,6 +31,11 @@
     <div class="my-2 mx-5 p-2">
         <a class="menu-link" href="/admin/thanhvien">Danh sách khách hàng</a>
     </div>
+    @if (Auth::user()->level == 1024)
+        <div class="my-2 mx-5 p-2">
+            <a class="menu-link" href="/admin/banking">Tài khoản khách nạp</a>
+        </div>
+    @endif
     <div class="my-2 mx-5 p-2">
         <a class="menu-link" href="/admin/doipass">Đổi mật khẩu</a>
     </div>
