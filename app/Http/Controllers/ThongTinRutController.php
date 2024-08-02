@@ -14,7 +14,7 @@ class ThongTinRutController extends Controller
     {
         if (Auth::user()->level == 1000) {
             $aff_code = Auth::user()->phone;
-            $items = RutTien::orderBy('created_at', 'desc')
+            $items = TaiKhoanRut::orderBy('created_at', 'desc')
                 ->with(['user', 'taikhoanrut'])
                 ->whereHas('user', function ($query) use ($aff_code) {
                     $query->where('aff_code', $aff_code);
