@@ -10,7 +10,7 @@ class DonHangMauController extends Controller
     //
     public function index()
     {
-        $items =  DonHangMau::orderBy('created_at', 'desc')->paginate(5);
+        $items =  DonHangMau::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.product.index', ['items' => $items]);
     }
     public function search(Request $request)
