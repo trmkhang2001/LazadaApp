@@ -12,7 +12,7 @@
             </div>
             <div class="card ms-4 shadow">
                 <div class="card-body">
-                    Mã mời: 123123
+                    Mã mời: {{ Auth::user()->phone }}
                 </div>
             </div>
         </div>
