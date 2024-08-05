@@ -5,6 +5,11 @@
             <img src="https://da8975.com/api//file/front/1c233457962c411fb234ad445f08787b_.jpg" alt=""
                 style="width: 80px;    height: 80px;">
         </div>
+        @if (Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <form action="/login" class="px-5 pt-5" method="POST">
             @csrf
 

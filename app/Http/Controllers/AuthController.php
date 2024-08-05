@@ -68,7 +68,7 @@ class AuthController extends Controller
             'so_tien_sau' => 30000,
             'status' => 1
         ]);
-        return redirect('login');
+        return redirect('login')->with('success', 'Đăng ký thành công');
     }
     public function postLogin(Request $req)
     {
