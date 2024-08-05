@@ -168,14 +168,22 @@
                     <form id="updateUserForm" action="{{ route('donhang.phanphoidon') }}" method="POST">
                         @csrf
                         <input type="hidden" id="id" name="id">
-                        <!-- Other form fields for updating user details -->
+                        <!-- Các trường khác để cập nhật thông tin người dùng -->
                         <div class="mb-3">
                             <label for="userName" class="form-label">Chọn đơn</label>
-                            <select class="form-select" aria-label="Default select example" name="don_mau">
+                            <input type="range" class="form-range" min="0" max="100000000" step="100000"
+                                id="priceRange">
+                            <div class="d-flex justify-content-between">
+                                <span id="minPrice">Từ 0 VNĐ</span>
+                                <span id="maxPrice">Đến 100,000,000 VNĐ</span>
+                            </div>
+                            <select class="form-select mt-3" aria-label="Default select example" name="don_mau"
+                                id="don_mau_select">
                                 <option selected>Chọn đơn phù hợp</option>
                                 @foreach ($don_hang_maus as $don_mau)
-                                    <option value="{{ $don_mau->id }}">
-                                        {{ 'Tên: ' . $don_mau->ten_san_pham . ' - Giá: ' . $don_mau->tong_gia }}</option>
+                                    <option value="{{ $don_mau->id }}" data-gia="{{ $don_mau->tong_gia }}">
+                                        {{ 'Giá: ' . number_format($don_mau->tong_gia) . 'VNĐ' . ' - Tên: ' . $don_mau->ten_san_pham }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -195,5 +203,38 @@
             var phanPhoiDonModal = new bootstrap.Modal(document.getElementById('phanphoidonmodal'));
             phanPhoiDonModal.show();
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectElement = document.getElementById('don_mau_select');
+            const priceRange = document.getElementById('priceRange');
+            const minPriceLabel = document.getElementById('minPrice');
+            const maxPriceLabel = document.getElementById('maxPrice');
+
+            // Hàm định dạng giá trị tiền tệ
+            function formatCurrency(value) {
+                return 'Đến ' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VNĐ';
+            }
+
+            priceRange.addEventListener('input', function() {
+                const maxPrice = parseFloat(priceRange.value);
+                maxPriceLabel.textContent = formatCurrency(maxPrice);
+
+                // Lọc các option dựa trên khoảng giá
+                filterOptionsByPrice(selectElement, maxPrice);
+            });
+
+            // Hàm để lọc các option theo giá
+            function filterOptionsByPrice(select, maxPrice) {
+                const options = Array.from(select.options);
+
+                options.forEach(option => {
+                    const price = parseFloat(option.getAttribute('data-gia'));
+                    if (price <= maxPrice) {
+                        option.style.display = 'block';
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+            }
+        });
     </script>
 @endsection

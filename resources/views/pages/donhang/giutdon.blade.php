@@ -144,7 +144,7 @@
                         <img src="{{ asset('layout/img/2.gif') }}" alt="">
                     </div>
                     <div class="mt-2 fw-bold text-white fs-5">
-                        Đang phối sản phẩm
+                        Đang phân phối phối sản phẩm
                     </div>
                 </div>
             </div>

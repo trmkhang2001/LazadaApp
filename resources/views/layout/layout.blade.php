@@ -60,6 +60,10 @@
             align-items: center;
             justify-content: flex-start;
         }
+
+        .nav-item {
+            font-size: 15px !important;
+        }
     </style>
 </head>
 
