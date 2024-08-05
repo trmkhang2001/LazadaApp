@@ -6,6 +6,7 @@ use App\Models\DonHang;
 use App\Models\TaiKhoanRut;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,8 +14,38 @@ class ExampleController extends Controller
 {
     public function index()
     {
+        $userId = Auth::user()->id;
+
+        // Lấy ngày hôm qua và hôm nay
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+
+        // Tính tổng giá hôm nay
+        $tongGiaHienTai = DonHang::where('don_hangs.user_id', $userId)
+            ->where('don_hangs.status', 1)
+            ->whereDate('don_hangs.created_at', $today)
+            ->join('don_hang_maus', 'don_hang_maus.id', '=', 'don_hangs.don_hang_maus_id')
+            ->sum('don_hang_maus.tong_gia');
+
+        // Tính tổng giá ngày hôm qua
+        $tongGiaHomQua = DonHang::where('don_hangs.user_id', $userId)
+            ->where('don_hangs.status', 1)
+            ->whereDate('don_hangs.created_at', $yesterday)
+            ->join('don_hang_maus', 'don_hang_maus.id', '=', 'don_hangs.don_hang_maus_id')
+            ->sum('don_hang_maus.tong_gia');
+
+        // Tính tổng giá toàn bộ
+        $tongGiaTong = DonHang::where('don_hangs.user_id', $userId)
+            ->where('don_hangs.status', 1)
+            ->join('don_hang_maus', 'don_hang_maus.id', '=', 'don_hangs.don_hang_maus_id')
+            ->sum('don_hang_maus.tong_gia');
+
+        // Hiển thị kết quả để kiểm tra
+        // var_dump($tongGiaHienTai, $tongGiaHomQua, $tongGiaTong);
+
+        // Trả về view với dữ liệu
         $profile = User::find(Auth::user()->id);
-        return view('pages.home.index', compact('profile'));
+        return view('pages.home.index', compact('profile', 'tongGiaHienTai', 'tongGiaHomQua', 'tongGiaTong'));
     }
     public function profile()
     {

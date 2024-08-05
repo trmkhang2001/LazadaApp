@@ -76,19 +76,19 @@
                 <div class="flex-full">
                     Thu thập hôm nay
                     <br>
-                    {{ number_format($profile->sodu / 2) }} ₫ ₫
+                    {{ number_format($tongGiaHienTai) }} ₫
                 </div>
                 <div class="flex-full">
                     Thu thập hôm qua
                     <br>
-                    {{ number_format($profile->sodu / 2) }} ₫ ₫
+                    {{ number_format($tongGiaHomQua) }} ₫
                 </div>
             </div>
             <div class="d-flex pt-2 pb-2 px-4">
                 <div class="flex-full">
                     Thu thập tích luỹ
                     <br>
-                    {{ number_format(($profile->sodu * 2) / 3) }} ₫ ₫
+                    {{ number_format($ptongGiaTong) }} ₫
                 </div>
                 <div class="flex-full">
                     Lợi ích nhóm
