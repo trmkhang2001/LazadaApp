@@ -88,7 +88,7 @@
                 <div class="flex-full">
                     Thu thập tích luỹ
                     <br>
-                    {{ number_format($ptongGiaTong) }} ₫
+                    {{ number_format($tongGiaTong) }} ₫
                 </div>
                 <div class="flex-full">
                     Lợi ích nhóm
