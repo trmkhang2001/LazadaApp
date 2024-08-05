@@ -73,9 +73,7 @@
                                 Chủ tài khoản:
                                 <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span>
                             </div>
-                            <div class="">
-                                <i class="fs-2 van-icon van-icon-notes copy-icon"
-                                    data-copy="{{ $tai_khoan->ho_ten }}"></i><span>Sao
+                            <div class="copy-icon" data-copy="{{ $tai_khoan->ho_ten }}"><span>Sao
                                     chép</span>
                             </div>
                         </div>
@@ -83,9 +81,7 @@
                             <div class="">
                                 Số tài khoản: <span class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
                             </div>
-                            <div class="">
-                                <i class="fs-2 van-icon van-icon-notes copy-icon"
-                                    data-copy="{{ $tai_khoan->tai_khoan }}"></i>
+                            <div class="copy-icon" data-copy="{{ $tai_khoan->tai_khoan }}">
                                 <span>Sao
                                     chép</span>
                             </div>
@@ -93,9 +89,7 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
-                            <div class="">
-                                <i class="fs-2 van-icon van-icon-notes copy-icon"
-                                    data-copy="{{ $tai_khoan->ngan_hang }}"></i>
+                            <div class="copy-icon" data-copy="{{ $tai_khoan->ngan_hang }}">
                                 <span>Sao
                                     chép</span>
                             </div>
@@ -103,9 +97,7 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div>
-                            <div class="">
-                                <i class="fs-2 van-icon van-icon-notes copy-icon"
-                                    data-copy="{{ 'NT' . Auth::user()->phone }}"></i>
+                            <div class="copy-icon" data-copy="{{ 'NT' . Auth::user()->phone }}">
                                 <span>Sao
                                     chép</span>
                             </div>

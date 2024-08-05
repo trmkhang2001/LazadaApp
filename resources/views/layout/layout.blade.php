@@ -64,6 +64,13 @@
         .nav-item {
             font-size: 15px !important;
         }
+
+        .copy-icon {
+            padding: 0px 10px;
+            background: #ffb300ed;
+            color: white;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
