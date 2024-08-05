@@ -75,6 +75,9 @@ class AuthController extends Controller
         $validated = $req->validate([
             'phone' => 'required',
             'password' => 'required',
+        ], [
+            'phone.required' => 'Bạn chưa nhập số điện thoại.',
+            'password.required' => 'Bạn chưa nhập mật khẩu.',
         ]);
         // Attempt to authenticate the user
         if (!Auth::attempt($req->only('phone', 'password'), $req->boolean('remember'))) {

@@ -17,14 +17,16 @@
                 <input type="text" class="form-control field_input input_log" id="phone"
                     placeholder="Mời bạn nhập số điện thoại" name="phone" value="{{ old('phone') }}">
                 @error('phone')
-                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>
+                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">
+                        {{ $message }}
+                    </span>
                 @enderror
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control field_input input_log" id="password"
                     placeholder="Mời bạn nhập mật khẩu" name="password" value="{{ old('password') }}">
                 @error('password')
-                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">Vui lòng điền số điện thoại</span>
+                    <span class="mt-1 ms-1" style="color: rgb(165, 54, 54)">{{ $message }}</span>
                 @enderror
             </div>
             <div class="mt-5 mb-3">
