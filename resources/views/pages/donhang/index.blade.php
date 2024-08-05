@@ -193,7 +193,7 @@
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn" data-bs-dismiss="modal">Huỷ</button>
                                         <form action="{{ route('gui_don', $don_gui->id) }}">
-                                            <button type="submit" class="btn">Gửi Đơn</button>
+                                            <button type="submit" class="btn" style="color: #44a8ff">Gửi Đơn</button>
                                         </form>
 
                                     </div>

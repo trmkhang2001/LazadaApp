@@ -52,7 +52,7 @@ class DonHangController extends Controller
             'status' => 0,
             'user_id' => $user->id
         ]);
-        return redirect()->route('don_dat')->with('success', 'Nhận đơn thành công');
+        return redirect()->route('giut_don')->with('success', 'true');
     }
     public function search(Request $request)
     {

@@ -165,19 +165,13 @@
                 slideClass: 'custom-swiper-slide',
             });
         });
-        document.addEventListener('DOMContentLoaded', function() {
-            var link = document.getElementById('delayed-link');
+        // Hiển thị modal nếu có success
+        @if (session('success'))
+            console.log('Success session variable found');
             var modal = new bootstrap.Modal(document.getElementById('delayModal'));
-
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
-
-                modal.show(); // Hiển thị modal
-
-                setTimeout(function() {
-                    window.location.href = link.href; // Chuyển hướng đến URL sau 5-6 giây
-                }, 4000);
-            });
-        });
+            modal.show();
+        @else
+            console.log('No success session variable');
+        @endif
     </script>
 @stop
