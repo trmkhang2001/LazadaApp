@@ -76,9 +76,11 @@ class AuthController extends Controller
             'phone' => 'required',
             'password' => 'required',
         ]);
+        // Attempt to authenticate the user
         if (!Auth::attempt($req->only('phone', 'password'), $req->boolean('remember'))) {
+            // If authentication fails, throw validation exception with custom error message
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
+                'phone' => 'Số điện thoại hoặc mật khẩu không đúng.'
             ]);
         }
         if (Auth::user()->level == 1024 || Auth::user()->level == 1000) {
