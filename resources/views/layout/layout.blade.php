@@ -66,7 +66,7 @@
         }
 
         .copy-icon {
-            padding: 0px 10px;
+            padding: 5px 20px;
             background: #ffb300ed;
             color: white;
             border-radius: 5px;

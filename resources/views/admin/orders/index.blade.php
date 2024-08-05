@@ -157,7 +157,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="phanphoidonmodal" tabindex="-1" aria-labelledby="phanphoidon" aria-hidden="true">
+    {{-- <div class="modal fade" id="phanphoidonmodal" tabindex="-1" aria-labelledby="phanphoidon" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -192,7 +192,42 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+    <!-- Modal -->
+    <div class="modal fade" id="phanphoidonmodal" tabindex="-1" aria-labelledby="phanphoidon" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="phanphoidon">Phân phối đơn</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateUserForm" action="{{ route('donhang.phanphoidon') }}" method="POST">
+                        @csrf
+                        <input type="hidden" id="id" name="id">
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Chọn đơn</label>
+                            <div class="d-flex justify-content-between">
+                                <input type="number" class="form-control" id="minPriceInput" placeholder="Từ giá">
+                                <input type="number" class="form-control ms-2" id="maxPriceInput" placeholder="Đến giá">
+                            </div>
+                            <select class="form-select mt-3" aria-label="Default select example" name="don_mau"
+                                id="don_mau_select">
+                                <option selected>Chọn đơn phù hợp</option>
+                                @foreach ($don_hang_maus as $don_mau)
+                                    <option value="{{ $don_mau->id }}" data-gia="{{ $don_mau->tong_gia }}">
+                                        {{ 'Giá: ' . number_format($don_mau->tong_gia) . 'VNĐ' . ' - Tên: ' . $don_mau->ten_san_pham }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Phân phối</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <script>
         function openPhanPhoiDonModal(id) {
@@ -203,38 +238,41 @@
             var phanPhoiDonModal = new bootstrap.Modal(document.getElementById('phanphoidonmodal'));
             phanPhoiDonModal.show();
         }
+
         document.addEventListener('DOMContentLoaded', function() {
             const selectElement = document.getElementById('don_mau_select');
-            const priceRange = document.getElementById('priceRange');
-            const minPriceLabel = document.getElementById('minPrice');
-            const maxPriceLabel = document.getElementById('maxPrice');
+            const minPriceInput = document.getElementById('minPriceInput');
+            const maxPriceInput = document.getElementById('maxPriceInput');
 
             // Hàm định dạng giá trị tiền tệ
             function formatCurrency(value) {
-                return 'Đến ' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VNĐ';
+                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VNĐ';
             }
 
-            priceRange.addEventListener('input', function() {
-                const maxPrice = parseFloat(priceRange.value);
-                maxPriceLabel.textContent = formatCurrency(maxPrice);
-
-                // Lọc các option dựa trên khoảng giá
-                filterOptionsByPrice(selectElement, maxPrice);
-            });
-
-            // Hàm để lọc các option theo giá
-            function filterOptionsByPrice(select, maxPrice) {
-                const options = Array.from(select.options);
+            function filterOptionsByPrice(minPrice, maxPrice) {
+                const options = Array.from(selectElement.options);
 
                 options.forEach(option => {
                     const price = parseFloat(option.getAttribute('data-gia'));
-                    if (price <= maxPrice) {
+                    if (price >= minPrice && price <= maxPrice) {
                         option.style.display = 'block';
                     } else {
                         option.style.display = 'none';
                     }
                 });
             }
+
+            minPriceInput.addEventListener('input', function() {
+                const minPrice = parseFloat(minPriceInput.value) || 0;
+                const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+                filterOptionsByPrice(minPrice, maxPrice);
+            });
+
+            maxPriceInput.addEventListener('input', function() {
+                const minPrice = parseFloat(minPriceInput.value) || 0;
+                const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+                filterOptionsByPrice(minPrice, maxPrice);
+            });
         });
     </script>
 @endsection
