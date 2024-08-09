@@ -41,7 +41,7 @@ class DonHangController extends Controller
         $ktra = DonHang::where('user_id', $user->id)->where('status', '0')->count();
         $ktra2 = DonHang::where('user_id', $user->id)->where('status', '2')->count();
         if ($ktra > 0 || $ktra2 > 0) {
-            return redirect()->route('don_dat')->with('error', 'Bạn đang có đơn chưa hoàn thành');
+            return redirect()->route('giut_don')->with('error', 'false');
         }
         // Tạo mã ngẫu nhiên 10 chữ số không trùng
         do {
