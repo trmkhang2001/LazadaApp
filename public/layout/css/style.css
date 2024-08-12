@@ -47,10 +47,8 @@ a {
     box-shadow: 0 -1rem 2rem #d0d0ed80;
     display: flex;
     font-size: 1.3rem;
-    left: 50%;
     padding-block: 0 0.1rem;
     position: fixed;
-    transform: translate(-50%);
     width: 100%;
     z-index: 100;
 }
@@ -69,6 +67,7 @@ a {
     flex-direction: column;
     font-size: 12.5px;
     justify-content: center;
+    width: 70px;
 }
 
 .nav-icon {
@@ -327,4 +326,14 @@ video {
 
 .bluetheme .van-tabs__nav--card {
     border-color: #44a8ff !important;
+}
+.item-giutdon {
+    background-color: #2f66f6;
+    border-radius: 50%;
+    border: #fff solid 2px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
 }
