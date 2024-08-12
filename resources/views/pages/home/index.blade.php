@@ -243,34 +243,46 @@
         <div class="">
             <div class="d-flex">
                 <div class="box-flex-50 border-rad8  bg-white m-2">
-                    <div class="d-flex align-items-center py-3 ps-3">
-                        <img src="https://da8975.com/static/mobile/home/poster_1.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="font-size: 13px">Giới thiệu công ty
+                    <a href="/gioithieucongty">
+                        <div class="d-flex align-items-center py-3 ps-3">
+                            <img src="https://da8975.com/static/mobile/home/poster_1.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="font-size: 13px">Giới thiệu công ty
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center py-3 ps-3">
-                        <img src="https://da8975.com/static/mobile/home/poster_2.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="font-size: 13px">Mô tả quy tắc
+                    <a href="/gioithieucongty">
+                        <div class="d-flex align-items-center py-3 ps-3">
+                            <img src="https://da8975.com/static/mobile/home/poster_2.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="font-size: 13px">Mô tả quy tắc
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="d-flex">
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center py-3 ps-3">
-                        <img src="https://da8975.com/static/mobile/home/poster_3.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="font-size: 13px">Hợp tác đại lý
+                    <a href="/moibanbe">
+                        <div class="d-flex align-items-center py-3 ps-3">
+                            <img src="https://da8975.com/static/mobile/home/poster_3.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="font-size: 13px">Hợp tác đại lý
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <div class="d-flex align-items-center py-3 ps-3">
-                        <img src="https://da8975.com/static/mobile/home/poster_4.png" style="width: 40px; height: 40px">
-                        <div class="ms-2 fs-bold" style="font-size: 13px">Bản chất công ty
+                    <a href="/gioithieucongty">
+                        <div class="d-flex align-items-center py-3 ps-3">
+                            <img src="https://da8975.com/static/mobile/home/poster_4.png"
+                                style="width: 40px; height: 40px">
+                            <div class="ms-2 fs-bold" style="font-size: 13px">Bản chất công ty
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
