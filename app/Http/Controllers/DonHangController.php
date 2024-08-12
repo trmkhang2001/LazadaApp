@@ -96,7 +96,6 @@ class DonHangController extends Controller
             ->where('status', 0)
             ->whereNull('don_hang_maus_id')
             ->exists();
-
         $don_hangs = DonHang::orderBy('created_at', 'desc')->where('user_id', $user->id)->with('don_hang_maus')->get();
         return view('pages.donhang.index', compact('don_hangs', 'hasNull', 'don_gui'));
     }

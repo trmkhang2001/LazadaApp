@@ -17,7 +17,7 @@ a {
 
 .main {
     background: linear-gradient(#d4dff5, #f3f7fd);
-    box-shadow: 0 0 .6rem 0 #7d7d7d4d;
+    box-shadow: 0 0 0.6rem 0 #7d7d7d4d;
     font-family: "PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif" !important;
     font-size: inherit;
     margin: auto;
@@ -48,7 +48,7 @@ a {
     display: flex;
     font-size: 1.3rem;
     left: 50%;
-    padding-block: 0 .1rem;
+    padding-block: 0 0.1rem;
     position: fixed;
     transform: translate(-50%);
     width: 100%;
@@ -83,20 +83,14 @@ a {
     color: #fff !important;
     top: -26px;
     /* left: 7px; */
-
 }
 
 .nav-item-center-bg {
-    background: #fff;
-    border-radius: 50%;
     bottom: 1.5rem;
     box-shadow: 0 -1rem 2rem #d0d0ed80;
     height: 52px;
-    /* left: 50%; */
     position: absolute;
-    /* transform: translate(-50%); */
     width: 52px;
-    z-index: 2;
 }
 
 .nav-title {
@@ -106,15 +100,15 @@ a {
 .nav-item-center-bg:after {
     background: #2f66f6 !important;
     border-radius: 50%;
+    border: #fff 3px solid;
     content: "";
-    height: 47px;
+    height: 60px;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 47px;
+    width: 60px;
 }
-
 
 .top-0 {
     top: 0 !important;
@@ -173,7 +167,7 @@ video {
 }
 
 .rounded-lg {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 .items-center {
@@ -217,7 +211,7 @@ video {
 
 .box {
     margin-top: 20px;
-    padding: .3rem .4rem;
+    padding: 0.3rem 0.4rem;
     width: 100%;
 }
 
@@ -266,7 +260,7 @@ video {
 }
 
 .border-rem {
-    border-radius: .2666666rem;
+    border-radius: 0.2666666rem;
 }
 
 .border-rad8 {
@@ -289,7 +283,7 @@ video {
 }
 
 .menu-list {
-    font-size: .42666667rem;
+    font-size: 0.42666667rem;
 }
 
 .item {
