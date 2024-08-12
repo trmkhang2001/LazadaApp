@@ -66,6 +66,8 @@
                                         <div>Nạp tiền trực tuyến</div>
                                     @elseif ($naptien->loai_nap == 0)
                                         <div>Đăng ký nhận quà</div>
+                                    @elseif ($naptien->loai_nap == 3)
+                                        <div class="text-danger">Cộng tiền bằng tay</div>
                                     @endif
                                 </td>
                                 <td>

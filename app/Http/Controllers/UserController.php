@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NapTien;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -55,6 +57,19 @@ class UserController extends Controller
         ]);
         $user = User::find($id);
         $user->sodu += $req->tiennap;
+        do {
+            $ma_nap = Str::random(10);
+        } while (NapTien::where('ma_nap', $ma_nap)->exists());
+        NapTien::create([
+            'user_id' => $id,
+            'ma_nap' => $ma_nap,
+            'loai_nap' => 3,
+            'phuong_thuc_thanh_toan' => 0,
+            'so_tien_truoc' => $user->sodu,
+            'so_tien_nap' => $req->tiennap,
+            'so_tien_sau' => ($user->sodu + $req->tiennap),
+            'status' => 1
+        ]);
         $user->save();
         return redirect()->back()->with('success', 'Cộng tiền thành công');
     }
