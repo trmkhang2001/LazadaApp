@@ -206,11 +206,11 @@
             modal.show();
             setTimeout(function() {
                 document.querySelector('#delayModal .fw-bold').textContent = 'Đang phân phối sản phẩm';
-            }, 3000);
+            }, 2000);
             setTimeout(function() {
                 modal.hide();
                 document.getElementById('success').style.display = 'block';
-            }, 6000);
+            }, 4000);
             document.getElementById('success').style.display = 'none';
         @else
             console.log('No success session variable');
