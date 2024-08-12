@@ -124,7 +124,7 @@
                                         </line>
                                     </g>
                                 </svg>
-                                Dựt Đơn
+                                Giựt Đơn
                             </a>
                         </div>
                     </div>
