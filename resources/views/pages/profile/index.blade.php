@@ -116,7 +116,7 @@
                     </div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
-            <a href="/quanlymatkhau">
+            {{-- <a href="/quanlymatkhau">
                 <div role="button" tabindex="0" class="text-template van-cell van-cell--clickable van-cell--center">
                     <div class="avatar avatar-50 rounded me-2 d-flex justify-center">
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
@@ -125,7 +125,7 @@
                     <div class="van-cell__title"><span>Quản lý mật khẩu</span>
                     </div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
-            </a><!----><!---->
+            </a> --}}
             <a href="/logout">
                 <div role="button" tabindex="0" class="text-template van-cell van-cell--clickable van-cell--center">
                     <div class="avatar avatar-50 rounded me-2 d-flex justify-center">
