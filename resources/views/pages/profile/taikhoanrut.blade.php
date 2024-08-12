@@ -81,7 +81,7 @@
                                     <div class="van-cell__title van-field__label"><span>Tên chủ tài khoản</span></div>
                                     <div class="van-cell__value van-field__value">
                                         <div class="van-field__body"><input type="text"
-                                                placeholder="Vui lòng nhập Tên tài khoản" class="van-field__control"
+                                                placeholder="Vui lòng nhập tên chủ tài khoản" class="van-field__control"
                                                 name="chu_tai_khoan"></div>
                                     </div>
                                 </div><!---->
@@ -121,8 +121,8 @@
                                     <div class="van-cell__title van-field__label"><span>Số tài khoản ngân hàng</span></div>
                                     <div class="van-cell__value van-field__value">
                                         <div class="van-field__body"><input type="text"
-                                                placeholder="Vui lòng nhập Tài khoản ngân hàng" class="van-field__control"
-                                                name="tai_khoan">
+                                                placeholder="Vui lòng nhập số tài khoản ngân hàng"
+                                                class="van-field__control" name="tai_khoan">
                                         </div>
                                     </div>
                                 </div>
