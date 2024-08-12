@@ -27,7 +27,7 @@
             </div>
             <div class="d-flex">
                 <div class="box-flex-50 border-rad8 bg-white m-2">
-                    <a href="">
+                    <a href="/moibanbe">
                         <div class="d-flex align-items-center p-3">
                             <img src="https://da8975.com/static/mobile/home/ic_invite.png"
                                 style="width: 40px; height: 40px">

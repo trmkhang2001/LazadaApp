@@ -64,6 +64,14 @@ class ExampleController extends Controller
     {
         return view('pages.chamsoc.index');
     }
+    public function moibanbe()
+    {
+        return view('pages.moibanbe.index');
+    }
+    public function gioithieucongty()
+    {
+        return view('pages.gtcongty.index');
+    }
     public function taikhoanrut()
     {
         $taikhoans = TaiKhoanRut::where('user_id', Auth::user()->id)->get();

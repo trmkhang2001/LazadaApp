@@ -54,7 +54,7 @@
                             Người đăng ký mới
                         </div>
                         <div class="card-footer color-red">
-                            402 người
+                            {{ $dangkymoi }} người
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             Người dùng trực tuyến
                         </div>
                         <div class="card-footer color-red">
-                            402 người
+                            {{ $dangkymoi }} người
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             Thống kê lần nạp đầu
                         </div>
                         <div class="card-footer color-red">
-                            ₫70,000 / 1Người
+                            ₫{{ number_format($totalSoTienNap) }} / {{ $totalUsers }}Người
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             Tổng số tiền rút
                         </div>
                         <div class="card-footer color-red">
-                            ₫100,000 / 1Lần / 1Người
+                            ₫{{ number_format($totalSoTienRut) }} / {{ $totalUsers }}Người
                         </div>
                     </div>
                 </div>

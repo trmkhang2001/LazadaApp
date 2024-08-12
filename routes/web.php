@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/lich_su_rut', [RutTienController::class, 'lichSuRut'])->name('lich_su_rut');
     Route::post('/ruttien', [RutTienController::class, 'taoLenhRut'])->name('tao_lenh_rut_tien');
     Route::get('/congbo', [ExampleController::class, 'congbo'])->name('congbo');
+    Route::get('/moibanbe', [ExampleController::class, 'moibanbe']);
+    Route::get('/gioithieucongty', [ExampleController::class, 'gioithieucongty']);
     //admin
     // Route::controller(DashboardrController::class)->group(function () {
     //     Route::get('/dashboard', 'index')->name('dashboard.index');
