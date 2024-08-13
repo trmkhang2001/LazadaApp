@@ -63,7 +63,7 @@
                                 Chủ tài khoản:
                                 <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span>
                             </div>
-                            <div class="copy-icon" data-copy="{{ $tai_khoan->ho_ten }}"><span>Sao
+                            <div class="copy-icon" id="copy_chutaikhoan"><span>Sao
                                     chép</span>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="">
                                 Số tài khoản: <span class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
                             </div>
-                            <div class="copy-icon" data-copy="{{ $tai_khoan->tai_khoan }}">
+                            <div class="copy-icon" id="copy_sotaikhoan">
                                 <span>Sao
                                     chép</span>
                             </div>
@@ -79,7 +79,7 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
-                            <div class="copy-icon" data-copy="{{ $tai_khoan->ngan_hang }}">
+                            <div class="copy-icon" id="copy_nganhang">
                                 <span>Sao
                                     chép</span>
                             </div>
@@ -87,7 +87,7 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div>
-                            <div class="copy-icon" data-copy="{{ 'NT' . Auth::user()->phone }}">
+                            <div class="copy-icon" id="copy_noidung">
                                 <span>Sao
                                     chép</span>
                             </div>
@@ -100,47 +100,27 @@
             </div>
         </div>
         <script>
+            let chutaikhoan = "{{ $tai_khoan->ho_ten }}"
+            let sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
+            let nganhang = "{{ $tai_khoan->ngan_hang }}"
+            let noidung = "NT{{ Auth::user()->phone }}";
+            document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
+                navigator.clipboard.writeText(chutaikhoan);
+            });
+            document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
+                navigator.clipboard.writeText(sotaikhoan);
+            });
+            document.getElementById("copy_nganhang").addEventListener("click", function() {
+                navigator.clipboard.writeText(nganhang);
+            });
+            document.getElementById("copy_noidung").addEventListener("click", function() {
+                navigator.clipboard.writeText(noidung);
+            });
+            console.log(sotaikhoan);
             document.getElementById('tien_nap').addEventListener('input', function() {
                 let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
                 document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
             });
-            document.querySelectorAll('.copy-icon').forEach(item => {
-                item.addEventListener('click', function() {
-                    const textToCopy = this.getAttribute('data-copy');
-
-                    if (navigator.clipboard && window.isSecureContext) {
-                        navigator.clipboard.writeText(textToCopy).then(() => {
-                            //alert('Đã sao chép: ' + textToCopy);
-                        }).catch(err => {
-                            console.error('Không thể sao chép văn bản: ', err);
-                            fallbackCopyTextToClipboard(textToCopy);
-                        });
-                    } else {
-                        fallbackCopyTextToClipboard(textToCopy);
-                    }
-                });
-            });
-
-            function fallbackCopyTextToClipboard(text) {
-                const textArea = document.createElement("textarea");
-                textArea.value = text;
-                textArea.style.position = "fixed";
-                textArea.style.left = "-999999px";
-                textArea.style.top = "0";
-
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-
-                try {
-                    document.execCommand('copy');
-                    //alert('Đã sao chép: ' + text);
-                } catch (err) {
-                    console.error('Không thể sao chép văn bản: ', err);
-                }
-
-                document.body.removeChild(textArea);
-            }
             document.addEventListener('DOMContentLoaded', function() {
                 var successModal = new bootstrap.Modal(document.getElementById('successModal'));
                 successModal.show();
