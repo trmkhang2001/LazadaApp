@@ -105,15 +105,17 @@
             let nganhang = "{{ $tai_khoan->ngan_hang }}"
             let noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(chutaikhoan).then(function() {
-                        console.log('Text copied to clipboard');
-                    }).catch(function(error) {
-                        console.error('Error copying text to clipboard: ', error);
-                    });
-                } else {
-                    console.error('Clipboard API not supported');
+                var textArea = document.createElement("textarea");
+                textArea.value = chutaikhoan;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    console.log('Text copied to clipboard');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
                 }
+                document.body.removeChild(textArea);
             });
             document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(sotaikhoan);
