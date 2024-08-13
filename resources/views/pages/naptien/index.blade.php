@@ -109,15 +109,13 @@
                     const textToCopy = this.getAttribute('data-copy');
 
                     if (navigator.clipboard && window.isSecureContext) {
-                        // Sử dụng API Clipboard nếu có
                         navigator.clipboard.writeText(textToCopy).then(() => {
-                            alert('Đã sao chép: ' + textToCopy);
+                            //alert('Đã sao chép: ' + textToCopy);
                         }).catch(err => {
                             console.error('Không thể sao chép văn bản: ', err);
                             fallbackCopyTextToClipboard(textToCopy);
                         });
                     } else {
-                        // Fallback cho các trình duyệt không hỗ trợ API Clipboard
                         fallbackCopyTextToClipboard(textToCopy);
                     }
                 });
@@ -126,12 +124,9 @@
             function fallbackCopyTextToClipboard(text) {
                 const textArea = document.createElement("textarea");
                 textArea.value = text;
-
-                // Đảm bảo rằng phần tử không hiển thị trên giao diện người dùng
                 textArea.style.position = "fixed";
                 textArea.style.left = "-999999px";
-                textArea.style.top =
-                "0"; // Thêm dòng này để chắc chắn phần tử textarea hiển thị chính xác trên một số thiết bị di động.
+                textArea.style.top = "0";
 
                 document.body.appendChild(textArea);
                 textArea.focus();
@@ -139,7 +134,7 @@
 
                 try {
                     document.execCommand('copy');
-                    alert('Đã sao chép: ' + text);
+                    //alert('Đã sao chép: ' + text);
                 } catch (err) {
                     console.error('Không thể sao chép văn bản: ', err);
                 }
