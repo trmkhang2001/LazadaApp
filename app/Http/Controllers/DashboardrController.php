@@ -17,16 +17,17 @@ class DashboardrController extends Controller
         $user = User::find(Auth::user()->id);
         $phone = $user->phone;
         // Tìm tất cả người dùng có aff_code giống với số điện thoại của người đăng nhập
-        $usersWithMatchingAffCode = User::where('aff_code', $phone)->pluck('id');
+        $usersWithMatchingAffCode = User::where('aff_code', $phone)->where('level', 1)->pluck('id');
 
         // Tính tổng so_tien_nap cho những người dùng này
         $totalSoTienNap = NapTien::whereIn('user_id', $usersWithMatchingAffCode)->sum('so_tien_nap');
         $totalSoTienRut = RutTien::whereIn('user_id', $usersWithMatchingAffCode)->sum('so_tien_rut');
         $totalUsers = $usersWithMatchingAffCode->count();
-        $nguoidung = User::count();
+        $nguoidung = User::where('level', 1)->count();
+        $tongnhanvien = User::where('level', 1000)->count();
         $dangkymoi = User::where('level', 1)->count();
         $donhang = DonHang::count();
-        return view('admin.dashboard.index', compact('donhang', 'nguoidung', 'dangkymoi', 'totalSoTienNap', 'totalSoTienRut', 'totalUsers'));
+        return view('admin.dashboard.index', compact('donhang', 'nguoidung', 'dangkymoi', 'totalSoTienNap', 'totalSoTienRut', 'totalUsers', 'tongnhanvien'));
     }
     public function doipass()
     {

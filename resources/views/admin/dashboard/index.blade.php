@@ -2,7 +2,7 @@
 @section('contents')
     <div class="">
         <div class="mb-4">
-            <span class="me-2">Link đại lý:</span><span style="color: red">https://fb.com</span>
+            <span class="me-2">Link đại lý:</span><span style="color: red">https://lazada.vn</span>
         </div>
         <div class="d-flex mb-4">
             <div class="card me-4 shadow">
@@ -44,7 +44,7 @@
                             Tổng số thành viên
                         </div>
                         <div class="card-footer color-red">
-                            {{ $nguoidung }} người
+                            {{ $tongnhanvien }} nhân viên / {{ $nguoidung }} người dùng
                         </div>
                     </div>
                 </div>
@@ -61,25 +61,26 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            Tổng lần đăng nhập
+                            Tổng số tiền nạp
                         </div>
                         <div class="card-footer color-red">
-                            402 người
+                            ₫{{ number_format($totalSoTienNap) }} / {{ $totalUsers }}Người
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            Người dùng trực tuyến
+                            Tổng số tiền rút
                         </div>
                         <div class="card-footer color-red">
-                            {{ $dangkymoi }} người
+                            ₫{{ number_format($totalSoTienRut) }} / {{ $totalUsers }}Người
                         </div>
                     </div>
                 </div>
+
             </div>
-            <div class="row mb-4">
+            {{-- <div class="row mb-4">
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
@@ -103,20 +104,20 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            Thống kê lần nạp đầu
+                            Tổng lần đăng nhập
                         </div>
                         <div class="card-footer color-red">
-                            ₫{{ number_format($totalSoTienNap) }} / {{ $totalUsers }}Người
+                            402 người
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            Tổng số tiền rút
+                            Người dùng trực tuyến
                         </div>
                         <div class="card-footer color-red">
-                            ₫{{ number_format($totalSoTienRut) }} / {{ $totalUsers }}Người
+                            {{ $dangkymoi }} người
                         </div>
                     </div>
                 </div>
@@ -162,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
