@@ -104,17 +104,6 @@
                 let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
                 document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
             });
-
-            // document.querySelectorAll('.copy-icon').forEach(item => {
-            //     item.addEventListener('click', function() {
-            //         const textToCopy = this.getAttribute('data-copy');
-            //         navigator.clipboard.writeText(textToCopy).then(() => {
-            //             alert('Đã sao chép: ' + textToCopy);
-            //         }).catch(err => {
-            //             console.error('Không thể sao chép văn bản: ', err);
-            //         });
-            //     });
-            // });
             document.querySelectorAll('.copy-icon').forEach(item => {
                 item.addEventListener('click', function() {
                     const textToCopy = this.getAttribute('data-copy');
@@ -122,7 +111,7 @@
                     if (navigator.clipboard && window.isSecureContext) {
                         // Sử dụng API Clipboard nếu có
                         navigator.clipboard.writeText(textToCopy).then(() => {
-                            //alert('Đã sao chép: ' + textToCopy);
+                            alert('Đã sao chép: ' + textToCopy);
                         }).catch(err => {
                             console.error('Không thể sao chép văn bản: ', err);
                             fallbackCopyTextToClipboard(textToCopy);
@@ -135,21 +124,22 @@
             });
 
             function fallbackCopyTextToClipboard(text) {
-                var textArea = document.createElement("textarea");
+                const textArea = document.createElement("textarea");
                 textArea.value = text;
 
                 // Đảm bảo rằng phần tử không hiển thị trên giao diện người dùng
                 textArea.style.position = "fixed";
                 textArea.style.left = "-999999px";
+                textArea.style.top =
+                "0"; // Thêm dòng này để chắc chắn phần tử textarea hiển thị chính xác trên một số thiết bị di động.
 
                 document.body.appendChild(textArea);
                 textArea.focus();
                 textArea.select();
 
                 try {
-                    var successful = document.execCommand('copy');
-                    // var msg = successful ? 'Đã sao chép: ' + text : 'Không thể sao chép văn bản';
-                    // alert(msg);
+                    document.execCommand('copy');
+                    alert('Đã sao chép: ' + text);
                 } catch (err) {
                     console.error('Không thể sao chép văn bản: ', err);
                 }
