@@ -100,27 +100,62 @@
             </div>
         </div>
         <script>
-            let chutaikhoan = "{{ $tai_khoan->ho_ten }}"
-            let sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
-            let nganhang = "{{ $tai_khoan->ngan_hang }}"
-            let noidung = "NT{{ Auth::user()->phone }}";
-            document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
-                navigator.clipboard.writeText(chutaikhoan);
-                document.getElementById("copy_chutaikhoan").textContent = "Đã sao chép";
+            document.addEventListener('DOMContentLoaded', function() {
+                const chutaikhoan = "{{ $tai_khoan->ho_ten }}";
+                const sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
+                const nganhang = "{{ $tai_khoan->ngan_hang }}";
+                const noidung = "NT{{ Auth::user()->phone }}";
+
+                function fallbackCopyTextToClipboard(text) {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = text;
+                    textArea.style.position = "fixed";
+                    textArea.style.left = "-999999px";
+                    textArea.style.top = "0";
+
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+
+                    try {
+                        document.execCommand('copy');
+                        alert('Đã sao chép: ' + text);
+                    } catch (err) {
+                        console.error('Không thể sao chép văn bản: ', err);
+                    }
+
+                    document.body.removeChild(textArea);
+                }
+
+                function copyToClipboard(text, elementId) {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(text).then(() => {
+                            document.getElementById(elementId).textContent = "Đã sao chép";
+                        }).catch(err => {
+                            console.error('Không thể sao chép văn bản: ', err);
+                            fallbackCopyTextToClipboard(text);
+                        });
+                    } else {
+                        fallbackCopyTextToClipboard(text);
+                    }
+                }
+
+                document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
+                    copyToClipboard(chutaikhoan, "copy_chutaikhoan");
+                });
+
+                document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
+                    copyToClipboard(sotaikhoan, "copy_sotaikhoan");
+                });
+
+                document.getElementById("copy_nganhang").addEventListener("click", function() {
+                    copyToClipboard(nganhang, "copy_nganhang");
+                });
+
+                document.getElementById("copy_noidung").addEventListener("click", function() {
+                    copyToClipboard(noidung, "copy_noidung");
+                });
             });
-            document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
-                navigator.clipboard.writeText(sotaikhoan);
-                document.getElementById("copy_sotaikhoan").textContent = "Đã sao chép";
-            });
-            document.getElementById("copy_nganhang").addEventListener("click", function() {
-                navigator.clipboard.writeText(nganhang);
-                document.getElementById("copy_nganhang").textContent = "Đã sao chép";
-            });
-            document.getElementById("copy_noidung").addEventListener("click", function() {
-                navigator.clipboard.writeText(noidung);
-                document.getElementById("copy_noidung").textContent = "Đã sao chép";
-            });
-            console.log(sotaikhoan);
             document.getElementById('tien_nap').addEventListener('input', function() {
                 let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
                 document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
