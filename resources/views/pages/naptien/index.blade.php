@@ -56,16 +56,6 @@
         <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    {{-- <div class="modal-header">
-                        <h5 class="modal-title" id="successModalLabel">Thông tin nạp tiền:</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        {{ session('success') }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-                    </div> --}}
                     <div class="px-3 py-3">
                         <div class="mb-2 text-center fs-3">Thông tin chuyển khoản:</div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
@@ -115,16 +105,57 @@
                 document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
             });
 
+            // document.querySelectorAll('.copy-icon').forEach(item => {
+            //     item.addEventListener('click', function() {
+            //         const textToCopy = this.getAttribute('data-copy');
+            //         navigator.clipboard.writeText(textToCopy).then(() => {
+            //             alert('Đã sao chép: ' + textToCopy);
+            //         }).catch(err => {
+            //             console.error('Không thể sao chép văn bản: ', err);
+            //         });
+            //     });
+            // });
             document.querySelectorAll('.copy-icon').forEach(item => {
                 item.addEventListener('click', function() {
                     const textToCopy = this.getAttribute('data-copy');
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        alert('Đã sao chép: ' + textToCopy);
-                    }).catch(err => {
-                        console.error('Không thể sao chép văn bản: ', err);
-                    });
+
+                    if (navigator.clipboard && window.isSecureContext) {
+                        // Sử dụng API Clipboard nếu có
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            //alert('Đã sao chép: ' + textToCopy);
+                        }).catch(err => {
+                            console.error('Không thể sao chép văn bản: ', err);
+                            fallbackCopyTextToClipboard(textToCopy);
+                        });
+                    } else {
+                        // Fallback cho các trình duyệt không hỗ trợ API Clipboard
+                        fallbackCopyTextToClipboard(textToCopy);
+                    }
                 });
             });
+
+            function fallbackCopyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+
+                // Đảm bảo rằng phần tử không hiển thị trên giao diện người dùng
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    // var msg = successful ? 'Đã sao chép: ' + text : 'Không thể sao chép văn bản';
+                    // alert(msg);
+                } catch (err) {
+                    console.error('Không thể sao chép văn bản: ', err);
+                }
+
+                document.body.removeChild(textArea);
+            }
             document.addEventListener('DOMContentLoaded', function() {
                 var successModal = new bootstrap.Modal(document.getElementById('successModal'));
                 successModal.show();

@@ -20,8 +20,8 @@ class DashboardrController extends Controller
         $usersWithMatchingAffCode = User::where('aff_code', $phone)->where('level', 1)->pluck('id');
 
         // Tính tổng so_tien_nap cho những người dùng này
-        $totalSoTienNap = NapTien::whereIn('user_id', $usersWithMatchingAffCode)->sum('so_tien_nap');
-        $totalSoTienRut = RutTien::whereIn('user_id', $usersWithMatchingAffCode)->sum('so_tien_rut');
+        $totalSoTienNap = NapTien::whereIn('user_id', $usersWithMatchingAffCode)->where('loai_nap', 1)->where('status', 1)->sum('so_tien_nap');
+        $totalSoTienRut = RutTien::whereIn('user_id', $usersWithMatchingAffCode)->where('status', 1)->sum('so_tien_rut');
         $totalUsers = $usersWithMatchingAffCode->count();
         $nguoidung = User::where('level', 1)->count();
         $tongnhanvien = User::where('level', 1000)->count();
