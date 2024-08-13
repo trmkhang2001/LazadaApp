@@ -63,8 +63,8 @@
                                 Chủ tài khoản:
                                 <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span>
                             </div>
-                            <div class="copy-icon" id="copy_chutaikhoan"><span>Sao
-                                    chép</span>
+                            <div class="copy-icon" id="copy_chutaikhoan">Sao
+                                chép
                             </div>
                         </div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
@@ -72,24 +72,24 @@
                                 Số tài khoản: <span class="fw-bold ps-1">{{ $tai_khoan->tai_khoan }}</span>
                             </div>
                             <div class="copy-icon" id="copy_sotaikhoan">
-                                <span>Sao
-                                    chép</span>
+                                Sao
+                                chép
                             </div>
                         </div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
                             <div class="copy-icon" id="copy_nganhang">
-                                <span>Sao
-                                    chép</span>
+                                Sao
+                                chép
                             </div>
                         </div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div>
                             <div class="copy-icon" id="copy_noidung">
-                                <span>Sao
-                                    chép</span>
+                                Sao
+                                chép
                             </div>
                         </div>
                         <div class="text-center">
@@ -106,15 +106,19 @@
             let noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(chutaikhoan);
+                document.getElementById("copy_chutaikhoan").textContent = "Đã sao chép";
             });
             document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(sotaikhoan);
+                document.getElementById("copy_sotaikhoan").textContent = "Đã sao chép";
             });
             document.getElementById("copy_nganhang").addEventListener("click", function() {
                 navigator.clipboard.writeText(nganhang);
+                document.getElementById("copy_nganhang").textContent = "Đã sao chép";
             });
             document.getElementById("copy_noidung").addEventListener("click", function() {
                 navigator.clipboard.writeText(noidung);
+                document.getElementById("copy_noidung").textContent = "Đã sao chép";
             });
             console.log(sotaikhoan);
             document.getElementById('tien_nap').addEventListener('input', function() {
