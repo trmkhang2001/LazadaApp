@@ -99,4 +99,18 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('thanhvien.index')->with('success', 'Xoá người dùng thành công');
     }
+    public function camruttien(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->camrut = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'Đã cấm rút tiền với ' . $user->phone . '');
+    }
+    public function moruttien(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->camrut = 0;
+        $user->save();
+        return redirect()->back()->with('success', 'Đã mở rút tiền với ' . $user->phone . '');
+    }
 }

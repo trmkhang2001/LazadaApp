@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone')->after('id')->unique();
             $table->string('pass_rut_tien')->after('phone');
             $table->decimal('sodu', 18, 2)->after('aff_code');
+            $table->integer('camrut')->after('sodu')->default(0);
         });
     }
 

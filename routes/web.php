@@ -70,6 +70,8 @@ Route::middleware('auth')->group(function () {
                 Route::post('/trutien/{id}', 'trutien')->name('admin.user.trutien');
                 Route::get('/dongbang/{id}', 'dongbang')->name('admin.user.dongbang');
                 Route::delete('/{id}', 'destroy')->name('admin.user.delete');
+                Route::get('/camruttien/{id}', 'camruttien')->name('admin.user.camruttien');
+                Route::get('/moruttien/{id}', 'moruttien')->name('admin.user.moruttien');
             });
             Route::controller(DonHangMauController::class)->prefix('/donhangmau')->group(function () {
                 Route::get('/', 'index')->name('donhangmau.index');

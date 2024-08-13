@@ -118,6 +118,12 @@ License: For each use you must have a valid license purchased only from above li
         .field_input {
             border: 0;
         }
+
+        .btn-war {
+            background-color: #FFFF00;
+            color: black;
+            padding: 2px;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

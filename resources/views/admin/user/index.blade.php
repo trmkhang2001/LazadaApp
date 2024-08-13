@@ -88,6 +88,12 @@
                             </td>
                             <td>
                                 <div class="cell">
+                                    <div class="fw-bold">Quyền hạn rút tiền: @if ($user->camrut == 0)
+                                            <span class="text-success">Mở</span>
+                                        @elseif ($user->camrut == 1)
+                                            <span class="text-danger">Cấm</span>
+                                        @endif
+                                    </div>
                                     <div>Quyền hạn nhận đơn: <span class="text-success">Mở</span></div>
                                     <div>Giám sát đơn hàng: <span class="text-danger">Cấm</span></div>
                                 </div>
@@ -123,6 +129,21 @@
                                             Sửa
                                         </a>
                                     </div>
+                                    @if ($user->camrut == 0)
+                                        <div class="mb-2">
+                                            <a href="{{ route('admin.user.camruttien', $user->id) }}"
+                                                class="my-2 me-5 p-2 btn-war">
+                                                Cấm rút
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="mb-2">
+                                            <a href="{{ route('admin.user.moruttien', $user->id) }}"
+                                                class="my-2 me-5 p-2 btn-green">
+                                                Mở rút
+                                            </a>
+                                        </div>
+                                    @endif
                                     <div class="">
                                         <a href="" class="my-2 me-5 p-2 btn-blue">
                                             Xoá

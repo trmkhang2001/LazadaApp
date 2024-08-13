@@ -26,6 +26,9 @@ class RutTienController extends Controller
             'pass_rut_tien' => 'required',
         ]);
         $user = User::find(Auth::user()->id);
+        if ($user->camrut == 1) {
+            return redirect()->back()->with('error', 'Tài khoản bị cấm rút');
+        }
         if ($req->pass_rut_tien != $user->pass_rut_tien) {
             return redirect()->back()->with('error', 'Mật khẩu rút tiền không chính xác');
         }
