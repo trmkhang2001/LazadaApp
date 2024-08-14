@@ -105,35 +105,7 @@
             let nganhang = "{{ $tai_khoan->ngan_hang }}"
             let noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
-                const textToCopy = chutaikhoan;
-                console.log(textToCopy);
-                // Create a temporary input element to hold the text
-                const tempInput = document.createElement("input");
-                tempInput.style.position = "absolute";
-                tempInput.style.left = "-9999px"; // Move it off-screen
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-
-                // Select the text in the temporary input
-                tempInput.select();
-                tempInput.setSelectionRange(0, 99999); // For mobile devices
-
-                try {
-                    // Copy the selected text to the clipboard
-                    var successful = document.execCommand("copy");
-                    if (successful) {
-                        setTimeout(() => {
-                            alert("Đã sao chép: " + textToCopy);
-                        }, 0);
-                    } else {
-                        console.error("Copy command was unsuccessful.");
-                    }
-                } catch (err) {
-                    console.error("Có lỗi xảy ra: ", err);
-                }
-
-                // Remove the temporary input from the DOM
-                document.body.removeChild(tempInput);
+                navigator.clipboard.writeText(chutaikhoan);
             });
             document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(sotaikhoan);
