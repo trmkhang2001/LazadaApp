@@ -105,17 +105,19 @@
             let nganhang = "{{ $tai_khoan->ngan_hang }}"
             let noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
-                var textArea = document.createElement("textarea");
-                textArea.value = chutaikhoan;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    console.log('Text copied to clipboard');
-                } catch (err) {
-                    console.error('Failed to copy text: ', err);
-                }
-                document.body.removeChild(textArea);
+                const textToCopy = chutaikhoan;
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    alert("Đã sao chép: " + textToCopy);
+                }, function(err) {
+                    console.error("Có lỗi xảy ra: ", err)
+                });
+                // try {
+                //     var retVal = document.execCommand("copy");
+                //     console.log('Copy to clipboard returns: ' + retVal);
+                //     alert("Copied the text: " + copyText.value);
+                // } catch (err) {
+                //     console.log('Error while copying to clipboard: ' + err);
+                // }
             });
             document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(sotaikhoan);
