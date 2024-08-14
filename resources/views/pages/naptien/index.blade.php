@@ -105,18 +105,37 @@
             const nganhang = "{{ $tai_khoan->ngan_hang }}"
             const noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
-                navigator.clipboard.writeText(chutaikhoan);
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(chutaikhoan);
+                    console.log(chutaikhoan);
+                } else {
+                    console.log('Navigator Not Found');
+                }
             });
             document.getElementById("copy_sotaikhoan").addEventListener("click", function() {
-                navigator.clipboard.writeText(sotaikhoan);
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(sotaikhoan);
+                    console.log(sotaikhoan);
+                } else {
+                    console.log('Navigator Not Found');
+                }
             });
             document.getElementById("copy_nganhang").addEventListener("click", function() {
-                navigator.clipboard.writeText(nganhang);
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(nganhang);
+                    console.log(nganhang);
+                } else {
+                    console.log('Navigator Not Found');
+                }
             });
             document.getElementById("copy_noidung").addEventListener("click", function() {
-                navigator.clipboard.writeText(noidung);
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(noidung);
+                    console.log(noidung);
+                } else {
+                    console.log('Navigator Not Found');
+                }
             });
-            console.log(sotaikhoan);
             document.getElementById('tien_nap').addEventListener('input', function() {
                 let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
                 document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
