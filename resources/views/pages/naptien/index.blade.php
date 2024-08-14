@@ -107,7 +107,9 @@
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
                 const textToCopy = chutaikhoan;
                 navigator.clipboard.writeText(textToCopy).then(function() {
-                    alert("Đã sao chép: " + textToCopy);
+                    setTimeout(() => {
+                        alert("Đã sao chép: " + textToCopy);
+                    }, 0);
                 }, function(err) {
                     console.error("Có lỗi xảy ra: ", err)
                 });
