@@ -100,10 +100,10 @@
             </div>
         </div>
         <script>
-            let chutaikhoan = "{{ $tai_khoan->ho_ten }}"
-            let sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
-            let nganhang = "{{ $tai_khoan->ngan_hang }}"
-            let noidung = "NT{{ Auth::user()->phone }}";
+            const chutaikhoan = "{{ $tai_khoan->ho_ten }}"
+            const sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
+            const nganhang = "{{ $tai_khoan->ngan_hang }}"
+            const noidung = "NT{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
                 navigator.clipboard.writeText(chutaikhoan);
             });
