@@ -7,8 +7,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/nap_tien_view">
                         <div class="d-flex align-items-center p-3">
-                            <img src="https://da8975.com/static/mobile/home/ic_recharge.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/naptien.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="color: rgb(131, 137, 251);">Nạp tiền ngay bây giờ
                             </div>
                         </div>
@@ -17,8 +16,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/tao_lenh_rut">
                         <div class="d-flex align-items-center p-3">
-                            <img src="https://da8975.com/static/mobile/home/ic_withdraw.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/rutien.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="color: rgb(251, 152, 51);">Rút tiền nhanh chóng
                             </div>
                         </div>
@@ -29,8 +27,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/moibanbe">
                         <div class="d-flex align-items-center p-3">
-                            <img src="https://da8975.com/static/mobile/home/ic_invite.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/moibanbe.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="color: rgb(58, 192, 127);">Mời bạn bè
                             </div>
                         </div>
@@ -39,7 +36,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/chamsoc">
                         <div class="d-flex align-items-center p-3">
-                            <img src="https://da8975.com/static/mobile/home/telegram.png" style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/chamsockhachhang.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="color: rgb(46, 143, 255);">Chăm sóc khách hàng
                             </div>
                         </div>
@@ -108,8 +105,7 @@
                     <div class="" style="padding:.08rem .266666667rem; color: red">Cấp độ hiện tại</div>
                 </div>
                 <div class="">
-                    <img class="border-rad8" src="https://da8975.com/static/theme2/level/1.png"
-                        style="width: 100%; padding: 5px;">
+                    <img class="border-rad8" src="{{ asset('img/capdo.png') }}" style="width: 100%; padding: 5px;">
                 </div>
                 <div class="d-flex align-items-center justify-content-between mx-2" style="font-size: 10px">
                     <div class="">
@@ -245,8 +241,7 @@
                 <div class="box-flex-50 border-rad8  bg-white m-2">
                     <a href="/gioithieucongty">
                         <div class="d-flex align-items-center py-3 ps-3">
-                            <img src="https://da8975.com/static/mobile/home/poster_1.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/gioithieuct.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="font-size: 13px">Giới thiệu công ty
                             </div>
                         </div>
@@ -255,8 +250,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/gioithieucongty">
                         <div class="d-flex align-items-center py-3 ps-3">
-                            <img src="https://da8975.com/static/mobile/home/poster_2.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/motaquytac.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="font-size: 13px">Mô tả quy tắc
                             </div>
                         </div>
@@ -267,8 +261,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/moibanbe">
                         <div class="d-flex align-items-center py-3 ps-3">
-                            <img src="https://da8975.com/static/mobile/home/poster_3.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/hoptacdaily.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="font-size: 13px">Hợp tác đại lý
                             </div>
                         </div>
@@ -277,8 +270,7 @@
                 <div class="box-flex-50 border-rad8 bg-white m-2">
                     <a href="/gioithieucongty">
                         <div class="d-flex align-items-center py-3 ps-3">
-                            <img src="https://da8975.com/static/mobile/home/poster_4.png"
-                                style="width: 40px; height: 40px">
+                            <img src="{{ asset('img/banchatcty.png') }}" style="width: 40px; height: 40px">
                             <div class="ms-2 fs-bold" style="font-size: 13px">Bản chất công ty
                             </div>
                         </div>
@@ -292,32 +284,32 @@
             <div class="d-flex flex-wrap">
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/1.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/shopee.png') }}" width="100%">
                     </div>
                 </div>
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/2.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/orami.png') }}" width="100%">
                     </div>
                 </div>
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/3.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/lazada.png') }}" width="100%">
                     </div>
                 </div>
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/4.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/buka.png') }}" width="100%">
                     </div>
                 </div>
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/5.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/amaza.png') }}" width="100%">
                     </div>
                 </div>
                 <div class="" style="flex-basis: 33.333%">
                     <div class="p-2">
-                        <img class="border-rad8" src="https://da8975.com/static/mobile/link/6.png" width="100%">
+                        <img class="border-rad8" src="{{ asset('img/toko.png') }}" width="100%">
                     </div>
                 </div>
             </div>
