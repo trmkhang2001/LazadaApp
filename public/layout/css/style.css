@@ -248,7 +248,7 @@ video {
 }
 
 .earning {
-    background: url(https://da8975.com/static/theme2/balanceBG.png) no-repeat;
+    background: url('/public/img/balanceBG.png') no-repeat;
     background-size: 100% 100%;
 }
 
@@ -327,6 +327,7 @@ video {
 .bluetheme .van-tabs__nav--card {
     border-color: #44a8ff !important;
 }
+
 .item-giutdon {
     background-color: #2f66f6;
     border-radius: 50%;
