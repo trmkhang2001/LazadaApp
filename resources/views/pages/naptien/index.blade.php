@@ -60,6 +60,14 @@
                         <div class="mb-2 text-center fs-3">Thông tin chuyển khoản:</div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
+                                Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
+                            <div class="copy-icon" id="copy_nganhang">
+                                Sao
+                                chép
+                            </div>
+                        </div>
+                        <div class="mb-2 d-flex align-items-center justify-content-between">
+                            <div class="">
                                 Chủ tài khoản:
                                 <span class="fw-bold ps-1">{{ $tai_khoan->ho_ten }}</span>
                             </div>
@@ -78,15 +86,8 @@
                         </div>
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
-                                Ngân hàng: <span class="fw-bold ps-1">{{ $tai_khoan->ngan_hang }}</span></div>
-                            <div class="copy-icon" id="copy_nganhang">
-                                Sao
-                                chép
-                            </div>
-                        </div>
-                        <div class="mb-2 d-flex align-items-center justify-content-between">
-                            <div class="">
-                                Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div>
+                                <!-- Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div> -->
+                                Nội dung: <span class="fw-bold ps-1">Mua Hàng</span></div>
                             <div class="copy-icon" id="copy_noidung">
                                 Sao
                                 chép
