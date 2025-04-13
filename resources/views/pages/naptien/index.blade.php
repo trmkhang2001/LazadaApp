@@ -87,7 +87,7 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 <!-- Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div> -->
-                                Nội dung: <span class="fw-bold ps-1">Mua Hàng</span></div>
+                                Nội dung: <span class="fw-bold ps-1">mua hang</span></div>
                             <div class="copy-icon" id="copy_noidung">
                                 Sao
                                 chép
@@ -104,7 +104,7 @@
             const chutaikhoan = "{{ $tai_khoan->ho_ten }}"
             const sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
             const nganhang = "{{ $tai_khoan->ngan_hang }}"
-            const noidung = "NT{{ Auth::user()->phone }}";
+            const noidung = "mua hang";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(chutaikhoan);
