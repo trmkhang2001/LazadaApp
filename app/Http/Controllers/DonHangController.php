@@ -26,7 +26,8 @@ class DonHangController extends Controller
         } elseif (Auth::user()->level == 1024) {
             $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->paginate(10);
         }
-        return view('admin.orders.index', compact('orders', 'don_hang_maus'));
+        $sodu = Auth::user()->sodu;
+        return view('admin.orders.index', compact('orders', 'don_hang_maus','sodu'));
     }
     public function giutdon()
     {
