@@ -104,7 +104,7 @@
                             <div class="row-item d-flex justify-content-between full-width">
                                 <div class="text-333">Chênh lệch giá</div>
                                 <div class="text-right text-mute">
-                                    {{ number_format($don->don_hang_maus->tong_gia - {{ number_format($sodu) }}) . ' ₫' }}</div>
+                                    {{ number_format($don->don_hang_maus->tong_gia - $sodu) . ' ₫' }}</div>
                             </div><!----><!----><!---->
                         </div>
                         <div class="mt-4 px-3">
