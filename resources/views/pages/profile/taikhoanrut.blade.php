@@ -113,6 +113,8 @@
                                                 <option value="VPBANK">VPBANK</option>
                                                 <option value="MBBANK">MBBANK</option>
                                                 <option value="VIETINBANK">VIETINBANK</option>
+                                                <option value="Vietcombank">Vietcombank</option>
+                                                <option value="Techcombank">Techcombank</option>
                                             </select>
                                         </div>
                                     </div>
