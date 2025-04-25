@@ -23,14 +23,10 @@ class DonHangController extends Controller
                 ->with('user')
                 ->with('don_hang_maus')
                 ->paginate(10);
-                $user = Auth::user();
-        $sodu = $user->sodu;
         } elseif (Auth::user()->level == 1024) {
             $orders = DonHang::orderBy('created_at', 'desc')->with('user')->with('don_hang_maus')->paginate(10);
-            $user = Auth::user();
-        $sodu = $user->sodu;
         }
-        return view('admin.orders.index', compact('orders', 'don_hang_maus','sodu'));
+        return view('admin.orders.index', compact('orders', 'don_hang_maus'));
     }
     public function giutdon()
     {
@@ -101,7 +97,8 @@ class DonHangController extends Controller
             ->whereNull('don_hang_maus_id')
             ->exists();
         $don_hangs = DonHang::orderBy('created_at', 'desc')->where('user_id', $user->id)->with('don_hang_maus')->get();
-        return view('pages.donhang.index', compact('don_hangs', 'hasNull', 'don_gui'));
+        $sodu = $user->sodu;
+        return view('pages.donhang.index', compact('don_hangs', 'hasNull', 'don_gui','sodu'));
     }
     public function guiDon(string $id)
     {
