@@ -187,7 +187,7 @@
                                     <div class="row-item d-flex justify-content-between full-width">
                                         <div class="text-333">Chênh lệch giá</div>
                                         <div class="text-right text-mute">
-                                            {{ number_format($don_gui->don_hang_maus->tong_gia * 0.8987) . ' ₫' }}
+                                            {{ number_format($don_gui->don_hang_maus->tong_gia - $sodu) . ' ₫' }}
                                         </div>
                                     </div><!----><!----><!---->
                                     <div class="d-flex justify-content-between">
