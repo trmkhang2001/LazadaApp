@@ -118,21 +118,21 @@
     </div>
 </div>
 <script>
-    document.getElementById('tienrut').addEventListener('input', function() {
-        let soTienRut = parseFloat(this.value.replace(/,/g, '')) || 0;
-        let phiThuTuc = soTienRut * 0;
-        let thucNhan = soTienRut - phiThuTuc;
+document.getElementById('tienrut').addEventListener('input', function() {
+    let soTienRut = parseFloat(this.value.replace(/,/g, '')) || 0;
+    let phiThuTuc = soTienRut * 0;
+    let thucNhan = soTienRut - phiThuTuc;
 
-        document.getElementById('phi_thu_tuc').innerText = phiThuTuc.toLocaleString('vi-VN');
-        document.getElementById('thuc_nhan').innerText = thucNhan.toLocaleString('vi-VN');
+    document.getElementById('phi_thu_tuc').innerText = phiThuTuc.toLocaleString('vi-VN');
+    document.getElementById('thuc_nhan').innerText = thucNhan.toLocaleString('vi-VN');
+});
+@if ($tai_khoan_ruts->isEmpty())
+document.addEventListener('DOMContentLoaded', function() {
+    var myModal = new bootstrap.Modal(document.getElementById('chuacotaikhoanrut'), {
+        keyboard: false
     });
-    @if($tai_khoan_ruts - > isEmpty())
-    document.addEventListener('DOMContentLoaded', function() {
-        var myModal = new bootstrap.Modal(document.getElementById('chuacotaikhoanrut'), {
-            keyboard: false
-        });
-        myModal.show();
-    });
-    @endif
+    myModal.show();
+});
+@endif
 </script>
 @endsection
