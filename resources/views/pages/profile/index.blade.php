@@ -51,7 +51,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-share"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Rút tiền</span></div><i
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Rút tiền</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -61,7 +61,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-cluster"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Báo cáo nhóm</span></div><i
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Báo cáo nhóm</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -71,7 +71,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-notes"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Lịch sử rút</span></div><i
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Lịch sử rút</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -81,7 +81,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-goods-collect"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Lịch sử nạp</span></div><i
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Lịch sử nạp</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -91,7 +91,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-notes"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Hồ sơ thay đổi tài
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Hồ sơ thay đổi tài
                             khoản</span></div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -102,7 +102,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-card"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Thông tin rút tiền</span>
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Thông tin rút tiền</span>
                     </div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a><!---->
@@ -112,7 +112,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-bell"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Tin nhắn công bố</span>
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Tin nhắn công bố</span>
                     </div><i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
@@ -132,7 +132,7 @@
                         <div class="overlay bg-template" style="border-radius: 0px;"></div><i
                             class="fs-2 van-icon van-icon-stop" style="color: red;"><!----></i>
                     </div>
-                    <div class="van-cell__title"><span>Đăng xuất</span></div><i
+                    <div class="van-cell__title" style="font-size: 18px !important"><span>Đăng xuất</span></div><i
                         class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
                 </div>
             </a>
