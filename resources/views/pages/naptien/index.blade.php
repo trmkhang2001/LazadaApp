@@ -105,7 +105,7 @@
             const chutaikhoan = "{{ $tai_khoan->ho_ten }}"
             const sotaikhoan = "{{ $tai_khoan->tai_khoan }}";
             const nganhang = "{{ $tai_khoan->ngan_hang }}"
-            const noidung = "mua hang";
+            const noidung = "{{ Auth::user()->phone }}";
             document.getElementById("copy_chutaikhoan").addEventListener("click", function() {
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(chutaikhoan);
