@@ -87,7 +87,8 @@
                         <div class="mb-2 d-flex align-items-center justify-content-between">
                             <div class="">
                                 <!-- Nội dung: <span class="fw-bold ps-1">NT{{ Auth::user()->phone }}</span></div> -->
-                                Nội dung: <span class="fw-bold ps-1">mua hang</span></div>
+                                Nội dung: <span class="fw-bold ps-1">{{ Auth::user()->phone }}</span>
+                            </div>
                             <div class="copy-icon" id="copy_noidung">
                                 Sao
                                 chép
