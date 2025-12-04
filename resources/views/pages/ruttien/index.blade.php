@@ -68,7 +68,7 @@
                     <div class="shadow mt-4 border-rad10 mb-3">
                         <div class="card-body">
                             <div class="van-cell  mb-3 border-rad10">
-                                <input class="" type="text" name="tienrut" placeholder="Số tiền rut" id="tienrut"
+                                <input class="" type="text" name="tienrut" placeholder="Số tiền rút" id="tienrut"
                                     style="width: 100%;">
                             </div>
                             <div class="van-cell  mb-3 border-rad10">
