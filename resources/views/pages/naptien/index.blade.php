@@ -168,7 +168,7 @@
             // Hiển thị số tiền thực tế
             thanhToan.textContent = tienNap.toLocaleString();
 
-            if (tienNap <= 10000) {
+            if (tienNap < 10000) {
                 errorTienNap.style.display = 'block';
                 btnSubmit.disabled = true;
                 btnSubmit.style.opacity = '0.6';
