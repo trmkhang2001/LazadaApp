@@ -35,12 +35,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-1 mb-2 ml-4 text-red ft-14" style="font-size: medium; color: red;">Thanh toán thực
+                        <div id="error_tien_nap" class="mt-1 ml-4" style="color:red; font-size:14px; display:none;">
+                            Số tiền tối thiểu là 10.000 ₫
+                        </div>
+                        <div class="mt-1 mb-2 ml-4 text-red ft-14" style="font-size: medium; color: rgb(28, 61, 122);">Thanh
+                            toán thực
                             tế: <span id="thanh_toan_thuc_te">0</span>
                             ₫</div><!---->
                         <div class="ma-3">
                             <div class="tips text-red2 mb-2"></div><!---->
-                            <button type="submit"
+                            <button type="submit" id="btn_submit"
                                 class="van-button van-button--default van-button--normal van-button--block"
                                 style="color: white; background: rgb(247, 206, 41); border-color: rgb(247, 206, 41);">
                                 <div class="van-button__content"><span class="van-button__text"><span class="ft-15"
@@ -152,6 +156,29 @@
         document.getElementById('tien_nap').addEventListener('input', function() {
             let tienNap = parseFloat(this.value.replace(/,/g, '')) || 0;
             document.getElementById('thanh_toan_thuc_te').textContent = tienNap.toLocaleString();
+        });
+        const inputTienNap = document.getElementById('tien_nap');
+        const thanhToan = document.getElementById('thanh_toan_thuc_te');
+        const errorTienNap = document.getElementById('error_tien_nap');
+        const btnSubmit = document.getElementById('btn_submit');
+
+        inputTienNap.addEventListener('input', function() {
+            let tienNap = parseInt(this.value.replace(/,/g, '')) || 0;
+
+            // Hiển thị số tiền thực tế
+            thanhToan.textContent = tienNap.toLocaleString();
+
+            if (tienNap <= 10000) {
+                errorTienNap.style.display = 'block';
+                btnSubmit.disabled = true;
+                btnSubmit.style.opacity = '0.6';
+                btnSubmit.style.cursor = 'not-allowed';
+            } else {
+                errorTienNap.style.display = 'none';
+                btnSubmit.disabled = false;
+                btnSubmit.style.opacity = '1';
+                btnSubmit.style.cursor = 'pointer';
+            }
         });
     </script>
 @stop
